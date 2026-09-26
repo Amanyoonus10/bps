@@ -450,19 +450,69 @@
       <div class="container">
         <div class="reach-grid">
           <div class="reach-left-content">
-            <span class="reach-eyebrow">WHERE YOUR CARGO MOVES</span>
-            <h2 class="reach-title">Global Reach.<br>Regional Focus.</h2>
+            <div class="reach-eyebrow-tag">
+              <span class="pulse-dot-orange"></span>
+              <span class="reach-eyebrow">WHERE YOUR CARGO MOVES</span>
+            </div>
+            <h2 class="reach-title">
+              Global Reach.<br>
+              <span class="reach-orange-accent">Regional Focus.</span>
+            </h2>
             <p class="reach-desc">
-              From Dubai to the world. Delivering bulk liquid solutions across MENA, CIS and beyond with speed, safety and reliability.
+              From Dubai to the world. Delivering bulk liquid solutions across MENA, CIS, and beyond with uncompromising speed, safety, and reliability.
             </p>
-            <p style="font-size:0.875rem; color:var(--text-gray-muted); margin-bottom:28px;">
+            <p class="reach-subdesc">
               Direct routes connecting Dubai stock to Saudi Arabia (Jeddah, Dammam), Oman, Egypt, Baku, Tashkent, Almaty, Rotterdam, Singapore, and global ports.
             </p>
-            <a href="#calculator" class="btn-our-network">OUR NETWORK</a>
+
+            <div class="reach-metrics-grid">
+              <div class="reach-metric-item">
+                <span class="reach-metric-num">60+</span>
+                <span class="reach-metric-lbl">Export Countries</span>
+              </div>
+              <div class="reach-metric-item">
+                <span class="reach-metric-num">24-48h</span>
+                <span class="reach-metric-lbl">GCC Dispatch</span>
+              </div>
+              <div class="reach-metric-item">
+                <span class="reach-metric-num">100%</span>
+                <span class="reach-metric-lbl">Fitted On-Site</span>
+              </div>
+            </div>
+
+            <div class="reach-actions">
+              <a href="#calculator" class="btn-our-network">
+                <span>OUR NETWORK</span>
+                <svg class="btn-arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+              </a>
+            </div>
           </div>
 
           <div class="world-map-graphic-box">
+            <!-- Top HUD Status Bar -->
+            <div class="map-hud-top">
+              <div class="map-hud-pill">
+                <span class="pulse-dot-green"></span>
+                <span>LIVE FREIGHT CORRIDORS • JEBEL ALI (AEJEA)</span>
+              </div>
+              <div class="map-hud-counter">
+                <span>9 ACTIVE HUBS</span>
+              </div>
+            </div>
+
             <canvas id="fullLogisticsMapCanvas"></canvas>
+
+            <!-- Bottom Interactive Tooltip Bar -->
+            <div id="mapInteractiveBar" class="map-interactive-bar">
+              <div class="map-hint-text">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                <span id="mapHintLabel">Hover any regional hub to view direct transit corridors & destinations</span>
+              </div>
+              <div class="map-status-pill">
+                <span class="status-indicator"></span>
+                <span>OPERATIONAL 24/7</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>

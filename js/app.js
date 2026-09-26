@@ -573,58 +573,198 @@ function initFullLogisticsMap() {
   const canvas = document.getElementById('fullLogisticsMapCanvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
+  const container = canvas.parentElement;
+  const hintLabel = document.getElementById('mapHintLabel');
+
+  let width = 0;
+  let height = 0;
+  let dpr = window.devicePixelRatio || 1;
 
   function resize() {
-    canvas.width = canvas.parentElement.clientWidth;
-    canvas.height = canvas.parentElement.clientHeight;
+    width = container.clientWidth || 700;
+    height = container.clientHeight || 480;
+    dpr = window.devicePixelRatio || 1;
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+    canvas.style.width = width + 'px';
+    canvas.style.height = height + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   }
   resize();
   window.addEventListener('resize', resize);
 
   // Dubai Hub location accurately aligned with global-reach-map.png (Dubai, UAE: 25.2°N, 55.3°E)
-  const dubai = { name: 'DUBAI', x: 0.480, y: 0.409 };
+  const dubai = { 
+    name: 'DUBAI (HQ)', 
+    x: 0.480, 
+    y: 0.409, 
+    info: 'Global Hub: Jebel Ali (AEJEA) • 100,000+ Units Ready Stock • 24/7 Operations' 
+  };
+
   const regions = [
-    { name: 'EUROPE', x: 0.28, y: 0.24 },
-    { name: 'RUSSIA & CIS', x: 0.48, y: 0.21 },
-    { name: 'MIDDLE EAST', x: 0.42, y: 0.42 },
-    { name: 'AFRICA', x: 0.35, y: 0.54 },
-    { name: 'CHINA', x: 0.58, y: 0.34 },
-    { name: 'ASIA PACIFIC', x: 0.56, y: 0.54 },
-    { name: 'NORTH AMERICA', x: 0.84, y: 0.30 },
-    { name: 'SOUTH AMERICA', x: 0.88, y: 0.67 }
+    { 
+      name: 'EUROPE', 
+      x: 0.28, 
+      y: 0.24, 
+      ports: 'Rotterdam, Antwerp, Valencia, Genoa', 
+      transit: '14–18 Days', 
+      mode: 'Direct Ocean Freight' 
+    },
+    { 
+      name: 'RUSSIA & CIS', 
+      x: 0.48, 
+      y: 0.21, 
+      ports: 'Baku, Tashkent, Almaty, Aktau', 
+      transit: '5–8 Days', 
+      mode: 'Multimodal Road & Rail' 
+    },
+    { 
+      name: 'MIDDLE EAST', 
+      x: 0.42, 
+      y: 0.42, 
+      ports: 'Jeddah, Dammam, Sohar, Alexandria', 
+      transit: '24–48 Hours', 
+      mode: 'Direct Overland Trucking' 
+    },
+    { 
+      name: 'AFRICA', 
+      x: 0.35, 
+      y: 0.54, 
+      ports: 'Mombasa, Dar es Salaam, Durban', 
+      transit: '7–12 Days', 
+      mode: 'Direct Ocean Freight' 
+    },
+    { 
+      name: 'CHINA', 
+      x: 0.58, 
+      y: 0.34, 
+      ports: 'Shanghai, Ningbo, Qingdao, Shenzhen', 
+      transit: '12–16 Days', 
+      mode: 'Direct Ocean Freight' 
+    },
+    { 
+      name: 'ASIA PACIFIC', 
+      x: 0.56, 
+      y: 0.54, 
+      ports: 'Singapore, Port Klang, Jakarta', 
+      transit: '8–12 Days', 
+      mode: 'Express Sea Corridor' 
+    },
+    { 
+      name: 'NORTH AMERICA', 
+      x: 0.84, 
+      y: 0.30, 
+      ports: 'Houston, New Orleans, Savannah', 
+      transit: '22–26 Days', 
+      mode: 'Direct Ocean Freight' 
+    },
+    { 
+      name: 'SOUTH AMERICA', 
+      x: 0.88, 
+      y: 0.67, 
+      ports: 'Santos, Buenos Aires, Callao', 
+      transit: '24–28 Days', 
+      mode: 'Direct Ocean Freight' 
+    }
   ];
+
+  let hoveredRegion = null;
+  let hoveredDubai = false;
+
+  canvas.addEventListener('mousemove', e => {
+    const rect = canvas.getBoundingClientRect();
+    const mx = e.clientX - rect.left;
+    const my = e.clientY - rect.top;
+
+    const dx = width * dubai.x;
+    const dy = height * dubai.y;
+
+    if (Math.hypot(mx - dx, my - dy) < 22) {
+      hoveredDubai = true;
+      hoveredRegion = null;
+      canvas.style.cursor = 'pointer';
+      if (hintLabel) {
+        hintLabel.innerHTML = `<strong>DUBAI CENTRAL STOCK:</strong> ${dubai.info}`;
+      }
+      return;
+    } else {
+      hoveredDubai = false;
+    }
+
+    let found = null;
+    for (let i = 0; i < regions.length; i++) {
+      const rx = width * regions[i].x;
+      const ry = height * regions[i].y;
+      if (Math.hypot(mx - rx, my - ry) < 24) {
+        found = regions[i];
+        break;
+      }
+    }
+
+    hoveredRegion = found;
+    canvas.style.cursor = found ? 'pointer' : 'default';
+
+    if (hintLabel) {
+      if (found) {
+        hintLabel.innerHTML = `<strong>${found.name} CORRIDOR:</strong> ${found.ports} &bull; <span style="color:#38BDF8;">Transit: ${found.transit}</span> (${found.mode})`;
+      } else {
+        hintLabel.innerText = 'Hover any regional hub to view direct transit corridors & destinations';
+      }
+    }
+  });
+
+  canvas.addEventListener('mouseleave', () => {
+    hoveredRegion = null;
+    hoveredDubai = false;
+    canvas.style.cursor = 'default';
+    if (hintLabel) {
+      hintLabel.innerText = 'Hover any regional hub to view direct transit corridors & destinations';
+    }
+  });
 
   let animOffset = 0;
 
   function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    animOffset += 0.008;
+    ctx.clearRect(0, 0, width, height);
+    animOffset += 0.007;
 
-    const dx = canvas.width * dubai.x;
-    const dy = canvas.height * dubai.y;
+    const dx = width * dubai.x;
+    const dy = height * dubai.y;
 
     // Curved golden rays radiating from DUBAI
     regions.forEach((r, idx) => {
-      const rx = canvas.width * r.x;
-      const ry = canvas.height * r.y;
+      const rx = width * r.x;
+      const ry = height * r.y;
+      const isHovered = (hoveredRegion === r);
+
       const midX = (dx + rx) / 2;
-      const midY = (dy + ry) / 2 - 38;
+      const midY = (dy + ry) / 2 - (isHovered ? 44 : 38);
 
       ctx.beginPath();
       ctx.moveTo(dx, dy);
       ctx.quadraticCurveTo(midX, midY, rx, ry);
-      ctx.strokeStyle = 'rgba(235, 175, 65, 0.45)';
-      ctx.lineWidth = 1.8;
+
+      if (isHovered) {
+        ctx.strokeStyle = '#FFA726';
+        ctx.lineWidth = 3.2;
+        ctx.shadowColor = '#FF9800';
+        ctx.shadowBlur = 12;
+      } else {
+        ctx.strokeStyle = 'rgba(235, 175, 65, 0.42)';
+        ctx.lineWidth = 1.6;
+        ctx.shadowBlur = 0;
+      }
       ctx.stroke();
+      ctx.shadowBlur = 0;
 
       // Flowing Pulse particle
-      let t = (animOffset * (0.8 + idx * 0.15)) % 1;
+      let t = (animOffset * (0.85 + idx * 0.14)) % 1;
       const px = (1 - t) * (1 - t) * dx + 2 * (1 - t) * t * midX + t * t * rx;
       const py = (1 - t) * (1 - t) * dy + 2 * (1 - t) * t * midY + t * t * ry;
 
       ctx.beginPath();
-      ctx.arc(px, py, 3.2, 0, Math.PI * 2);
-      ctx.fillStyle = '#FFD54F';
+      ctx.arc(px, py, isHovered ? 4.2 : 3.2, 0, Math.PI * 2);
+      ctx.fillStyle = isHovered ? '#FFFFFF' : '#FFD54F';
       ctx.shadowColor = '#FFC107';
       ctx.shadowBlur = 10;
       ctx.fill();
@@ -632,29 +772,41 @@ function initFullLogisticsMap() {
 
       // Region node
       ctx.beginPath();
-      ctx.arc(rx, ry, 4.5, 0, Math.PI * 2);
-      ctx.fillStyle = '#FFB300';
-      ctx.shadowColor = '#FFB300';
-      ctx.shadowBlur = 8;
+      ctx.arc(rx, ry, isHovered ? 6 : 4.5, 0, Math.PI * 2);
+      ctx.fillStyle = isHovered ? '#FF6636' : '#FFB300';
+      ctx.shadowColor = isHovered ? '#FF6636' : '#FFB300';
+      ctx.shadowBlur = isHovered ? 14 : 8;
       ctx.fill();
       ctx.shadowBlur = 0;
 
+      if (isHovered) {
+        ctx.beginPath();
+        ctx.arc(rx, ry, 11, 0, Math.PI * 2);
+        ctx.strokeStyle = 'rgba(255, 102, 54, 0.6)';
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+      }
+
       // Region label pill
-      ctx.font = '700 12px "Space Grotesk", sans-serif';
+      ctx.font = '700 11px "Space Grotesk", sans-serif';
       const textWidth = ctx.measureText(r.name).width;
-      ctx.fillStyle = 'rgba(6, 11, 24, 0.75)';
+      ctx.fillStyle = isHovered ? 'rgba(10, 24, 52, 0.95)' : 'rgba(4, 10, 24, 0.82)';
       ctx.beginPath();
-      ctx.roundRect(rx - textWidth / 2 - 6, ry - 24, textWidth + 12, 18, 4);
+      ctx.roundRect(rx - textWidth / 2 - 7, ry - 24, textWidth + 14, 18, 5);
       ctx.fill();
 
-      ctx.fillStyle = '#FFFFFF';
+      ctx.strokeStyle = isHovered ? 'rgba(255, 102, 54, 0.7)' : 'rgba(255, 255, 255, 0.15)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+
+      ctx.fillStyle = isHovered ? '#FF9E66' : '#F1F5F9';
       ctx.textAlign = 'center';
       ctx.fillText(r.name, rx, ry - 11);
     });
 
     // Central DUBAI Node & Radiant Hub Beacon
     ctx.beginPath();
-    ctx.arc(dx, dy, 7.5, 0, Math.PI * 2);
+    ctx.arc(dx, dy, hoveredDubai ? 9 : 7.5, 0, Math.PI * 2);
     ctx.fillStyle = '#E85D1A';
     ctx.shadowColor = '#E85D1A';
     ctx.shadowBlur = 18;
@@ -664,38 +816,38 @@ function initFullLogisticsMap() {
     // Glowing core
     ctx.beginPath();
     ctx.arc(dx, dy, 3.5, 0, Math.PI * 2);
-    ctx.fillStyle = '#FFD54F';
+    ctx.fillStyle = '#FFE082';
     ctx.fill();
 
     // Radiating concentric pulse rings
-    const ringR = 13 + Math.sin(Date.now() * 0.005) * 5;
+    const ringR = 14 + Math.sin(Date.now() * 0.005) * 5;
     ctx.beginPath();
     ctx.arc(dx, dy, ringR, 0, Math.PI * 2);
-    ctx.strokeStyle = 'rgba(232, 93, 26, 0.75)';
+    ctx.strokeStyle = 'rgba(232, 93, 26, 0.8)';
     ctx.lineWidth = 1.8;
     ctx.stroke();
 
-    const ringR2 = 21 + Math.sin(Date.now() * 0.003) * 7;
+    const ringR2 = 23 + Math.sin(Date.now() * 0.003) * 7;
     ctx.beginPath();
     ctx.arc(dx, dy, ringR2, 0, Math.PI * 2);
-    ctx.strokeStyle = 'rgba(232, 93, 26, 0.3)';
+    ctx.strokeStyle = 'rgba(232, 93, 26, 0.35)';
     ctx.lineWidth = 1.2;
     ctx.stroke();
 
     // Dubai text pill
-    ctx.font = '800 13px "Space Grotesk", sans-serif';
-    const dubaiWidth = ctx.measureText('DUBAI').width;
-    ctx.fillStyle = 'rgba(6, 11, 24, 0.9)';
+    ctx.font = '800 12px "Space Grotesk", sans-serif';
+    const dubaiWidth = ctx.measureText('DUBAI (HQ)').width;
+    ctx.fillStyle = 'rgba(4, 10, 26, 0.92)';
     ctx.beginPath();
-    ctx.roundRect(dx - dubaiWidth / 2 - 8, dy + 12, dubaiWidth + 16, 20, 4);
+    ctx.roundRect(dx - dubaiWidth / 2 - 8, dy + 13, dubaiWidth + 16, 21, 5);
     ctx.fill();
-    ctx.strokeStyle = 'rgba(232, 93, 26, 0.5)';
-    ctx.lineWidth = 1;
+    ctx.strokeStyle = 'rgba(232, 93, 26, 0.7)';
+    ctx.lineWidth = 1.2;
     ctx.stroke();
 
-    ctx.fillStyle = '#FF6B2B';
+    ctx.fillStyle = '#FF7A38';
     ctx.textAlign = 'center';
-    ctx.fillText('DUBAI', dx, dy + 26);
+    ctx.fillText('DUBAI (HQ)', dx, dy + 28);
 
     requestAnimationFrame(draw);
   }
