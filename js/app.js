@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initCargoCalculator();
   initFaqFilters();
   initMobileNav();
+  initMobileFloatingBar();
+  initModalBackdrops();
 });
 
 /* ==========================================================================
@@ -719,9 +721,53 @@ function initFullLogisticsMap() {
     hoveredDubai = false;
     canvas.style.cursor = 'default';
     if (hintLabel) {
-      hintLabel.innerText = 'Hover any regional hub to view direct transit corridors & destinations';
+      hintLabel.innerText = ('ontouchstart' in window || navigator.maxTouchPoints > 0)
+        ? 'Tap any regional hub to view direct transit corridors & destinations'
+        : 'Hover any regional hub to view direct transit corridors & destinations';
     }
   });
+
+  // Touch support for Mobile / Tablets on World Logistics Map
+  canvas.addEventListener('touchstart', e => {
+    if (e.touches.length === 1) {
+      const rect = canvas.getBoundingClientRect();
+      const mx = e.touches[0].clientX - rect.left;
+      const my = e.touches[0].clientY - rect.top;
+
+      const dx = width * dubai.x;
+      const dy = height * dubai.y;
+
+      if (Math.hypot(mx - dx, my - dy) < 28) {
+        hoveredDubai = true;
+        hoveredRegion = null;
+        if (hintLabel) {
+          hintLabel.innerHTML = `<strong>DUBAI CENTRAL STOCK:</strong> ${dubai.info}`;
+        }
+        return;
+      } else {
+        hoveredDubai = false;
+      }
+
+      let found = null;
+      for (let i = 0; i < regions.length; i++) {
+        const rx = width * regions[i].x;
+        const ry = height * regions[i].y;
+        if (Math.hypot(mx - rx, my - ry) < 30) {
+          found = regions[i];
+          break;
+        }
+      }
+
+      hoveredRegion = found;
+      if (hintLabel) {
+        if (found) {
+          hintLabel.innerHTML = `<strong>${found.name} CORRIDOR:</strong> ${found.ports} &bull; <span style="color:#38BDF8;">Transit: ${found.transit}</span> (${found.mode})`;
+        } else {
+          hintLabel.innerText = 'Tap any regional hub to view direct transit corridors & destinations';
+        }
+      }
+    }
+  }, { passive: true });
 
   let animOffset = 0;
 
@@ -1211,6 +1257,21 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
+function initModalBackdrops() {
+  const prodModal = document.getElementById('productDetailModal');
+  if (prodModal) {
+    prodModal.addEventListener('click', (e) => {
+      if (e.target === prodModal) closeProductModal();
+    });
+  }
+  const certModal = document.getElementById('certDetailModal');
+  if (certModal) {
+    certModal.addEventListener('click', (e) => {
+      if (e.target === certModal) closeCertModal();
+    });
+  }
+}
+
 /* ==========================================================================
    7. CARGO CALCULATOR ENGINE
    ========================================================================== */
@@ -1353,7 +1414,7 @@ function initMobileNav() {
   const drawer = document.getElementById('mobileNavDrawer');
   const overlay = document.getElementById('mobileNavOverlay');
   const closeBtn = document.getElementById('mobileNavClose');
-  const navLinks = document.querySelectorAll('.mobile-nav-item');
+  const navLinks = drawer.querySelectorAll('.mobile-nav-item, .mobile-drawer-quote-btn, .mobile-wa-btn');
 
   if (!toggleBtn || !drawer) return;
 
@@ -1376,6 +1437,27 @@ function initMobileNav() {
   navLinks.forEach(link => {
     link.addEventListener('click', closeDrawer);
   });
+}
+
+/* ==========================================================================
+   10. MOBILE FLOATING ACTION DOCK
+   ========================================================================== */
+function initMobileFloatingBar() {
+  const bar = document.getElementById('mobileFloatingBar');
+  if (!bar) return;
+
+  function handleScroll() {
+    const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+    // Show dock once user scrolls past initial hero fold
+    if (scrollY > 280) {
+      bar.classList.add('visible');
+    } else {
+      bar.classList.remove('visible');
+    }
+  }
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  handleScroll();
 }
 
 

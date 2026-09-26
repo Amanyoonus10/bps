@@ -3091,6 +3091,137 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--color-orange);
 }
 
+/* Product Spec Modal Layout Classes */
+.modal-product-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.modal-product-img-wrap {
+  height: 280px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #060B18;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.modal-product-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-product-header-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.modal-product-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin: 8px 0 10px 0;
+  line-height: 1.15;
+}
+
+.modal-product-tagline {
+  font-size: 0.95rem;
+  color: var(--color-blue-bright);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.modal-product-cap-pill {
+  display: inline-block;
+  background: rgba(232, 93, 26, 0.15);
+  border: 1px solid rgba(232, 93, 26, 0.3);
+  color: var(--color-orange);
+  font-weight: 700;
+  font-size: 0.875rem;
+  padding: 6px 14px;
+  border-radius: 6px;
+}
+
+.modal-specs-section {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 20px;
+  margin-bottom: 24px;
+}
+
+.modal-specs-title {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  color: var(--text-gray-muted);
+  margin-bottom: 12px;
+  letter-spacing: 0.06em;
+}
+
+.modal-specs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  font-size: 0.875rem;
+}
+
+.modal-actions-row {
+  display: flex;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.modal-action-btn {
+  flex: 1;
+  text-align: center;
+  justify-content: center;
+  height: 48px;
+  font-size: 0.9rem;
+}
+
+/* Cert Modal Specifics */
+.modal-dialog-cert {
+  max-width: 620px;
+}
+
+.modal-cert-content {
+  padding: 10px;
+}
+
+.modal-cert-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin: 8px 0 8px 0;
+  line-height: 1.2;
+}
+
+.modal-cert-auth {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--color-orange);
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.modal-cert-scope {
+  font-size: 0.95rem;
+  color: var(--text-gray-light);
+  line-height: 1.7;
+  background: #070E20;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile Quick Floating Dock (Hidden on Desktop) */
+.mobile-floating-bar {
+  display: none;
+}
+
 /* ==========================================================================
    CARGO CALCULATOR & ESTIMATOR SECTION (CRISP WHITE BACKGROUND)
    ========================================================================== */
@@ -3622,11 +3753,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
-   RESPONSIVE QUERIES
+   RESPONSIVE DESIGN SYSTEM (DESKTOP -> TABLET -> MOBILE -> ULTRA-COMPACT)
    ========================================================================== */
+
+/* 1. Large Tablets / Small Laptops (<= 1200px) */
 @media (max-width: 1200px) {
   .hero-container {
     grid-template-columns: 1fr;
+    gap: 40px;
   }
   .hero-delivering-card {
     margin-left: 0;
@@ -3634,9 +3768,11 @@ h1, h2, h3, h4, h5, h6 {
   }
   .reach-grid {
     grid-template-columns: 1fr;
+    gap: 44px;
   }
   .about-clean-grid {
     grid-template-columns: 1fr;
+    gap: 44px;
   }
   .certs-sust-grid {
     grid-template-columns: 1fr;
@@ -3647,6 +3783,10 @@ h1, h2, h3, h4, h5, h6 {
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     padding-bottom: 40px;
   }
+  .sust-split-col {
+    padding-left: 0;
+    margin-top: 10px;
+  }
   .services-process-grid {
     grid-template-columns: 1fr;
   }
@@ -3656,44 +3796,51 @@ h1, h2, h3, h4, h5, h6 {
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     padding-bottom: 40px;
   }
+  .process-col {
+    padding-left: 0;
+    margin-top: 10px;
+  }
   .why-bps-row {
     flex-direction: column;
     align-items: flex-start;
+    gap: 20px;
   }
   .why-bps-label {
     border-right: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
     padding-bottom: 10px;
+    width: 100%;
   }
 }
 
+/* 2. Medium Tablets (<= 992px) */
 @media (max-width: 992px) {
+  .main-nav,
+  .header-nav {
+    display: none !important;
+  }
+  .mobile-nav-toggle {
+    display: flex;
+  }
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
   }
   .stat-box:not(:last-child)::after {
     display: none;
   }
   .why-bps-items {
     grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    width: 100%;
   }
   .footer-ref-grid {
     grid-template-columns: 1fr;
-  }
-  .header-nav {
-    display: none;
-  }
-  .hero-container {
-    grid-template-columns: 1fr;
-    gap: 44px;
-  }
-  .hero-delivering-card {
-    margin-left: 0;
-    max-width: 100%;
+    gap: 40px;
   }
   .calc-main-card {
     grid-template-columns: 1fr;
-    padding: 24px;
+    padding: 28px;
     gap: 32px;
   }
   .sust-split-card {
@@ -3716,51 +3863,674 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* 3. Small Tablets & Phones (<= 768px) */
 @media (max-width: 768px) {
+  /* Global Spacing & Container */
+  .container,
+  .container-narrow {
+    padding: 0 18px;
+  }
+  
+  .section-products,
+  .section-global-reach,
+  .section-about-clean,
+  .section-certs-sust-split,
+  .section-services-process-split,
+  .section-calculator,
+  .section-faq {
+    padding: 60px 0 70px;
+  }
+
+  .site-footer-ref {
+    padding: 60px 0 35px;
+  }
+
+  /* Carousel Navigation buttons - hidden on touch devices */
+  .carousel-nav-btn {
+    display: none !important;
+  }
+
+  /* Process Stepper in 2x2 Grid */
   .process-stepper-row {
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 16px;
-    justify-content: center;
+    padding: 18px 14px;
   }
   .process-arrow {
     display: none;
   }
+
+  /* FAQ Filter Pills - Horizontal Native Swipe */
+  .faq-filter-pills {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 8px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .faq-filter-pills::-webkit-scrollbar {
+    display: none;
+  }
+  .faq-filter-btn {
+    flex: 0 0 auto;
+    width: auto;
+    white-space: nowrap;
+    padding: 9px 15px;
+    font-size: 0.813rem;
+  }
+
+  /* Product Filter Pills - Smooth Swipe */
+  .products-filter-pills {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 6px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    width: 100%;
+  }
+  .products-filter-pills::-webkit-scrollbar {
+    display: none;
+  }
+  .prod-filter-btn {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    padding: 7px 16px;
+    font-size: 0.8rem;
+  }
+
+  /* Modals */
+  .modal-overlay {
+    padding: 16px;
+  }
+  .modal-dialog {
+    padding: 24px 18px;
+    max-height: 92vh;
+    border-radius: 14px;
+  }
+  .modal-product-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin-bottom: 18px;
+  }
+  .modal-product-img-wrap {
+    height: 200px;
+  }
+  .modal-product-title {
+    font-size: 1.5rem;
+  }
+
+  /* Mobile Floating Quick Action Dock */
+  .mobile-floating-bar {
+    display: flex;
+    position: fixed;
+    bottom: 14px;
+    left: 14px;
+    right: 14px;
+    z-index: 1050;
+    gap: 10px;
+    background: rgba(6, 12, 26, 0.94);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 100px;
+    padding: 7px 8px;
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.75), 0 0 20px rgba(232, 93, 26, 0.2);
+    transform: translateY(130%);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, visibility 0.3s ease;
+    padding-bottom: max(7px, env(safe-area-inset-bottom));
+  }
+
+  .mobile-floating-bar.visible {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .mobile-float-btn {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    height: 42px;
+    border-radius: 100px;
+    font-family: var(--font-display);
+    font-size: 0.813rem;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .mobile-float-btn.wa-float {
+    background: rgba(16, 185, 129, 0.18);
+    color: #34D399;
+    border: 1px solid rgba(16, 185, 129, 0.4);
+  }
+
+  .mobile-float-btn.wa-float:active {
+    background: #10B981;
+    color: #FFFFFF;
+  }
+
+  .mobile-float-btn.rfq-float {
+    background: linear-gradient(135deg, #FF6F2E 0%, #E85D1A 100%);
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 2px 10px rgba(232, 93, 26, 0.4);
+  }
+
+  .mobile-float-btn.rfq-float:active {
+    transform: scale(0.98);
+  }
 }
 
+/* 4. Standard Mobile Phones (<= 640px) */
 @media (max-width: 640px) {
-  .stats-grid {
-    grid-template-columns: 1fr;
+  /* Hero Section */
+  .hero-section {
+    min-height: auto;
+    padding: 44px 0 52px;
   }
+  .hero-headline {
+    font-size: clamp(2rem, 7.5vw, 2.5rem);
+    line-height: 1.14;
+    margin-bottom: 16px;
+  }
+  .hero-desc {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    margin-bottom: 22px;
+  }
+  .hero-btns {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+  .btn-hero-primary,
+  .btn-hero-secondary {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    padding: 13px 20px;
+    height: 48px;
+  }
+  .hero-widget-col {
+    margin-top: 8px;
+  }
+  .widget-map-box {
+    height: 250px;
+    touch-action: pan-y !important; /* Critical: allow smooth vertical scrolling */
+  }
+  .widget-main-title {
+    font-size: 1.15rem;
+  }
+  .widget-telemetry-footer {
+    padding: 8px 12px;
+  }
+
+  /* Stats Strip - Executive 2-Column Dashboard Grid */
+  .stats-strip {
+    padding: 22px 0;
+  }
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .stat-box {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 12px 14px;
+    gap: 12px;
+  }
+  /* Fifth box spans both columns for perfect symmetry */
+  .stat-box:nth-child(5) {
+    grid-column: span 2;
+    justify-content: center;
+  }
+  .stat-icon {
+    width: 32px;
+    height: 32px;
+  }
+  .stat-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+  .stat-val-bold {
+    font-size: 1.25rem;
+    margin-bottom: 1px;
+  }
+  .stat-desc-text {
+    font-size: 0.72rem;
+    line-height: 1.25;
+  }
+
+  /* Products Cards */
   .product-ref-card {
-    flex: 0 0 280px;
-    width: 280px;
+    flex: 0 0 285px;
+    width: 285px;
+    scroll-snap-align: center;
+  }
+  .product-thumb-holder {
+    height: 165px;
+  }
+  .product-card-info {
+    padding: 16px;
+  }
+  .product-name-heading {
+    font-size: 1.15rem;
+  }
+  .product-tagline-text {
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+  }
+  .product-body-desc {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+
+  /* Global Reach & Interactive Map */
+  .reach-metrics-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+  .reach-metric-item {
+    padding: 10px 6px;
+    text-align: center;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .reach-metric-num {
+    font-size: 1.25rem;
+    margin-bottom: 2px;
+  }
+  .reach-metric-lbl {
+    font-size: 0.625rem;
+    line-height: 1.2;
+  }
+  .world-map-graphic-box {
+    height: 320px;
+  }
+  .map-hud-top {
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    gap: 6px;
+  }
+  .map-hud-pill {
+    font-size: 0.62rem;
+    padding: 4px 10px;
+  }
+  .map-hud-counter {
+    font-size: 0.62rem;
+    padding: 4px 8px;
+  }
+  .map-interactive-bar {
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 7px 10px;
+  }
+  .map-hint-text {
+    font-size: 0.68rem;
+  }
+
+  /* About Clean Section */
+  .about-clean-headline {
+    font-size: clamp(1.8rem, 6.5vw, 2.3rem);
+    margin-bottom: 18px;
+  }
+  .about-clean-body {
+    font-size: 0.92rem;
+    line-height: 1.62;
+    margin-bottom: 22px;
+  }
+  .about-features-2x2 {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .about-split-banner-card {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  .split-photo-half {
+    height: 200px;
+  }
+  .split-dark-half {
+    padding: 22px 18px;
+    gap: 16px;
+  }
+
+  /* Why BPS Strip */
+  .why-bps-strip {
+    padding: 30px 0;
+  }
+  .why-bps-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .why-bps-label {
+    font-size: 0.95rem;
+    padding-bottom: 8px;
   }
   .why-bps-items {
     grid-template-columns: 1fr;
+    gap: 14px;
+    width: 100%;
   }
+
+  /* Industries Bar */
+  .section-industries-bar {
+    padding: 45px 0 50px;
+  }
+  .industry-crop-card {
+    flex: 0 0 145px;
+    width: 145px;
+    height: 175px;
+  }
+
+  /* Certifications & Sustainability */
   .cert-badges-grid {
     grid-template-columns: repeat(4, 1fr);
+    gap: 12px 6px;
+  }
+  .cert-circle-ring {
+    width: 44px;
+    height: 44px;
+  }
+  .cert-circle-ring svg {
+    width: 44px;
+    height: 44px;
+  }
+  .cert-badge-label {
+    font-size: 0.62rem;
+  }
+  .sust-split-card {
+    padding: 18px 14px;
+    gap: 16px;
+  }
+  .sust-leaf-photo-box {
+    height: 180px;
+  }
+  .sust-point {
+    font-size: 0.78rem;
+  }
+
+  /* Services & Stepper */
+  .services-icons-row {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .svc-icon-box {
+    width: 38px;
+    height: 38px;
+  }
+  .svc-title-text {
+    font-size: 0.66rem;
+  }
+
+  /* Calculator Section */
+  .calc-headline {
+    font-size: clamp(1.75rem, 6.5vw, 2.2rem);
+  }
+  .calc-subtitle {
+    font-size: 0.88rem;
+  }
+  .calc-main-card {
+    padding: 20px 16px;
+    gap: 24px;
+    border-radius: 12px;
+  }
+  .calc-dropdown-select {
+    font-size: 16px !important; /* iOS zoom prevention */
+    padding: 13px 38px 13px 44px;
+  }
+  .calc-volume-card {
+    padding: 18px 14px;
+  }
+  .calc-result-panel {
+    padding: 20px 16px;
+    border-radius: 12px;
+  }
+  #resContainers {
+    font-size: 1.75rem;
+  }
+  .calc-spec-row {
+    font-size: 0.82rem;
+    padding: 7px 0;
+  }
+  .btn-calc-wa,
+  .btn-calc-email {
+    height: auto;
+    min-height: 48px;
+    padding: 10px 14px;
+    white-space: normal;
+  }
+  .btn-calc-title {
+    font-size: 0.85rem;
+    margin-left: 8px;
+    white-space: normal;
+  }
+
+  /* FAQ Section */
+  .faq-headline {
+    font-size: clamp(1.8rem, 6.5vw, 2.2rem);
+  }
+  .faq-search-input {
+    font-size: 16px !important; /* iOS zoom prevention */
+    height: 48px;
+  }
+  .faq-summary {
+    padding: 16px 14px;
+    gap: 12px;
+  }
+  .faq-question-title {
+    font-size: 0.95rem;
+    line-height: 1.35;
+  }
+  .faq-answer-body {
+    padding: 0 14px 16px;
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+
+  /* Footer */
+  .footer-cta-headline {
+    font-size: clamp(1.8rem, 6.5vw, 2.3rem);
+  }
+  .footer-cta-btns {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+  .btn-footer-quote,
+  .btn-footer-contact,
+  .btn-footer-wa {
+    width: 100%;
+    justify-content: center;
+    height: 46px;
+  }
+  .footer-contact-card {
+    padding: 20px 16px;
+    border-radius: 12px;
+  }
+  .contact-entity-title {
+    font-size: 0.88rem;
+  }
+  .contact-entity-text {
+    font-size: 0.8rem;
+  }
+  .footer-copyright-bar {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+
+  /* Modals Actions */
+  .modal-actions-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .modal-action-btn {
+    width: 100%;
+  }
+}
+
+/* 5. Compact Mobile Phones (<= 480px) */
+@media (max-width: 480px) {
+  .container,
+  .container-narrow {
+    padding: 0 14px;
+  }
+
+  /* Site Header Compact Layout */
+  .site-header {
+    padding: 8px 0;
+  }
+  .header-inner {
+    gap: 8px;
+  }
+  .brand-logo-frame {
+    width: 36px;
+    height: 36px;
+  }
+  .brand-title {
+    font-size: 0.92rem;
+  }
+  .brand-sub {
+    display: none;
+  }
+  .btn-header-quote {
+    padding: 0 12px;
+    font-size: 0.72rem;
+    height: 34px;
+    letter-spacing: 0.02em;
+  }
+  .btn-header-quote .btn-arrow {
+    display: none;
+  }
+  .globe-icon-btn {
+    display: none;
+  }
+  .mobile-nav-toggle {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* Industries Bar */
+  .industry-crop-card {
+    flex: 0 0 135px;
+    width: 135px;
+    height: 165px;
+  }
+  .industry-name-label {
+    font-size: 0.72rem;
+    padding: 16px 8px 8px;
+  }
+
+  /* Certifications Badges (3 columns on compact phones) */
+  .cert-badges-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px 6px;
+  }
+  .cert-circle-ring {
+    width: 40px;
+    height: 40px;
+  }
+  .cert-circle-ring svg {
+    width: 40px;
+    height: 40px;
+  }
+  .cert-badge-label {
+    font-size: 0.6rem;
+  }
+
+  /* Calculator Volume Header & Presets */
+  .calc-volume-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .calc-volume-presets {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+    width: 100%;
+  }
+  .preset-title {
+    grid-column: span 2;
+    margin-bottom: 2px;
+  }
+  .calc-preset-btn {
+    text-align: center;
+    padding: 6px 8px;
+    font-size: 0.72rem;
+  }
+
+  /* FAQ Support Actions */
+  .faq-support-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .faq-support-btn {
+    width: 100%;
+    height: 40px;
+  }
+
+  /* Modal Specs Body */
+  .modal-specs-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+/* 6. Ultra-Compact Phones (<= 380px: iPhone SE, etc.) */
+@media (max-width: 380px) {
+  .brand-title {
+    font-size: 0.84rem;
+  }
+  .btn-header-quote {
+    padding: 0 9px;
+    font-size: 0.68rem;
+  }
+  .product-ref-card {
+    flex: 0 0 calc(100vw - 36px);
+    width: calc(100vw - 36px);
   }
   .services-icons-row {
     grid-template-columns: repeat(2, 1fr);
   }
-  .about-split-banner-card {
+  .process-stepper-row {
     grid-template-columns: 1fr;
-  }
-  .faq-filter-btn {
-    flex: 1 1 100%;
   }
   .world-map-graphic-box {
-    height: 380px;
+    height: 290px;
   }
   .reach-metrics-grid {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-  .map-interactive-bar {
-    flex-direction: column;
-    align-items: flex-start;
     gap: 6px;
-    padding: 8px 12px;
+  }
+  .reach-metric-num {
+    font-size: 1.1rem;
   }
 }
