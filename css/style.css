@@ -2471,6 +2471,10 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 14px 35px rgba(5, 13, 29, 0.12), 0 2px 6px rgba(5, 13, 29, 0.06);
   position: relative;
   overflow: hidden;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
 }
 
 .faq-support-header {
@@ -2500,42 +2504,61 @@ h1, h2, h3, h4, h5, h6 {
   color: #FFFFFF;
 }
 
+.faq-support-status {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.75rem;
+  color: var(--color-emerald);
+  font-weight: 700;
+  margin-top: 2px;
+}
+
 .faq-support-desc {
   font-size: 0.813rem;
   color: #94A3B8;
-  line-height: 1.5;
+  line-height: 1.55;
   margin-bottom: 16px;
 }
 
 .faq-support-actions {
   display: flex;
   gap: 10px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .faq-support-btn {
-  flex: 1;
-  padding: 9px 12px;
-  border-radius: 6px;
-  font-size: 0.75rem;
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.813rem;
   font-weight: 700;
   text-align: center;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 7px;
   transition: all 0.2s ease;
+  white-space: nowrap;
+  box-sizing: border-box;
+  height: 44px;
 }
 
 .faq-support-btn.primary {
   background: var(--color-orange);
   color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 14px rgba(232, 93, 26, 0.35);
 }
 
 .faq-support-btn.primary:hover {
   background: var(--color-orange-hover);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(232, 93, 26, 0.3);
+  box-shadow: 0 6px 18px rgba(232, 93, 26, 0.45);
 }
 
 .faq-support-btn.secondary {
@@ -2547,6 +2570,7 @@ h1, h2, h3, h4, h5, h6 {
 .faq-support-btn.secondary:hover {
   background: rgba(255, 255, 255, 0.16);
   border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-2px);
 }
 
 /* Accordion List */
@@ -2554,6 +2578,9 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   flex-direction: column;
   gap: 14px;
+  min-width: 0;
+  max-width: 100%;
+  width: 100%;
 }
 
 .faq-card {
@@ -2563,6 +2590,10 @@ h1, h2, h3, h4, h5, h6 {
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   overflow: hidden;
   box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
 }
 
 .faq-card:hover {
@@ -2583,10 +2614,12 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 22px 24px;
+  padding: 20px 22px;
   cursor: pointer;
   user-select: none;
   list-style: none;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .faq-summary::-webkit-details-marker {
@@ -2597,6 +2630,8 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  min-width: 0;
+  flex: 1;
 }
 
 .faq-cat-badge {
@@ -3844,22 +3879,38 @@ h1, h2, h3, h4, h5, h6 {
     gap: 32px;
   }
   .sust-split-card {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+    min-width: 0;
   }
   .faq-layout-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 36px;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
   }
   .faq-sidebar-sticky {
     position: static;
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
   }
-  .faq-filter-pills {
-    flex-direction: row;
-    flex-wrap: wrap;
+  .faq-accordion-list {
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
   }
-  .faq-filter-btn {
-    width: auto;
-    flex: 1 1 calc(50% - 8px);
+  .faq-support-box {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+  .faq-card {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
   }
 }
 
@@ -3869,6 +3920,7 @@ h1, h2, h3, h4, h5, h6 {
   .container,
   .container-narrow {
     padding: 0 18px;
+    overflow-x: hidden;
   }
   
   .section-products,
@@ -3879,6 +3931,7 @@ h1, h2, h3, h4, h5, h6 {
   .section-calculator,
   .section-faq {
     padding: 60px 0 70px;
+    overflow-x: hidden;
   }
 
   .site-footer-ref {
@@ -3901,7 +3954,7 @@ h1, h2, h3, h4, h5, h6 {
     display: none;
   }
 
-  /* FAQ Filter Pills - Horizontal Native Swipe */
+  /* FAQ Filter Pills - Horizontal Native Touch Swipe */
   .faq-filter-pills {
     display: flex;
     flex-direction: row;
@@ -3909,9 +3962,13 @@ h1, h2, h3, h4, h5, h6 {
     overflow-x: auto;
     flex-wrap: nowrap;
     -webkit-overflow-scrolling: touch;
-    padding-bottom: 8px;
+    padding-bottom: 12px;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin-bottom: 22px;
   }
   .faq-filter-pills::-webkit-scrollbar {
     display: none;
@@ -3920,8 +3977,70 @@ h1, h2, h3, h4, h5, h6 {
     flex: 0 0 auto;
     width: auto;
     white-space: nowrap;
-    padding: 9px 15px;
+    padding: 9px 16px;
     font-size: 0.813rem;
+    border-radius: 100px;
+    box-sizing: border-box;
+  }
+
+  /* FAQ Support Card in Mobile View */
+  .faq-support-box {
+    padding: 20px 18px;
+    margin-bottom: 10px;
+    border-radius: 14px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+  .faq-support-desc {
+    font-size: 0.813rem;
+    line-height: 1.55;
+    margin-bottom: 16px;
+  }
+  .faq-support-actions {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .faq-support-btn {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 11px 12px;
+    font-size: 0.813rem;
+    height: 44px;
+    box-sizing: border-box;
+  }
+
+  /* FAQ Accordion Cards */
+  .faq-card {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    border-radius: 12px;
+  }
+  .faq-summary {
+    padding: 18px 18px;
+    gap: 14px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .faq-summary-left {
+    min-width: 0;
+    flex: 1;
+  }
+  .faq-question-title {
+    font-size: 0.98rem;
+    line-height: 1.35;
+    word-break: break-word;
+  }
+  .faq-toggle-icon {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
   }
 
   /* Product Filter Pills - Smooth Swipe */
@@ -3935,6 +4054,8 @@ h1, h2, h3, h4, h5, h6 {
     scrollbar-width: none;
     -ms-overflow-style: none;
     width: 100%;
+    max-width: 100%;
+    min-width: 0;
   }
   .products-filter-pills::-webkit-scrollbar {
     display: none;
@@ -4333,7 +4454,10 @@ h1, h2, h3, h4, h5, h6 {
     white-space: normal;
   }
 
-  /* FAQ Section */
+  /* FAQ Section - Clean Mobile Proportions */
+  .faq-layout-grid {
+    gap: 28px;
+  }
   .faq-headline {
     font-size: clamp(1.8rem, 6.5vw, 2.2rem);
   }
@@ -4341,13 +4465,43 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 16px !important; /* iOS zoom prevention */
     height: 48px;
   }
+  .faq-support-box {
+    padding: 18px 16px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+  .faq-support-actions {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .faq-support-btn {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 10px 8px;
+    font-size: 0.78rem;
+    height: 42px;
+    border-radius: 8px;
+  }
   .faq-summary {
-    padding: 16px 14px;
+    padding: 16px 16px;
     gap: 12px;
+    width: 100%;
+    box-sizing: border-box;
   }
   .faq-question-title {
-    font-size: 0.95rem;
+    font-size: 0.94rem;
     line-height: 1.35;
+  }
+  .faq-toggle-icon {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
   }
   .faq-answer-body {
     padding: 0 14px 16px;
@@ -4488,20 +4642,24 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.72rem;
   }
 
-  /* FAQ Support Actions */
-  .faq-support-actions {
-    flex-direction: column;
-    gap: 8px;
-  }
-  .faq-support-btn {
-    width: 100%;
-    height: 40px;
-  }
-
   /* Modal Specs Body */
   .modal-specs-grid {
     grid-template-columns: 1fr;
     gap: 8px;
+  }
+}
+
+/* 5B. Narrow Screens - Stack Support Actions (<= 420px) */
+@media (max-width: 420px) {
+  .faq-support-actions {
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+  .faq-support-btn {
+    width: 100%;
+    height: 44px;
+    font-size: 0.83rem;
   }
 }
 
