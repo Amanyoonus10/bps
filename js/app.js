@@ -275,9 +275,10 @@ function initHeroMiniMap() {
       const deltaX = e.clientX - lastMouseX;
       const deltaY = e.clientY - lastMouseY;
       yaw += deltaX * 0.007;
-      pitch = Math.max(-0.65, Math.min(0.65, pitch + deltaY * 0.007));
+      pitch = Math.max(-0.65, Math.min(0.65, pitch - deltaY * 0.007));
       dragVelX = deltaX * 0.004;
-      dragVelY = deltaY * 0.004;
+      dragVelY = -deltaY * 0.004;
+      targetPitch = pitch;
       lastMouseX = e.clientX;
       lastMouseY = e.clientY;
     } else if (mouseActive) {
@@ -285,14 +286,14 @@ function initHeroMiniMap() {
       const normX = Math.max(-1.4, Math.min(1.4, dx / (window.innerWidth * 0.35)));
       const normY = Math.max(-1.4, Math.min(1.4, dy / (window.innerHeight * 0.35)));
 
-      // Pitch smoothly targets pointer vertical position
-      targetPitch = 0.22 + normY * 0.35;
+      // Pitch smoothly targets pointer vertical position accurately with mouse pointer
+      targetPitch = 0.22 - normY * 0.35;
 
       // Yaw velocity smoothly steered by pointer horizontal offset
       targetYawVel = baseAutoSpeed + normX * 0.010;
     } else {
       targetYawVel = baseAutoSpeed;
-      targetPitch = 0.25;
+      targetPitch = 0.22;
     }
   }, { passive: true });
 
@@ -303,6 +304,7 @@ function initHeroMiniMap() {
     lastMouseY = e.clientY;
     dragVelX = 0;
     dragVelY = 0;
+    targetPitch = pitch;
   });
 
   window.addEventListener('mouseup', () => {
@@ -317,6 +319,7 @@ function initHeroMiniMap() {
       lastMouseY = e.touches[0].clientY;
       dragVelX = 0;
       dragVelY = 0;
+      targetPitch = pitch;
     }
   }, { passive: true });
 
@@ -325,9 +328,10 @@ function initHeroMiniMap() {
       const deltaX = e.touches[0].clientX - lastMouseX;
       const deltaY = e.touches[0].clientY - lastMouseY;
       yaw += deltaX * 0.008;
-      pitch = Math.max(-0.65, Math.min(0.65, pitch + deltaY * 0.008));
+      pitch = Math.max(-0.65, Math.min(0.65, pitch - deltaY * 0.008));
       dragVelX = deltaX * 0.005;
-      dragVelY = deltaY * 0.005;
+      dragVelY = -deltaY * 0.005;
+      targetPitch = pitch;
       lastMouseX = e.touches[0].clientX;
       lastMouseY = e.touches[0].clientY;
     }
