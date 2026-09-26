@@ -427,11 +427,12 @@ function initHeroMiniMap() {
         const sx = cx + p.x * R;
         const sy = cy + p.y * R;
         const alpha = Math.max(0.08, (p.z + 0.18) / 1.18);
-        const dotRadius = p.z > 0 ? (1.1 + p.z * 0.7) : 0.9;
+        const dotRadius = p.z > 0 ? (1.15 + p.z * 0.75) : 0.9;
 
+        // Luminous white country dots with depth-faded alpha
         ctx.fillStyle = p.z > 0
-          ? `rgba(56, 189, 248, ${alpha * 0.85})`
-          : `rgba(30, 64, 130, ${alpha * 0.4})`;
+          ? `rgba(255, 255, 255, ${alpha * 0.95})`
+          : `rgba(215, 230, 255, ${alpha * 0.35})`;
 
         ctx.beginPath();
         ctx.arc(sx, sy, dotRadius, 0, Math.PI * 2);
