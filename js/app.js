@@ -82,8 +82,8 @@ function initHeroMiniMap() {
     };
   }
 
-  // Major Global Logistics Hubs
-  const DUBAI = { name: 'DUBAI (HQ)', lat: 25.26, lon: 55.30 };
+  // Major Global Logistics Hubs (Exact Geographic Coordinates)
+  const DUBAI = { name: 'DUBAI (HQ)', lat: 25.2048, lon: 55.2708 };
   const dubaiVec = latLonToVec3(DUBAI.lat, DUBAI.lon);
 
   const DESTINATIONS = [
@@ -148,16 +148,17 @@ function initHeroMiniMap() {
   function generateFallbackDots() {
     const dots = [];
     const landCenters = [
-      { lat: 48, lon: 15, r: 18 },     // Europe
-      { lat: 56, lon: 50, r: 35 },     // CIS / Russia
-      { lat: 25, lon: 45, r: 16 },     // Middle East
-      { lat: 20, lon: 78, r: 16 },     // South Asia / India
-      { lat: 34, lon: 104, r: 24 },    // East Asia / China
-      { lat: 4, lon: 108, r: 14 },     // Southeast Asia
-      { lat: 5, lon: 20, r: 30 },      // Africa
-      { lat: 40, lon: -100, r: 28 },   // North America
-      { lat: -15, lon: -55, r: 24 },   // South America
-      { lat: -25, lon: 135, r: 18 }    // Australia
+      { lat: 48, lon: 15, r: 16 },      // Europe
+      { lat: 56, lon: 50, r: 30 },      // CIS / Russia
+      { lat: 24, lon: 47, r: 12 },      // Arabian Peninsula
+      { lat: 25.2, lon: 55.3, r: 6 },   // UAE / Dubai Central Hub
+      { lat: 20, lon: 78, r: 16 },      // South Asia / India
+      { lat: 34, lon: 104, r: 24 },     // East Asia / China
+      { lat: 4, lon: 108, r: 14 },      // Southeast Asia
+      { lat: 5, lon: 20, r: 28 },       // Africa
+      { lat: 40, lon: -100, r: 26 },    // North America
+      { lat: -15, lon: -55, r: 22 },    // South America
+      { lat: -25, lon: 135, r: 18 }     // Australia
     ];
 
     for (let lat = -80; lat <= 80; lat += 3.5) {
@@ -179,6 +180,7 @@ function initHeroMiniMap() {
   globeDots = generateFallbackDots();
 
   // Load high-resolution authentic continent dot-matrix from hero-world-map.png
+  // Calibrated to map projection: Prime Meridian at 578.88px, Equator at 326.92px, 3.1766 px/deg lon, 3.1703 px/deg lat
   const mapImg = new Image();
   mapImg.src = 'assets/img/hero-world-map.png';
   mapImg.onload = () => {
@@ -191,9 +193,13 @@ function initHeroMiniMap() {
       const imgData = octx.getImageData(0, 0, 120, 60).data;
       const sampledDots = [];
       for (let y = 0; y < 60; y++) {
-        const lat = (0.5 - (y + 0.5) / 60.0) * Math.PI;
-        const cosLat = Math.cos(lat);
-        const sinLat = Math.sin(lat);
+        const yOrig = (y + 0.5) * 10;
+        const latDeg = (326.92 - yOrig) / 3.1703;
+        if (Math.abs(latDeg) > 83) continue;
+        const latRad = latDeg * Math.PI / 180;
+        const cosLat = Math.cos(latRad);
+        const sinLat = Math.sin(latRad);
+
         for (let x = 0; x < 120; x++) {
           const idx = (y * 120 + x) * 4;
           const a = imgData[idx + 3];
@@ -201,11 +207,13 @@ function initHeroMiniMap() {
           const g = imgData[idx + 1];
           const b = imgData[idx + 2];
           if (a > 35 && (r > 30 || g > 30 || b > 30)) {
-            const lon = ((x + 0.5) / 120.0 * 2.0 - 1.0) * Math.PI;
+            const xOrig = (x + 0.5) * 10;
+            const lonDeg = (xOrig - 578.88) / 3.1766;
+            const lonRad = lonDeg * Math.PI / 180;
             sampledDots.push({
-              x: cosLat * Math.sin(lon),
+              x: cosLat * Math.sin(lonRad),
               y: -sinLat,
-              z: cosLat * Math.cos(lon)
+              z: cosLat * Math.cos(lonRad)
             });
           }
         }
@@ -245,9 +253,9 @@ function initHeroMiniMap() {
   });
 
   // Butter-Smooth Physics & Pointer Damping
-  let yaw = -0.9; // focused towards Dubai / Middle East
-  let pitch = 0.25;
-  let targetPitch = 0.25;
+  let yaw = -0.965; // centered directly on Dubai / UAE (55.27°E)
+  let pitch = 0.30; // elevated angle showcasing Dubai Hub, MENA, and global trade corridors
+  let targetPitch = 0.30;
   const baseAutoSpeed = 0.0024;
   let targetYawVel = baseAutoSpeed;
   let yawVel = baseAutoSpeed;
@@ -550,21 +558,37 @@ function initHeroMiniMap() {
 
       // Dubai Callout Tag Pill
       const tagText = 'DUBAI (HQ)';
-      ctx.font = '700 10px "Space Grotesk", sans-serif';
+      ctx.font = '700 10.5px "Space Grotesk", sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
       const tw = ctx.measureText(tagText).width;
-      const tx = hx - tw / 2;
-      const ty = hy - 16;
+      const pillW = tw + 14;
+      const pillH = 18;
+      const pillY = hy - 18;
 
-      ctx.fillStyle = 'rgba(6, 12, 26, 0.85)';
+      // Pin pointer notch pointing to Dubai beacon
       ctx.beginPath();
-      ctx.roundRect(tx - 6, ty - 11, tw + 12, 16, 4);
+      ctx.moveTo(hx, hy - 7);
+      ctx.lineTo(hx - 4, pillY + pillH / 2);
+      ctx.lineTo(hx + 4, pillY + pillH / 2);
+      ctx.closePath();
+      ctx.fillStyle = '#E85D1A';
       ctx.fill();
-      ctx.strokeStyle = 'rgba(232, 93, 26, 0.7)';
-      ctx.lineWidth = 1;
+
+      // Pill container
+      ctx.fillStyle = 'rgba(6, 12, 26, 0.92)';
+      ctx.beginPath();
+      ctx.roundRect(hx - pillW / 2, pillY - pillH / 2, pillW, pillH, 5);
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(232, 93, 26, 0.85)';
+      ctx.lineWidth = 1.2;
       ctx.stroke();
 
+      // Pill text
       ctx.fillStyle = '#FFFFFF';
-      ctx.fillText(tagText, tx, ty);
+      ctx.fillText(tagText, hx, pillY);
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'alphabetic';
     }
 
     requestAnimationFrame(render);
@@ -603,8 +627,8 @@ function initFullLogisticsMap() {
   // Dubai Hub location accurately aligned with global-reach-map.png (Dubai, UAE: 25.2°N, 55.3°E)
   const dubai = { 
     name: 'DUBAI (HQ)', 
-    x: 0.480, 
-    y: 0.409, 
+    x: 0.478, 
+    y: 0.413, 
     info: 'Global Hub: Jebel Ali (AEJEA) • 100,000+ Units Ready Stock • 24/7 Operations' 
   };
 
