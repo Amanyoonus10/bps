@@ -526,7 +526,7 @@ function initHeroMiniMap() {
 
       ctx.beginPath();
       ctx.arc(hx, hy, waveRadius, 0, Math.PI * 2);
-      ctx.strokeStyle = `rgba(232, 93, 26, ${waveAlpha * 0.85})`;
+      ctx.strokeStyle = `rgba(37, 99, 235, ${waveAlpha * 0.85})`;
       ctx.lineWidth = 1.6;
       ctx.stroke();
 
@@ -537,23 +537,23 @@ function initHeroMiniMap() {
 
       ctx.beginPath();
       ctx.arc(hx, hy, waveRadius2, 0, Math.PI * 2);
-      ctx.strokeStyle = `rgba(232, 93, 26, ${waveAlpha2 * 0.6})`;
+      ctx.strokeStyle = `rgba(59, 130, 246, ${waveAlpha2 * 0.6})`;
       ctx.lineWidth = 1.2;
       ctx.stroke();
 
       // Core Glowing Beacon
       ctx.beginPath();
       ctx.arc(hx, hy, 5.5, 0, Math.PI * 2);
-      ctx.fillStyle = '#E85D1A';
-      ctx.shadowColor = '#E85D1A';
+      ctx.fillStyle = '#2563EB';
+      ctx.shadowColor = '#3B82F6';
       ctx.shadowBlur = 14;
       ctx.fill();
       ctx.shadowBlur = 0;
 
-      // Golden center point
+      // Center point
       ctx.beginPath();
       ctx.arc(hx, hy, 2.5, 0, Math.PI * 2);
-      ctx.fillStyle = '#FFF3D4';
+      ctx.fillStyle = '#E0F2FE';
       ctx.fill();
 
       // Dubai Callout Tag Pill
@@ -572,7 +572,7 @@ function initHeroMiniMap() {
       ctx.lineTo(hx - 4, pillY + pillH / 2);
       ctx.lineTo(hx + 4, pillY + pillH / 2);
       ctx.closePath();
-      ctx.fillStyle = '#E85D1A';
+      ctx.fillStyle = '#2563EB';
       ctx.fill();
 
       // Pill container
@@ -580,7 +580,7 @@ function initHeroMiniMap() {
       ctx.beginPath();
       ctx.roundRect(hx - pillW / 2, pillY - pillH / 2, pillW, pillH, 5);
       ctx.fill();
-      ctx.strokeStyle = 'rgba(232, 93, 26, 0.85)';
+      ctx.strokeStyle = 'rgba(59, 130, 246, 0.85)';
       ctx.lineWidth = 1.2;
       ctx.stroke();
 
@@ -820,12 +820,12 @@ function initFullLogisticsMap() {
       ctx.quadraticCurveTo(midX, midY, rx, ry);
 
       if (isHovered) {
-        ctx.strokeStyle = '#FFA726';
+        ctx.strokeStyle = '#38BDF8';
         ctx.lineWidth = 3.2;
-        ctx.shadowColor = '#FF9800';
+        ctx.shadowColor = '#0088FF';
         ctx.shadowBlur = 12;
       } else {
-        ctx.strokeStyle = 'rgba(235, 175, 65, 0.42)';
+        ctx.strokeStyle = 'rgba(59, 130, 246, 0.45)';
         ctx.lineWidth = 1.6;
         ctx.shadowBlur = 0;
       }
@@ -839,8 +839,8 @@ function initFullLogisticsMap() {
 
       ctx.beginPath();
       ctx.arc(px, py, isHovered ? 4.2 : 3.2, 0, Math.PI * 2);
-      ctx.fillStyle = isHovered ? '#FFFFFF' : '#FFD54F';
-      ctx.shadowColor = '#FFC107';
+      ctx.fillStyle = isHovered ? '#FFFFFF' : '#93C5FD';
+      ctx.shadowColor = '#38BDF8';
       ctx.shadowBlur = 10;
       ctx.fill();
       ctx.shadowBlur = 0;
@@ -848,8 +848,8 @@ function initFullLogisticsMap() {
       // Region node
       ctx.beginPath();
       ctx.arc(rx, ry, isHovered ? 6 : 4.5, 0, Math.PI * 2);
-      ctx.fillStyle = isHovered ? '#FF6636' : '#FFB300';
-      ctx.shadowColor = isHovered ? '#FF6636' : '#FFB300';
+      ctx.fillStyle = isHovered ? '#38BDF8' : '#60A5FA';
+      ctx.shadowColor = isHovered ? '#38BDF8' : '#2563EB';
       ctx.shadowBlur = isHovered ? 14 : 8;
       ctx.fill();
       ctx.shadowBlur = 0;
@@ -857,7 +857,7 @@ function initFullLogisticsMap() {
       if (isHovered) {
         ctx.beginPath();
         ctx.arc(rx, ry, 11, 0, Math.PI * 2);
-        ctx.strokeStyle = 'rgba(255, 102, 54, 0.6)';
+        ctx.strokeStyle = 'rgba(59, 130, 246, 0.6)';
         ctx.lineWidth = 1.5;
         ctx.stroke();
       }
@@ -870,11 +870,11 @@ function initFullLogisticsMap() {
       ctx.roundRect(rx - textWidth / 2 - 7, ry - 24, textWidth + 14, 18, 5);
       ctx.fill();
 
-      ctx.strokeStyle = isHovered ? 'rgba(255, 102, 54, 0.7)' : 'rgba(255, 255, 255, 0.15)';
+      ctx.strokeStyle = isHovered ? 'rgba(59, 130, 246, 0.7)' : 'rgba(255, 255, 255, 0.15)';
       ctx.lineWidth = 1;
       ctx.stroke();
 
-      ctx.fillStyle = isHovered ? '#FF9E66' : '#F1F5F9';
+      ctx.fillStyle = isHovered ? '#93C5FD' : '#F1F5F9';
       ctx.textAlign = 'center';
       ctx.fillText(r.name, rx, ry - 11);
     });
@@ -882,8 +882,8 @@ function initFullLogisticsMap() {
     // Central DUBAI Node & Radiant Hub Beacon
     ctx.beginPath();
     ctx.arc(dx, dy, hoveredDubai ? 9 : 7.5, 0, Math.PI * 2);
-    ctx.fillStyle = '#E85D1A';
-    ctx.shadowColor = '#E85D1A';
+    ctx.fillStyle = '#2563EB';
+    ctx.shadowColor = '#3B82F6';
     ctx.shadowBlur = 18;
     ctx.fill();
     ctx.shadowBlur = 0;
@@ -891,21 +891,21 @@ function initFullLogisticsMap() {
     // Glowing core
     ctx.beginPath();
     ctx.arc(dx, dy, 3.5, 0, Math.PI * 2);
-    ctx.fillStyle = '#FFE082';
+    ctx.fillStyle = '#E0F2FE';
     ctx.fill();
 
     // Radiating concentric pulse rings
     const ringR = 14 + Math.sin(Date.now() * 0.005) * 5;
     ctx.beginPath();
     ctx.arc(dx, dy, ringR, 0, Math.PI * 2);
-    ctx.strokeStyle = 'rgba(232, 93, 26, 0.8)';
+    ctx.strokeStyle = 'rgba(37, 99, 235, 0.8)';
     ctx.lineWidth = 1.8;
     ctx.stroke();
 
     const ringR2 = 23 + Math.sin(Date.now() * 0.003) * 7;
     ctx.beginPath();
     ctx.arc(dx, dy, ringR2, 0, Math.PI * 2);
-    ctx.strokeStyle = 'rgba(232, 93, 26, 0.35)';
+    ctx.strokeStyle = 'rgba(59, 130, 246, 0.35)';
     ctx.lineWidth = 1.2;
     ctx.stroke();
 
@@ -916,11 +916,11 @@ function initFullLogisticsMap() {
     ctx.beginPath();
     ctx.roundRect(dx - dubaiWidth / 2 - 8, dy + 13, dubaiWidth + 16, 21, 5);
     ctx.fill();
-    ctx.strokeStyle = 'rgba(232, 93, 26, 0.7)';
+    ctx.strokeStyle = 'rgba(59, 130, 246, 0.8)';
     ctx.lineWidth = 1.2;
     ctx.stroke();
 
-    ctx.fillStyle = '#FF7A38';
+    ctx.fillStyle = '#60A5FA';
     ctx.textAlign = 'center';
     ctx.fillText('DUBAI (HQ)', dx, dy + 28);
 
@@ -1339,7 +1339,7 @@ function initCargoCalculator() {
     const min = parseInt(volumeSlider.min, 10) || 20000;
     const max = parseInt(volumeSlider.max, 10) || 480000;
     const pct = ((volume - min) / (max - min)) * 100;
-    volumeSlider.style.background = `linear-gradient(to right, #E85D1A 0%, #FF8533 ${pct}%, rgba(255, 255, 255, 0.12) ${pct}%, rgba(255, 255, 255, 0.12) 100%)`;
+    volumeSlider.style.background = `linear-gradient(to right, #1D4ED8 0%, #3B82F6 ${pct}%, rgba(255, 255, 255, 0.12) ${pct}%, rgba(255, 255, 255, 0.12) 100%)`;
 
     // Sync preset buttons active state
     presetBtns.forEach(btn => {
