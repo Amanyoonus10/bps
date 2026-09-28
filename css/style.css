@@ -426,16 +426,26 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-mono);
   font-size: 0.73rem;
   font-weight: 700;
-  padding: 0 9px;
-  height: 30px;
+  padding: 0 10px;
+  height: 28px;
   border-radius: 100px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   line-height: 1;
   white-space: nowrap;
+  outline: none;
+  position: relative;
+}
+
+.lang-pill-btn[data-lang="ar"],
+.lang-pill-btn#btnLangAr,
+.lang-pill-btn#btnLangMobileAr {
+  font-family: 'Cairo', var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
 }
 
 .lang-pill-btn:hover {
@@ -445,7 +455,7 @@ h1, h2, h3, h4, h5, h6 {
 .lang-pill-btn.active {
   background: linear-gradient(135deg, #1D4ED8 0%, #2563EB 100%);
   color: #FFFFFF;
-  box-shadow: 0 2px 8px rgba(29, 78, 216, 0.5);
+  box-shadow: 0 0 0 2px #FFFFFF, 0 2px 10px rgba(29, 78, 216, 0.65);
 }
 
 /* CTA "Get a Quote" Button - Pill Shape */
