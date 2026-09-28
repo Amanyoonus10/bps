@@ -3369,7 +3369,7 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   background-color: #060D1E;
   background-image: 
-    linear-gradient(180deg, rgba(6, 13, 28, 0.88) 0%, rgba(8, 18, 38, 0.78) 50%, rgba(5, 11, 24, 0.92) 100%),
+    linear-gradient(180deg, rgba(6, 13, 28, 0.72) 0%, rgba(8, 18, 38, 0.54) 50%, rgba(5, 11, 24, 0.78) 100%),
     url('../assets/img/port-cargo-terminal.jpg');
   background-attachment: fixed;
   background-position: center center;
@@ -3429,8 +3429,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .calc-main-card {
-  background: linear-gradient(145deg, #09152E 0%, #050D1D 100%);
-  border: 1px solid rgba(0, 136, 255, 0.2);
+  background: rgba(6, 14, 32, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(56, 189, 248, 0.28);
   border-radius: var(--radius-xl);
   padding: 44px;
   max-width: 1100px;
@@ -3439,7 +3441,7 @@ h1, h2, h3, h4, h5, h6 {
   grid-template-columns: 1.15fr 0.85fr;
   gap: 48px;
   align-items: center;
-  box-shadow: 0 25px 60px rgba(5, 12, 28, 0.25), 0 10px 30px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   position: relative;
   overflow: hidden;
 }
@@ -5007,7 +5009,7 @@ html[dir="rtl"] .enquiry-checkbox-item {
   position: relative;
   background-color: #060D1E;
   background-image: 
-    linear-gradient(180deg, rgba(6, 13, 28, 0.88) 0%, rgba(8, 18, 38, 0.78) 50%, rgba(5, 11, 24, 0.92) 100%),
+    linear-gradient(180deg, rgba(6, 13, 28, 0.72) 0%, rgba(8, 18, 38, 0.54) 50%, rgba(5, 11, 24, 0.78) 100%),
     url('../assets/img/port-cargo-terminal.jpg');
   background-attachment: fixed;
   background-position: center center;
@@ -5038,7 +5040,7 @@ html[dir="rtl"] .enquiry-checkbox-item {
   font-size: 0.88rem;
   font-weight: 700;
   border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(10, 22, 46, 0.72);
+  background: rgba(10, 22, 46, 0.6);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   color: #CBD5E1;
@@ -5050,7 +5052,7 @@ html[dir="rtl"] .enquiry-checkbox-item {
 .enquiry-mode-btn:hover {
   border-color: rgba(56, 189, 248, 0.45);
   color: #FFFFFF;
-  background: rgba(18, 36, 74, 0.85);
+  background: rgba(18, 36, 74, 0.8);
   transform: translateY(-1px);
 }
 
@@ -5062,15 +5064,15 @@ html[dir="rtl"] .enquiry-checkbox-item {
 }
 
 .enquiry-container-card {
-  background: rgba(8, 18, 42, 0.82);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(56, 189, 248, 0.28);
+  background: rgba(6, 14, 32, 0.22);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(56, 189, 248, 0.32);
   border-radius: var(--radius-xl);
   padding: 38px 42px;
   max-width: 1240px;
   margin: 0 auto;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55), 0 0 35px rgba(37, 99, 235, 0.15);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.12);
   position: relative;
   overflow: hidden;
 }
@@ -5107,17 +5109,19 @@ html[dir="rtl"] .enquiry-checkbox-item {
 }
 
 .enquiry-fieldset {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: rgba(6, 14, 34, 0.36);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-lg);
   padding: 22px 24px;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
 .enquiry-fieldset:hover {
-  border-color: rgba(56, 189, 248, 0.35);
-  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(56, 189, 248, 0.4);
+  background: rgba(8, 18, 42, 0.46);
 }
 
 .enquiry-fieldset-header {
@@ -5232,8 +5236,10 @@ html[dir="rtl"] .enquiry-checkbox-item {
 .enquiry-select,
 .enquiry-textarea {
   width: 100%;
-  background: rgba(4, 9, 22, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.13);
+  background: rgba(4, 9, 22, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   color: #FFFFFF;
   font-family: var(--font-main);
   font-size: 0.91rem;
@@ -5254,8 +5260,8 @@ html[dir="rtl"] .enquiry-checkbox-item {
 .enquiry-select:focus,
 .enquiry-textarea:focus {
   border-color: #38BDF8;
-  background: rgba(7, 15, 34, 0.95);
-  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.22), 0 4px 16px rgba(0, 0, 0, 0.4);
+  background: rgba(7, 15, 34, 0.85);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25), 0 4px 16px rgba(0, 0, 0, 0.4);
 }
 
 .enquiry-input::placeholder,
@@ -5337,8 +5343,8 @@ html[dir="rtl"] .enquiry-select-arrow {
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  background: rgba(255, 255, 255, 0.035);
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 9px;
   padding: 13px 15px;
   cursor: pointer;
@@ -5346,13 +5352,13 @@ html[dir="rtl"] .enquiry-select-arrow {
 }
 
 .enquiry-check-card:hover {
-  background: rgba(37, 99, 235, 0.08);
+  background: rgba(37, 99, 235, 0.12);
   border-color: rgba(56, 189, 248, 0.35);
   transform: translateY(-1px);
 }
 
 .enquiry-check-card:has(input[type="checkbox"]:checked) {
-  background: rgba(37, 99, 235, 0.16);
+  background: rgba(37, 99, 235, 0.2);
   border-color: #38BDF8;
   box-shadow: 0 0 16px rgba(56, 189, 248, 0.15);
 }
@@ -5392,13 +5398,13 @@ html[dir="rtl"] .enquiry-select-arrow {
 }
 
 .enquiry-summary-card {
-  background: linear-gradient(165deg, rgba(8, 19, 44, 0.94) 0%, rgba(3, 8, 22, 0.97) 100%);
+  background: rgba(8, 19, 44, 0.52);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(56, 189, 248, 0.35);
   border-radius: var(--radius-lg);
   padding: 24px 22px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(56, 189, 248, 0.12);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(56, 189, 248, 0.12);
   position: relative;
   overflow: hidden;
 }
