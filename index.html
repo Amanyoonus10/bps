@@ -41,22 +41,27 @@
       </nav>
 
       <div class="header-right">
-        <div class="header-clock-tag" title="Dubai Logistics Operations Time (GST UTC+4)">
+        <!-- Live Logistics Clock (DXB GST) -->
+        <div class="header-clock-tag" id="headerClockTag" title="Dubai Logistics Operations Time (GST UTC+4)">
           <span class="pulse-dot-green"></span>
           <span id="liveClockDisplay" class="clock-display-text">DXB 00:00:00 GST</span>
         </div>
 
-        <a href="#calculator" class="btn-header-quote" id="headerQuoteBtn">
+        <!-- Bilingual Language Selector (EN | العربية) -->
+        <div class="lang-switch-wrap" id="langSwitchHeader" aria-label="Language Selector">
+          <svg class="lang-globe-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          <button type="button" class="lang-pill-btn active" data-lang="en" id="btnLangEn" title="English" aria-label="English">EN</button>
+          <span class="lang-divider">/</span>
+          <button type="button" class="lang-pill-btn" data-lang="ar" id="btnLangAr" title="العربية" aria-label="العربية">العربية</button>
+        </div>
+
+        <!-- Primary CTA "Get a Quote" Button -->
+        <a href="#calculator" class="btn-header-quote" id="headerQuoteBtn" aria-label="Request a Fast Quote">
           <span>Get a Quote</span>
           <svg class="btn-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </a>
 
-        <!-- Bilingual Language Switcher (EN | العربية) -->
-        <div class="lang-switch-wrap" id="langSwitchHeader" aria-label="Language Selector">
-          <button type="button" class="lang-pill-btn active" data-lang="en" id="btnLangEn" title="English">EN</button>
-          <button type="button" class="lang-pill-btn" data-lang="ar" id="btnLangAr" title="العربية">العربية</button>
-        </div>
-
+        <!-- Mobile Navigation Toggle -->
         <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle Navigation Menu">
           <span class="bar bar-1"></span>
           <span class="bar bar-2"></span>
