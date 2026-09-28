@@ -1241,7 +1241,9 @@
                           <option value="Aktau Port (KZAKT), Kazakhstan">Aktau Port (KZAKT), Kazakhstan</option>
                           <option value="Other / Custom Origin Port">Other / Custom Origin Port</option>
                         </select>
-                        <span class="enquiry-select-arrow">▼</span>
+                        <span class="enquiry-select-arrow" aria-hidden="true">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </span>
                       </div>
                     </div>
 
@@ -1268,7 +1270,9 @@
                           <option value="Durban Port (ZADUR), South Africa">Durban Port (ZADUR), South Africa</option>
                           <option value="Other / Custom Destination Port">Other / Custom Destination Port</option>
                         </select>
-                        <span class="enquiry-select-arrow">▼</span>
+                        <span class="enquiry-select-arrow" aria-hidden="true">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </span>
                       </div>
                     </div>
 
@@ -1293,7 +1297,9 @@
                           <option value="11 to 20 Containers (264k – 480k L)">11 to 20 Containers (264k – 480k L)</option>
                           <option value="20+ Containers (Annual Contract / Ongoing)">20+ Containers (Annual Contract / Ongoing)</option>
                         </select>
-                        <span class="enquiry-select-arrow">▼</span>
+                        <span class="enquiry-select-arrow" aria-hidden="true">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -1305,8 +1311,8 @@
                     <span class="enquiry-num-pill">03</span>
                     <h3 class="enquiry-fieldset-title" id="legendCargo">Type of Cargo (Liquid Commodity)</h3>
                   </div>
-                  <div class="enquiry-grid-3">
-                    <div class="enquiry-field-group">
+                  <div class="enquiry-grid-cargo">
+                    <div class="enquiry-field-group enquiry-field-cargo-main">
                       <label for="enqCargo" class="enquiry-label">
                         <span id="lblCargoType">Liquid Commodity</span> <span class="enquiry-required-star">*</span>
                       </label>
@@ -1322,7 +1328,9 @@
                           <option value="Liquid Fertilizer & Agriculture">Liquid Fertilizer & Agriculture</option>
                           <option value="Other Non-Hazardous Liquid">Other Non-Hazardous Liquid</option>
                         </select>
-                        <span class="enquiry-select-arrow">▼</span>
+                        <span class="enquiry-select-arrow" aria-hidden="true">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </span>
                       </div>
                     </div>
 
@@ -1348,7 +1356,7 @@
                     <span class="enquiry-num-pill">04</span>
                     <h3 class="enquiry-fieldset-title" id="legendSpecs">Technical Flexitank Engineering</h3>
                   </div>
-                  <div class="enquiry-grid-3">
+                  <div class="enquiry-grid-specs">
                     <!-- Valve Fixing -->
                     <div class="enquiry-field-group">
                       <label for="enqValve" class="enquiry-label">
@@ -1356,14 +1364,16 @@
                       </label>
                       <div class="enquiry-select-wrap">
                         <select id="enqValve" class="enquiry-select" required>
-                          <option value="3\" Bottom Camlock Ball Valve (Standard)" selected>3" Bottom Camlock Ball Valve (Standard)</option>
-                          <option value="3\" Bottom Camlock Butterfly Valve">3" Bottom Camlock Butterfly Valve</option>
-                          <option value="Dual Valve: 3\" Top Load + 3\" Bottom Discharge">Dual Valve: 3" Top Load + 3" Bottom Discharge</option>
-                          <option value="2\" Bottom Discharge Camlock Valve">2" Bottom Discharge Camlock Valve</option>
-                          <option value="High-Flow Sanitary Stainless Steel Valve">Sanitary Stainless Steel Valve</option>
-                          <option value="Custom Valve Specification">Custom Valve Specification</option>
+                          <option value='3" Bottom Camlock Ball Valve' selected>3" Bottom Camlock Ball Valve (Standard)</option>
+                          <option value='3" Bottom Camlock Butterfly Valve'>3" Bottom Camlock Butterfly Valve</option>
+                          <option value='Dual Valve: 3" Top Load + 3" Bottom Discharge'>Dual Valve: 3" Top Load + 3" Bottom Discharge</option>
+                          <option value='2" Bottom Camlock Discharge Valve'>2" Bottom Camlock Discharge Valve</option>
+                          <option value='Sanitary Stainless Steel Valve'>Sanitary Stainless Steel Valve</option>
+                          <option value='Custom Valve Specification'>Custom Valve Specification</option>
                         </select>
-                        <span class="enquiry-select-arrow">▼</span>
+                        <span class="enquiry-select-arrow" aria-hidden="true">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </span>
                       </div>
                     </div>
 
@@ -1374,13 +1384,15 @@
                       </label>
                       <div class="enquiry-select-wrap">
                         <select id="enqLayers" class="enquiry-select" required>
-                          <option value="4-Layer Food Grade PE + 1 PP Outer (Standard 24K)" selected>4-Layer Food Grade PE + 1 PP Outer (Standard)</option>
-                          <option value="3-Layer Heavy-Duty PE + 1 Seamless PP Outer">3-Layer Heavy-Duty PE + 1 Seamless PP Outer</option>
-                          <option value="5-Layer Multi-Layer with EVOH Oxygen Barrier">5-Layer Multi-Layer with EVOH Oxygen Barrier</option>
-                          <option value="High-Temp Heat-Resistant Multi-Layer (Bitumen 130°C)">High-Temp Multi-Layer (Bitumen 130°C)</option>
-                          <option value="Specialized Custom Layer Configuration">Specialized Custom Layer Composition</option>
+                          <option value="4-Layer Food Grade PE" selected>4-Layer Food Grade PE + 1 PP Outer (Standard)</option>
+                          <option value="3-Layer Heavy-Duty PE">3-Layer Heavy-Duty PE + 1 Seamless PP Outer</option>
+                          <option value="5-Layer EVOH Oxygen Barrier">5-Layer Multi-Layer with EVOH Oxygen Barrier</option>
+                          <option value="High-Temp Bitumen Multi-Layer (130°C)">High-Temp Multi-Layer (Bitumen 130°C)</option>
+                          <option value="Specialized Custom Layer Composition">Specialized Custom Layer Composition</option>
                         </select>
-                        <span class="enquiry-select-arrow">▼</span>
+                        <span class="enquiry-select-arrow" aria-hidden="true">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </span>
                       </div>
                     </div>
 
@@ -1391,11 +1403,13 @@
                       </label>
                       <div class="enquiry-select-wrap">
                         <select id="enqBulkhead" class="enquiry-select">
-                          <option value="Heavy-Duty Steel Bulkhead (5-6 Galvanized Bars)" selected>Steel Bulkhead (5-6 Galvanized Bars)</option>
+                          <option value="Steel Bulkhead (5-6 Galvanized Bars)" selected>Steel Bulkhead (5-6 Galvanized Bars)</option>
                           <option value="High-Strength Corrugated Paper Bulkhead">High-Strength Corrugated Paper Bulkhead</option>
                           <option value="One-Piece Quick-Fit Steel Frame">One-Piece Quick-Fit Steel Frame</option>
                         </select>
-                        <span class="enquiry-select-arrow">▼</span>
+                        <span class="enquiry-select-arrow" aria-hidden="true">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -1474,37 +1488,90 @@
               <!-- Right Summary & Action Column -->
               <div class="enquiry-summary-column">
                 <div class="enquiry-summary-card">
-                  <div class="enquiry-summary-badge" id="rfqBadge">CARGO SPECIFICATION SUMMARY</div>
-                  <h4 class="enquiry-summary-title" id="rfqTitle">RFQ Manifest</h4>
+                  <div class="enquiry-summary-badge-row">
+                    <span class="pulse-dot"></span>
+                    <span class="enquiry-summary-badge" id="rfqBadge">CARGO SPECIFICATION SUMMARY</span>
+                  </div>
+                  
+                  <div class="enquiry-summary-header-row">
+                    <h4 class="enquiry-summary-title" id="rfqTitle">RFQ Manifest</h4>
+                    <span class="enquiry-summary-units-pill" id="summContainersBadge">1 x 20ft FCL</span>
+                  </div>
+
+                  <!-- Live Payload Metric -->
+                  <div class="manifest-payload-box">
+                    <div class="manifest-payload-row">
+                      <span class="payload-k">Est. Cargo Capacity</span>
+                      <strong class="payload-v" id="summCapacityVal">24,000 L (~24.0 MT)</strong>
+                    </div>
+                    <div class="payload-meter-track">
+                      <div class="payload-meter-bar" id="summPayloadFill" style="width: 100%;"></div>
+                    </div>
+                  </div>
 
                   <div class="enquiry-spec-list">
                     <div class="enquiry-spec-row">
-                      <span class="enquiry-spec-k" id="lblSummRoute">Route:</span>
+                      <span class="enquiry-spec-k">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+                        <span id="lblSummRoute">Route</span>
+                      </span>
                       <span class="enquiry-spec-v" id="summRoute">Jebel Ali → Rotterdam</span>
                     </div>
+
                     <div class="enquiry-spec-row">
-                      <span class="enquiry-spec-k" id="lblSummSailing">Sailing Date:</span>
+                      <span class="enquiry-spec-k">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2.2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                        <span id="lblSummSailing">Sailing Date</span>
+                      </span>
                       <span class="enquiry-spec-v" id="summSailing">Upon Request</span>
                     </div>
+
                     <div class="enquiry-spec-row">
-                      <span class="enquiry-spec-k" id="lblSummCargo">Cargo Type:</span>
+                      <span class="enquiry-spec-k">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2.2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+                        <span id="lblSummCargo">Cargo Type</span>
+                      </span>
                       <span class="enquiry-spec-v" id="summCargo">Base Oils & Lubricants</span>
                     </div>
+
                     <div class="enquiry-spec-row">
-                      <span class="enquiry-spec-k" id="lblSummVolume">Containers:</span>
+                      <span class="enquiry-spec-k">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2.2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                        <span id="lblSummVolume">Containers</span>
+                      </span>
                       <span class="enquiry-spec-v" id="summVolume">1 x 20ft Container</span>
                     </div>
+
                     <div class="enquiry-spec-row">
-                      <span class="enquiry-spec-k" id="lblSummValve">Valve Fixing:</span>
-                      <span class="enquiry-spec-v" id="summValve">3" Bottom Camlock Ball</span>
+                      <span class="enquiry-spec-k">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2.2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                        <span id="lblSummValve">Valve Fixing</span>
+                      </span>
+                      <span class="enquiry-spec-v" id="summValve">3" Camlock Ball Valve</span>
                     </div>
+
                     <div class="enquiry-spec-row">
-                      <span class="enquiry-spec-k" id="lblSummLayers">Layers:</span>
+                      <span class="enquiry-spec-k">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2.2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                        <span id="lblSummLayers">Layers</span>
+                      </span>
                       <span class="enquiry-spec-v" id="summLayers">4-Layer Food Grade PE</span>
                     </div>
+
                     <div class="enquiry-spec-row">
-                      <span class="enquiry-spec-k" id="lblSummAddons">Accessories:</span>
-                      <span class="enquiry-spec-v" id="summAddons">Floor Paper</span>
+                      <span class="enquiry-spec-k">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                        <span id="lblSummBulkhead">Bulkhead</span>
+                      </span>
+                      <span class="enquiry-spec-v" id="summBulkhead">Steel Bulkhead (5-6 Bars)</span>
+                    </div>
+
+                    <div class="enquiry-spec-row">
+                      <span class="enquiry-spec-k">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2.2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span id="lblSummAddons">Accessories</span>
+                      </span>
+                      <span class="enquiry-spec-v" id="summAddons">Floor/Wall Paper</span>
                     </div>
                   </div>
 
@@ -1515,7 +1582,7 @@
                     </button>
 
                     <a href="#" class="btn-enquiry-wa" id="btnEnquiryWhatsApp" target="_blank">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.074-2.221-.557-1.954-.808-3.21-2.825-3.308-2.955-.097-.132-.782-1.042-.782-1.989 0-.946.495-1.411.671-1.603.177-.192.385-.24.513-.24.129 0 .256.002.368.006.118.005.277-.045.433.332.16.386.545 1.332.593 1.43.049.097.081.211.017.339-.064.129-.096.21-.192.321-.096.113-.203.252-.29.339-.097.097-.198.203-.085.397.113.193.501.826 1.077 1.34.743.663 1.368.868 1.562.965.193.097.306.081.419-.049.113-.129.483-.563.612-.756.129-.193.258-.161.435-.096.177.064 1.127.531 1.32.628.193.097.322.145.37.225.048.081.048.469-.096.874z"/></svg>
                       <span id="txtWaEnquiry">Send via WhatsApp Desk</span>
                     </a>
 
@@ -1523,6 +1590,12 @@
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                       <span id="txtEmailEnquiry">Request Email RFQ</span>
                     </a>
+                  </div>
+
+                  <!-- Trust SLA Footnote -->
+                  <div class="manifest-sla-note">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    <span>Formal Quotation Guaranteed within 2 Business Hours</span>
                   </div>
                 </div>
               </div>

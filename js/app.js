@@ -1567,6 +1567,7 @@ const BPS_I18N = {
     lblSummVolume: 'Containers:',
     lblSummValve: 'Valve Fixing:',
     lblSummLayers: 'Layers:',
+    lblSummBulkhead: 'Bulkhead:',
     lblSummAddons: 'Accessories:',
     txtSubmitEnquiry: 'Submit Official Enquiry',
     txtWaEnquiry: 'Send via WhatsApp Desk',
@@ -1650,6 +1651,7 @@ const BPS_I18N = {
     lblSummVolume: 'الحاويات:',
     lblSummValve: 'نوع الصمام:',
     lblSummLayers: 'الطبقات:',
+    lblSummBulkhead: 'نوع الحاجز:',
     lblSummAddons: 'الملحقات:',
     txtSubmitEnquiry: 'إرسال طلب التسعير الرسمي',
     txtWaEnquiry: 'إرسال عبر مكتب الواتساب',
@@ -1700,7 +1702,7 @@ function setLanguage(lang) {
     'txtThermalTitle', 'txtThermalDesc', 'txtPaperTitle', 'txtPaperDesc',
     'txtFittingTitle', 'txtFittingDesc', 'txtInsuranceTitle', 'txtInsuranceDesc',
     'legendNotes', 'rfqBadge', 'rfqTitle',
-    'lblSummRoute', 'lblSummSailing', 'lblSummCargo', 'lblSummVolume', 'lblSummValve', 'lblSummLayers', 'lblSummAddons',
+    'lblSummRoute', 'lblSummSailing', 'lblSummCargo', 'lblSummVolume', 'lblSummValve', 'lblSummLayers', 'lblSummBulkhead', 'lblSummAddons',
     'txtSubmitEnquiry', 'txtWaEnquiry', 'txtEmailEnquiry',
     'modalSuccessTitle', 'modalSuccessDesc',
     'footerOfficeTitle', 'footerCopyright'
@@ -1817,7 +1819,7 @@ function updateTraditionalSummary() {
   const cargo = document.getElementById('enqCargo')?.value || 'Base Oils & Lubricants';
   const density = document.getElementById('enqDensity')?.value || '';
   const temp = document.getElementById('enqTemp')?.value || '';
-  const valve = document.getElementById('enqValve')?.value || '3" Bottom Camlock Ball';
+  const valve = document.getElementById('enqValve')?.value || '3" Bottom Camlock Ball Valve';
   const layers = document.getElementById('enqLayers')?.value || '4-Layer Food Grade PE';
   const bulkhead = document.getElementById('enqBulkhead')?.value || 'Steel Bulkhead (5-6 Galvanized Bars)';
   const name = document.getElementById('enqName')?.value || '';
@@ -1842,22 +1844,86 @@ function updateTraditionalSummary() {
   const cleanFrom = cleanPort(portFrom);
   const cleanTo = cleanPort(portTo);
 
-  // Update Summary Card
+  // Clean valve name (bulletproof against backslashes or truncated quotes)
+  let cleanValve = valve.replace(/\\/g, '').split('(')[0].trim();
+  if (cleanValve.includes('3"') && cleanValve.includes('Butterfly')) {
+    cleanValve = '3" Camlock Butterfly';
+  } else if (cleanValve.includes('3"')) {
+    cleanValve = '3" Camlock Ball Valve';
+  } else if (cleanValve.includes('Dual')) {
+    cleanValve = 'Dual Top/Bottom Valve';
+  } else if (cleanValve.includes('2"')) {
+    cleanValve = '2" Camlock Valve';
+  } else if (cleanValve.includes('Sanitary')) {
+    cleanValve = 'Sanitary SS Valve';
+  } else if (cleanValve.includes('Custom')) {
+    cleanValve = 'Custom Valve Spec';
+  }
+
+  // Clean layers description
+  let cleanLayers = layers.split('+')[0].split('(')[0].trim();
+  if (cleanLayers.includes('4-Layer')) cleanLayers = '4-Layer Food Grade PE';
+  else if (cleanLayers.includes('3-Layer')) cleanLayers = '3-Layer Heavy-Duty PE';
+  else if (cleanLayers.includes('5-Layer') || cleanLayers.includes('EVOH')) cleanLayers = '5-Layer EVOH Barrier';
+  else if (cleanLayers.includes('Bitumen') || cleanLayers.includes('High-Temp')) cleanLayers = 'High-Temp Bitumen (130°C)';
+  else if (cleanLayers.includes('Custom') || cleanLayers.includes('Specialized')) cleanLayers = 'Custom Multi-Layer Spec';
+
+  // Clean bulkhead description
+  let cleanBulkhead = 'Steel Bulkhead (5-6 Bars)';
+  if (bulkhead.includes('Paper')) cleanBulkhead = 'Corrugated Bulkhead';
+  else if (bulkhead.includes('One-Piece') || bulkhead.includes('Frame')) cleanBulkhead = 'One-Piece Quick-Fit Frame';
+
+  // Calculate volume & capacity metrics
+  let capacityText = '24,000 L (~24.0 MT)';
+  let unitsBadge = '1 x 20ft FCL';
+  let meterPct = 25;
+
+  if (volume.includes('1 Container')) {
+    unitsBadge = '1 x 20ft FCL';
+    capacityText = cargo.includes('Bitumen') ? '20,000 L (~20.0 MT)' : '24,000 L (~24.0 MT)';
+    meterPct = 25;
+  } else if (volume.includes('2 to 5')) {
+    unitsBadge = '2–5 Containers';
+    capacityText = '48,000 – 120,000 L';
+    meterPct = 45;
+  } else if (volume.includes('6 to 10')) {
+    unitsBadge = '6–10 Containers';
+    capacityText = '144,000 – 240,000 L';
+    meterPct = 65;
+  } else if (volume.includes('11 to 20')) {
+    unitsBadge = '11–20 Containers';
+    capacityText = '264,000 – 480,000 L';
+    meterPct = 85;
+  } else if (volume.includes('20+')) {
+    unitsBadge = '20+ Fleet Containers';
+    capacityText = '480,000+ L (Annual)';
+    meterPct = 100;
+  }
+
+  // Update Summary Card Elements
   const summRoute = document.getElementById('summRoute');
   const summSailing = document.getElementById('summSailing');
   const summCargo = document.getElementById('summCargo');
   const summVolume = document.getElementById('summVolume');
   const summValve = document.getElementById('summValve');
   const summLayers = document.getElementById('summLayers');
+  const summBulkhead = document.getElementById('summBulkhead');
   const summAddons = document.getElementById('summAddons');
+  const summContainersBadge = document.getElementById('summContainersBadge');
+  const summCapacityVal = document.getElementById('summCapacityVal');
+  const summPayloadFill = document.getElementById('summPayloadFill');
 
   if (summRoute) summRoute.textContent = `${cleanFrom} → ${cleanTo}`;
   if (summSailing) summSailing.textContent = sailingDate || 'Upon Request';
   if (summCargo) summCargo.textContent = cargo;
-  if (summVolume) summVolume.textContent = volume.split('(')[0].trim();
-  if (summValve) summValve.textContent = valve.split('(')[0].trim();
-  if (summLayers) summLayers.textContent = layers.split('(')[0].trim();
+  if (summVolume) summVolume.textContent = unitsBadge;
+  if (summValve) summValve.textContent = cleanValve;
+  if (summLayers) summLayers.textContent = cleanLayers;
+  if (summBulkhead) summBulkhead.textContent = cleanBulkhead;
   if (summAddons) summAddons.textContent = accessories.length > 0 ? accessories.join(', ') : 'Standard Protection';
+  if (summContainersBadge) summContainersBadge.textContent = unitsBadge;
+  if (summCapacityVal) summCapacityVal.textContent = capacityText;
+  if (summPayloadFill) summPayloadFill.style.width = `${meterPct}%`;
 
   // Build WhatsApp pre-filled text
   const waBtn = document.getElementById('btnEnquiryWhatsApp');
@@ -1868,10 +1934,10 @@ function updateTraditionalSummary() {
 📍 *Route:* ${cleanFrom} ➔ ${cleanTo}
 📅 *Est. Sailing Date:* ${sailingDate}
 📦 *Cargo Commodity:* ${cargo} ${density ? `(${density})` : ''} ${temp ? `[${temp}]` : ''}
-🚢 *Volume / Units:* ${volume}
-🔧 *Flexitank Valve:* ${valve}
-🛡️ *Layers:* ${layers}
-🧱 *Bulkhead:* ${bulkhead}
+🚢 *Volume / Units:* ${volume} [${capacityText}]
+🔧 *Flexitank Valve:* ${cleanValve}
+🛡️ *Layers:* ${cleanLayers}
+🧱 *Bulkhead:* ${cleanBulkhead}
 ➕ *Accessories:* ${accessories.length > 0 ? accessories.join(', ') : 'Standard'}
 ━━━━━━━━━━━━━━━━━━━━━━━━━
 👤 *Shipper:* ${name || 'Prospective Client'} ${company ? `(${company})` : ''}
