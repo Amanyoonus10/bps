@@ -3363,21 +3363,29 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
-   CARGO CALCULATOR & ESTIMATOR SECTION (CRISP WHITE BACKGROUND)
+   CARGO CALCULATOR & ESTIMATOR / RFQ HEADER
    ========================================================================== */
 .section-calculator {
-  background: #FFFFFF !important;
-  color: #0F172A;
-  padding: 95px 0 100px;
-  border-top: 1px solid #E2E8F0;
-  border-bottom: 1px solid #E2E8F0;
   position: relative;
+  background-color: #060D1E;
+  background-image: 
+    linear-gradient(180deg, rgba(6, 13, 28, 0.88) 0%, rgba(8, 18, 38, 0.78) 50%, rgba(5, 11, 24, 0.92) 100%),
+    url('../assets/img/port-cargo-terminal.jpg');
+  background-attachment: fixed;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #FFFFFF;
+  padding: 100px 0 115px;
+  border-top: 1px solid rgba(56, 189, 248, 0.2);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+  overflow: hidden;
 }
 
 .calc-header-block {
   text-align: center;
-  max-width: 820px;
-  margin: 0 auto 50px auto;
+  max-width: 840px;
+  margin: 0 auto 40px auto;
 }
 
 .calc-eyebrow {
@@ -3387,24 +3395,37 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.calc-eyebrow::before {
+  content: '';
+  width: 12px;
+  height: 2px;
+  background: var(--color-orange);
   display: inline-block;
-  margin-bottom: 8px;
+  border-radius: 2px;
 }
 
 .calc-headline {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 3.8vw, 2.6rem);
+  font-size: clamp(2rem, 3.8vw, 2.7rem);
   font-weight: 800;
-  color: #0A1329;
+  color: #FFFFFF;
   line-height: 1.15;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   letter-spacing: -0.02em;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.5);
 }
 
 .calc-subtitle {
-  font-size: 1.05rem;
-  color: #64748B;
-  line-height: 1.6;
+  font-size: 1rem;
+  color: #CBD5E1;
+  line-height: 1.65;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
 }
 
 .calc-main-card {
@@ -4034,6 +4055,7 @@ h1, h2, h3, h4, h5, h6 {
   .section-certs-sust-split,
   .section-services-process-split,
   .section-calculator,
+  .traditional-enquiry-section,
   .section-faq {
     padding: 60px 0 70px;
     overflow-x: hidden;
@@ -4146,6 +4168,26 @@ h1, h2, h3, h4, h5, h6 {
     width: 32px;
     height: 32px;
     flex-shrink: 0;
+  }
+
+  /* Traditional Enquiry Form Card & Summary Mobile Optimizations */
+  .enquiry-container-card {
+    padding: 24px 16px;
+    border-radius: 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .enquiry-fieldset {
+    padding: 16px 14px;
+    border-radius: 10px;
+  }
+  .enquiry-summary-card {
+    padding: 20px 16px;
+  }
+  .enquiry-input,
+  .enquiry-select {
+    height: 46px;
+    font-size: 0.88rem;
   }
 
   /* Product Filter Pills - Smooth Swipe */
@@ -4959,61 +5001,76 @@ html[dir="rtl"] .enquiry-checkbox-item {
 }
 
 /* ==========================================================================
-   TRADITIONAL ENQUIRY FORM & RFQ SYSTEM (ENHANCED)
+   TRADITIONAL ENQUIRY FORM & RFQ SYSTEM (ENHANCED MARITIME THEME)
    ========================================================================== */
 .traditional-enquiry-section {
-  background: #FFFFFF !important;
-  color: #0F172A;
-  padding: 85px 0 100px;
-  border-top: 1px solid #E2E8F0;
-  border-bottom: 1px solid #E2E8F0;
   position: relative;
+  background-color: #060D1E;
+  background-image: 
+    linear-gradient(180deg, rgba(6, 13, 28, 0.88) 0%, rgba(8, 18, 38, 0.78) 50%, rgba(5, 11, 24, 0.92) 100%),
+    url('../assets/img/port-cargo-terminal.jpg');
+  background-attachment: fixed;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #FFFFFF;
+  padding: 100px 0 115px;
+  border-top: 1px solid rgba(56, 189, 248, 0.2);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+  overflow: hidden;
 }
 
 .enquiry-view-switch-bar {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  margin-bottom: 35px;
+  gap: 10px;
+  margin-bottom: 38px;
 }
 
 .enquiry-mode-btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 22px;
-  border-radius: 100px;
+  gap: 9px;
+  padding: 12px 24px;
+  border-radius: 999px;
   font-family: var(--font-display);
   font-size: 0.88rem;
   font-weight: 700;
-  border: 1.5px solid #CBD5E1;
-  background: #F8FAFC;
-  color: #475569;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(10, 22, 46, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: #CBD5E1;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
 }
 
 .enquiry-mode-btn:hover {
-  border-color: #1D4ED8;
-  color: #1D4ED8;
+  border-color: rgba(56, 189, 248, 0.45);
+  color: #FFFFFF;
+  background: rgba(18, 36, 74, 0.85);
+  transform: translateY(-1px);
 }
 
 .enquiry-mode-btn.active {
-  background: #1D4ED8;
-  border-color: #1D4ED8;
+  background: linear-gradient(135deg, #1D4ED8 0%, #2563EB 100%);
+  border-color: #38BDF8;
   color: #FFFFFF;
-  box-shadow: 0 4px 16px rgba(29, 78, 216, 0.35);
+  box-shadow: 0 6px 22px rgba(37, 99, 235, 0.45);
 }
 
 .enquiry-container-card {
-  background: linear-gradient(155deg, #09152E 0%, #050D1E 100%);
-  border: 1px solid rgba(56, 189, 248, 0.25);
+  background: rgba(8, 18, 42, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(56, 189, 248, 0.28);
   border-radius: var(--radius-xl);
-  padding: 40px;
-  max-width: 1200px;
+  padding: 38px 42px;
+  max-width: 1240px;
   margin: 0 auto;
-  box-shadow: 0 25px 65px rgba(5, 12, 28, 0.3), 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55), 0 0 35px rgba(37, 99, 235, 0.15);
   position: relative;
   overflow: hidden;
 }
@@ -5030,57 +5087,62 @@ html[dir="rtl"] .enquiry-checkbox-item {
 
 .enquiry-form-grid {
   display: grid;
-  grid-template-columns: 1.45fr 0.85fr;
-  gap: 36px;
+  grid-template-columns: 1.5fr 0.95fr;
+  gap: 34px;
   align-items: start;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1040px) {
   .enquiry-form-grid {
     grid-template-columns: 1fr;
+    gap: 30px;
   }
 }
 
 .enquiry-form-main {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 22px;
+  min-width: 0;
 }
 
 .enquiry-fieldset {
-  background: rgba(255, 255, 255, 0.025);
+  background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: var(--radius-lg);
-  padding: 24px;
-  transition: border-color 0.2s ease;
+  padding: 22px 24px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
 .enquiry-fieldset:hover {
-  border-color: rgba(56, 189, 248, 0.3);
+  border-color: rgba(56, 189, 248, 0.35);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .enquiry-fieldset-header {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   padding-bottom: 12px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 }
 
 .enquiry-num-pill {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: #1D4ED8;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #1D4ED8 0%, #38BDF8 100%);
   color: #FFFFFF;
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   font-weight: 800;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(29, 78, 216, 0.35);
 }
 
 .enquiry-fieldset-title {
@@ -5097,7 +5159,7 @@ html[dir="rtl"] .enquiry-checkbox-item {
   gap: 16px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 640px) {
   .enquiry-grid-2 {
     grid-template-columns: 1fr;
   }
@@ -5106,13 +5168,25 @@ html[dir="rtl"] .enquiry-checkbox-item {
 /* Optimized Section 03: Cargo Commodity Grid */
 .enquiry-grid-cargo {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr;
+  grid-template-columns: 1.4fr 1fr 1fr;
   gap: 16px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 860px) {
+  .enquiry-grid-cargo {
+    grid-template-columns: 1fr 1fr;
+  }
+  .enquiry-field-cargo-main {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 540px) {
   .enquiry-grid-cargo {
     grid-template-columns: 1fr;
+  }
+  .enquiry-field-cargo-main {
+    grid-column: span 1;
   }
 }
 
@@ -5123,7 +5197,7 @@ html[dir="rtl"] .enquiry-checkbox-item {
   gap: 16px;
 }
 
-@media (max-width: 1080px) {
+@media (max-width: 860px) {
   .enquiry-grid-specs {
     grid-template-columns: 1fr;
   }
@@ -5133,6 +5207,7 @@ html[dir="rtl"] .enquiry-checkbox-item {
   display: flex;
   flex-direction: column;
   gap: 7px;
+  min-width: 0;
 }
 
 /* Label with inline asterisk glued to text */
@@ -5157,7 +5232,7 @@ html[dir="rtl"] .enquiry-checkbox-item {
 .enquiry-select,
 .enquiry-textarea {
   width: 100%;
-  background: rgba(6, 12, 28, 0.9);
+  background: rgba(4, 9, 22, 0.75);
   border: 1px solid rgba(255, 255, 255, 0.13);
   color: #FFFFFF;
   font-family: var(--font-main);
@@ -5167,14 +5242,20 @@ html[dir="rtl"] .enquiry-checkbox-item {
   outline: none;
   transition: all 0.22s ease;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.35);
+  box-sizing: border-box;
+}
+
+.enquiry-input,
+.enquiry-select {
+  height: 48px;
 }
 
 .enquiry-input:focus,
 .enquiry-select:focus,
 .enquiry-textarea:focus {
   border-color: #38BDF8;
-  background: rgba(8, 16, 36, 0.98);
-  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2), 0 4px 16px rgba(0, 0, 0, 0.4);
+  background: rgba(7, 15, 34, 0.95);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.22), 0 4px 16px rgba(0, 0, 0, 0.4);
 }
 
 .enquiry-input::placeholder,
@@ -5246,7 +5327,7 @@ html[dir="rtl"] .enquiry-select-arrow {
   gap: 12px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 640px) {
   .enquiry-checkbox-grid {
     grid-template-columns: 1fr;
   }
@@ -5257,9 +5338,9 @@ html[dir="rtl"] .enquiry-select-arrow {
   align-items: flex-start;
   gap: 12px;
   background: rgba(255, 255, 255, 0.035);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: 9px;
-  padding: 12px 14px;
+  padding: 13px 15px;
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -5271,7 +5352,7 @@ html[dir="rtl"] .enquiry-select-arrow {
 }
 
 .enquiry-check-card:has(input[type="checkbox"]:checked) {
-  background: rgba(37, 99, 235, 0.14);
+  background: rgba(37, 99, 235, 0.16);
   border-color: #38BDF8;
   box-shadow: 0 0 16px rgba(56, 189, 248, 0.15);
 }
@@ -5307,16 +5388,29 @@ html[dir="rtl"] .enquiry-select-arrow {
 .enquiry-summary-column {
   position: sticky;
   top: 96px;
+  min-width: 0;
 }
 
 .enquiry-summary-card {
-  background: linear-gradient(165deg, rgba(8, 18, 44, 0.95) 0%, rgba(3, 8, 22, 0.98) 100%);
+  background: linear-gradient(165deg, rgba(8, 19, 44, 0.94) 0%, rgba(3, 8, 22, 0.97) 100%);
   border: 1px solid rgba(56, 189, 248, 0.35);
   border-radius: var(--radius-lg);
-  padding: 24px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(56, 189, 248, 0.1);
+  padding: 24px 22px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(56, 189, 248, 0.12);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+  position: relative;
+  overflow: hidden;
+}
+
+.enquiry-summary-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #38BDF8 0%, #2563EB 50%, var(--color-orange) 100%);
 }
 
 .enquiry-summary-badge-row {
@@ -5381,8 +5475,8 @@ html[dir="rtl"] .enquiry-select-arrow {
 
 /* Manifest Capacity Box */
 .manifest-payload-box {
-  background: rgba(255, 255, 255, 0.035);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(56, 189, 248, 0.06);
+  border: 1px solid rgba(56, 189, 248, 0.2);
   border-radius: 8px;
   padding: 10px 12px;
   margin-bottom: 16px;
@@ -5433,17 +5527,17 @@ html[dir="rtl"] .enquiry-select-arrow {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 7px 10px;
+  padding: 8px 12px;
   background: rgba(255, 255, 255, 0.025);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 6px;
+  border-radius: 7px;
   font-size: 0.82rem;
   gap: 12px;
   transition: background 0.15s ease;
 }
 
 .enquiry-spec-row:hover {
-  background: rgba(255, 255, 255, 0.045);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .enquiry-spec-k {
@@ -5456,7 +5550,7 @@ html[dir="rtl"] .enquiry-select-arrow {
 }
 
 .enquiry-spec-v {
-  color: #F8FAFC;
+  color: #FFFFFF;
   font-weight: 700;
   text-align: right;
   word-break: break-word;
@@ -5475,11 +5569,12 @@ html[dir="rtl"] .enquiry-spec-v {
 
 .btn-enquiry-submit {
   width: 100%;
+  height: 50px;
   background: linear-gradient(135deg, #1D4ED8 0%, #2563EB 50%, #38BDF8 100%);
   color: #FFFFFF;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 13px 20px;
-  border-radius: 8px;
+  padding: 12px 20px;
+  border-radius: 10px;
   font-family: var(--font-display);
   font-size: 0.95rem;
   font-weight: 800;
@@ -5500,11 +5595,12 @@ html[dir="rtl"] .enquiry-spec-v {
 
 .btn-enquiry-wa {
   width: 100%;
+  height: 46px;
   background: rgba(37, 211, 102, 0.12);
   border: 1px solid rgba(37, 211, 102, 0.38);
   color: #25D366;
-  padding: 11px 18px;
-  border-radius: 8px;
+  padding: 10px 18px;
+  border-radius: 10px;
   font-family: var(--font-display);
   font-size: 0.88rem;
   font-weight: 700;
@@ -5526,11 +5622,12 @@ html[dir="rtl"] .enquiry-spec-v {
 
 .btn-enquiry-email {
   width: 100%;
+  height: 46px;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.14);
   color: #CBD5E1;
-  padding: 11px 18px;
-  border-radius: 8px;
+  padding: 10px 18px;
+  border-radius: 10px;
   font-family: var(--font-display);
   font-size: 0.88rem;
   font-weight: 700;
