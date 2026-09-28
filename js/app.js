@@ -5,6 +5,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initLiveClock();
+  initHeaderScroll();
   initHeroMiniMap();
   initFullLogisticsMap();
   initProductFilter();
@@ -1489,6 +1490,51 @@ function initMobileFloatingBar() {
   handleScroll();
 }
 
+function initHeaderScroll() {
+  const header = document.getElementById('siteHeader');
+  const sections = document.querySelectorAll('section[id], header[id]');
+  const navLinks = document.querySelectorAll('.nav-item-link');
+
+  function onScroll() {
+    const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+
+    // Header compact glass elevation on scroll
+    if (header) {
+      if (scrollY > 25) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    }
+
+    // Scroll spy for navigation
+    let currentId = '';
+    const scrollPos = scrollY + 140;
+
+    sections.forEach(sec => {
+      const top = sec.offsetTop;
+      const height = sec.offsetHeight;
+      if (scrollPos >= top && scrollPos < top + height) {
+        currentId = sec.getAttribute('id');
+      }
+    });
+
+    if (currentId) {
+      navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === `#${currentId}`) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}
+
 /* ==========================================================================
    11. BILINGUAL LANGUAGE SWITCHER (ENGLISH / ARABIC WITH RTL SUPPORT)
    ========================================================================== */
@@ -1731,8 +1777,27 @@ function setLanguage(lang) {
   const heroWaSpan = document.querySelector('.hero-cta-group a.btn-glass-icon span');
   if (heroWaSpan) heroWaSpan.textContent = t.btnHeroWa;
 
-  const headerQuoteBtn = document.querySelector('.header-quote-btn span');
-  if (headerQuoteBtn) headerQuoteBtn.textContent = t.btnRfqDesk;
+  const headerQuoteBtn = document.querySelector('#headerQuoteBtn span');
+  if (headerQuoteBtn) headerQuoteBtn.textContent = lang === 'ar' ? 'طلب تسعير' : 'Get a Quote';
+
+  // Navigation Links Translation
+  const navMap = {
+    home: t.navHome || (lang === 'ar' ? 'الرئيسية' : 'Home'),
+    about: t.navAbout || (lang === 'ar' ? 'من نحن' : 'About'),
+    products: t.navProducts || (lang === 'ar' ? 'المنتجات' : 'Products'),
+    services: t.navServices || (lang === 'ar' ? 'الخدمات' : 'Services'),
+    global: t.navGlobal || (lang === 'ar' ? 'شبكتنا العالمية' : 'Global Reach'),
+    faq: t.navFaq || (lang === 'ar' ? 'الأسئلة الشائعة' : 'FAQ'),
+    contact: t.navContact || (lang === 'ar' ? 'اتصل بنا' : 'Contact')
+  };
+
+  document.querySelectorAll('[data-nav]').forEach(el => {
+    const key = el.getAttribute('data-nav');
+    if (navMap[key]) {
+      const span = el.querySelector('span') || el;
+      span.textContent = navMap[key];
+    }
+  });
 
   // Stats strip
   const statPills = document.querySelectorAll('.stat-pill-label');
