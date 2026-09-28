@@ -1,6 +1,6 @@
 /**
- * BPS GLOBAL TRADING LLC — INTERACTIVE CORE
- * Full World Route Canvas, Radar, Filter System, Live Clock & RFQ Calculator
+ * BPS Global Trading — Interactive Logistics Engine
+ * Full World Route Canvas, Radar, Traditional RFQ System, Live Clock & Bilingual Switcher
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initProductCarousel();
   initIndustriesCarousel();
   initCargoCalculator();
+  initTraditionalEnquiryForm();
+  initLanguageSwitcher();
   initFaqFilters();
   initMobileNav();
   initMobileFloatingBar();
@@ -83,7 +85,7 @@ function initHeroMiniMap() {
   }
 
   // Major Global Logistics Hubs (Exact Geographic Coordinates)
-  const DUBAI = { name: 'DUBAI (HQ)', lat: 25.2048, lon: 55.2708 };
+  const DUBAI = { name: 'DUBAI (HUB)', lat: 25.2048, lon: 55.2708 };
   const dubaiVec = latLonToVec3(DUBAI.lat, DUBAI.lon);
 
   const DESTINATIONS = [
@@ -557,7 +559,7 @@ function initHeroMiniMap() {
       ctx.fill();
 
       // Dubai Callout Tag Pill
-      const tagText = 'DUBAI (HQ)';
+      const tagText = 'DUBAI (HUB)';
       ctx.font = '700 10.5px "Space Grotesk", sans-serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
@@ -626,10 +628,10 @@ function initFullLogisticsMap() {
 
   // Dubai Hub location accurately aligned with global-reach-map.png (Dubai, UAE: 25.2°N, 55.3°E)
   const dubai = { 
-    name: 'DUBAI (HQ)', 
+    name: 'DUBAI (HUB)', 
     x: 0.478, 
     y: 0.413, 
-    info: 'Global Hub: Jebel Ali (AEJEA) • 100,000+ Units Ready Stock • 24/7 Operations' 
+    info: 'Regional Hub: Jebel Ali (AEJEA) • Regional Supply & Technical Fitting • 24/7 Operations' 
   };
 
   const regions = [
@@ -911,7 +913,7 @@ function initFullLogisticsMap() {
 
     // Dubai text pill
     ctx.font = '800 12px "Space Grotesk", sans-serif';
-    const dubaiWidth = ctx.measureText('DUBAI (HQ)').width;
+    const dubaiWidth = ctx.measureText('DUBAI (HUB)').width;
     ctx.fillStyle = 'rgba(4, 10, 26, 0.92)';
     ctx.beginPath();
     ctx.roundRect(dx - dubaiWidth / 2 - 8, dy + 13, dubaiWidth + 16, 21, 5);
@@ -922,7 +924,7 @@ function initFullLogisticsMap() {
 
     ctx.fillStyle = '#60A5FA';
     ctx.textAlign = 'center';
-    ctx.fillText('DUBAI (HQ)', dx, dy + 28);
+    ctx.fillText('DUBAI (HUB)', dx, dy + 28);
 
     requestAnimationFrame(draw);
   }
@@ -1476,7 +1478,6 @@ function initMobileFloatingBar() {
 
   function handleScroll() {
     const scrollY = window.pageYOffset || document.documentElement.scrollTop;
-    // Show dock once user scrolls past initial hero fold
     if (scrollY > 280) {
       bar.classList.add('visible');
     } else {
@@ -1487,5 +1488,472 @@ function initMobileFloatingBar() {
   window.addEventListener('scroll', handleScroll, { passive: true });
   handleScroll();
 }
+
+/* ==========================================================================
+   11. BILINGUAL LANGUAGE SWITCHER (ENGLISH / ARABIC WITH RTL SUPPORT)
+   ========================================================================== */
+const BPS_I18N = {
+  en: {
+    dir: 'ltr',
+    brandSub: 'Bulk Liquid Packaging & Logistics',
+    navHome: 'Home',
+    navAbout: 'About Us',
+    navProducts: 'Products',
+    navServices: 'Services & Process',
+    navRfq: 'RFQ & Calculator',
+    navGlobal: 'Global Reach',
+    navFaq: 'Knowledge Base',
+    navContact: 'Contact',
+    btnRfqDesk: 'RFQ Desk',
+    heroEyebrow: 'BPS Global Trading — Bulk Liquid Solutions',
+    heroHeadline: 'High-Integrity Flexitanks for Global Bulk Liquid Logistics',
+    heroDesc: 'Standard 20ft container conversion engineered for zero leakage, precise thermal integrity, and factory-direct supply across key maritime trade lanes.',
+    btnHeroRfq: 'Request Traditional Quotation',
+    btnHeroExplore: 'Explore Flexitank Range',
+    btnHeroWa: 'WhatsApp Desk',
+    heroCardBadge: 'GLOBAL LOGISTICS NETWORK',
+    heroCardTitle: '60+ Countries Reach',
+    heroCardSub: 'Factory-Direct Engineering & Distribution',
+    heroCargoStdLabel: 'Cargo Standard:',
+    heroCargoStdVal: 'Non-Hazardous Bulk Liquids',
+    heroLogDeskLabel: 'Logistics Desk:',
+    heroLogDeskVal: 'Fast RFQ & Technical Support',
+    stat1: 'OFFICIAL Regional Partner for BPS Flexitanks',
+    stat2: 'PROVEN CARGO INTEGRITY: ZERO-LEAK RECORD',
+    stat3: 'COMPREHENSIVE FLEET CAPACITY: 14K–26K L',
+    stat4: 'RAPID REGIONAL DISPATCH: MENA & ASIA',
+    enqHeaderEyebrow: 'TRADITIONAL RFQ & CARGO ENQUIRY',
+    enqHeaderHeadline: 'Flexitank Cargo Enquiry & Quotation',
+    enqHeaderSubtitle: 'Submit your port-to-port parameters, cargo properties, and technical flexitank specifications for a prompt formal proposal from our logistics engineering desk.',
+    labelModeTraditional: 'Traditional Enquiry Form',
+    labelModeEstimator: 'Quick Estimator',
+    legendContact: 'Shipper & Contact Information',
+    lblFullName: 'Full Name / Contact Person',
+    lblCompany: 'Company / Organization',
+    lblEmail: 'Corporate Email',
+    lblPhone: 'Phone / WhatsApp Number',
+    legendRoute: 'Trade Corridor & Sailing Schedule',
+    lblPortFrom: 'From Country / Port of Loading',
+    lblPortTo: 'To Country / Port of Discharge',
+    lblSailingDate: 'Estimated Date of Sailing / Readiness',
+    lblEstVolume: 'Estimated Volume / Containers',
+    legendCargo: 'Type of Cargo (Liquid Commodity)',
+    lblCargoType: 'Liquid Commodity',
+    lblDensity: 'Specific Gravity / Density',
+    lblLoadingTemp: 'Loading Temp (°C)',
+    legendSpecs: 'Technical Flexitank Engineering',
+    lblValveType: 'Type of Valve Fixing',
+    lblLayers: 'Number of Layers',
+    lblBulkhead: 'Bulkhead Securing',
+    legendAddons: 'Additional Requirements & Accessories',
+    txtHeatPadTitle: 'Heating Pad (Steam / Hot Water)',
+    txtHeatPadDesc: 'For high-viscosity discharge (wax, palm oil, heavy syrups).',
+    txtVentTitle: 'Automatic Air Ventilation Valve',
+    txtVentDesc: 'Automatic pressure release for fermenting / outgassing liquids.',
+    txtThermalTitle: 'Thermal Insulation Blanket Liner',
+    txtThermalDesc: 'Protects temperature-critical cargo across cold / desert routes.',
+    txtPaperTitle: 'Floor & Wall Protection Paper',
+    txtPaperDesc: 'Heavy corrugated kraft paper protecting container interior.',
+    txtFittingTitle: 'On-Site Technical Fitting Service',
+    txtFittingDesc: 'Certified BPS technical teams dispatched to your container depot.',
+    txtInsuranceTitle: 'Marine Cargo Insurance',
+    txtInsuranceDesc: 'Tailored ocean bulk liquid cargo insurance policy.',
+    legendNotes: 'Special Instructions & Handling Notes',
+    rfqBadge: 'CARGO SPECIFICATION SUMMARY',
+    rfqTitle: 'RFQ Manifest',
+    lblSummRoute: 'Route:',
+    lblSummSailing: 'Sailing Date:',
+    lblSummCargo: 'Cargo Type:',
+    lblSummVolume: 'Containers:',
+    lblSummValve: 'Valve Fixing:',
+    lblSummLayers: 'Layers:',
+    lblSummAddons: 'Accessories:',
+    txtSubmitEnquiry: 'Submit Official Enquiry',
+    txtWaEnquiry: 'Send via WhatsApp Desk',
+    txtEmailEnquiry: 'Request Email RFQ',
+    modalSuccessTitle: 'Enquiry Submitted Successfully',
+    modalSuccessDesc: 'Thank you for your bulk liquid cargo enquiry. Our logistics engineering team has received your technical parameters and will prepare a certified quotation within 2 business hours.',
+    footerOfficeTitle: 'DUBAI REGIONAL OFFICE & LOGISTICS DESK',
+    footerCopyright: '© 2026 BPS Global Trading. All Rights Reserved. • Bulk Liquid Container Logistics'
+  },
+  ar: {
+    dir: 'rtl',
+    brandSub: 'تغليف ولوجستيات السوائل السائبة',
+    navHome: 'الرئيسية',
+    navAbout: 'من نحن',
+    navProducts: 'المنتجات',
+    navServices: 'الخدمات والعمليات',
+    navRfq: 'طلب عرض أسعار',
+    navGlobal: 'شبكتنا العالمية',
+    navFaq: 'الأسئلة الشائعة',
+    navContact: 'اتصل بنا',
+    btnRfqDesk: 'مكتب التسعير',
+    heroEyebrow: 'بي بي إس جلوبال تريدينج — حلول نقل السوائل السائبة',
+    heroHeadline: 'فليكسي تانك هندسي عالي الكفاءة لنقل السوائل السائبة عالمياً',
+    heroDesc: 'حلول متطورة لتحويل الحاويات القياسية سعة 20 قدماً لنقل السوائل السائبة بدون تسريب، مع كفاءة عزل حراري وتوزيع إقليمي معتمد عبر كافة الممرات البحرية.',
+    btnHeroRfq: 'طلب عرض أسعار رسمي',
+    btnHeroExplore: 'استكشف مجموعة الفليكسي تانك',
+    btnHeroWa: 'مكتب واتساب',
+    heroCardBadge: 'شبكة لوجستية عالمية',
+    heroCardTitle: 'تغطية أكثر من 60 دولة',
+    heroCardSub: 'هندسة مصنعية مباشرة وتوزيع إقليمي معتمد',
+    heroCargoStdLabel: 'معايير الشحن:',
+    heroCargoStdVal: 'سوائل سائبة غير خطرة',
+    heroLogDeskLabel: 'المكتب اللوجستي:',
+    heroLogDeskVal: 'طلب تسعير سريع ودعم فني',
+    stat1: 'الشريك الإقليمي المعتمد لـ BPS Flexitanks',
+    stat2: 'سجل موثوق خالٍ من التسريب بنسبة 100%',
+    stat3: 'سعات متنوعة وشاملة: 14,000 إلى 26,000 لتر',
+    stat4: 'توريد واستجابة إقليمية سريعة عبر الشرق الأوسط وآسيا',
+    enqHeaderEyebrow: 'طلب تسعير رسمي واستفسار شحن السوائل',
+    enqHeaderHeadline: 'استفسار عرض أسعار فليكسي تانك والشحن البحري',
+    enqHeaderSubtitle: 'أدخل بيانات الموانئ، وخصائص السائل المنقول، والمواصفات الفنية المطلوبة للحصول على عرض أسعار رسمي فوري من فريقنا الهندسي اللوجستي.',
+    labelModeTraditional: 'نموذج الاستفسار الرسمي',
+    labelModeEstimator: 'الحاسبة التقديرية',
+    legendContact: 'بيانات الشاحن والتواصل',
+    lblFullName: 'الاسم الكامل / مسؤول الاتصال',
+    lblCompany: 'اسم الشركة / المؤسسة',
+    lblEmail: 'البريد الإلكتروني المهني',
+    lblPhone: 'رقم الهاتف / الواتساب',
+    legendRoute: 'مسار الرحلة والجدول الزمني',
+    lblPortFrom: 'من بلد / ميناء التحميل',
+    lblPortTo: 'إلى بلد / ميناء الوصول',
+    lblSailingDate: 'تاريخ الإبحار التقديري / الجاهزية',
+    lblEstVolume: 'حجم الشحنة / عدد الحاويات',
+    legendCargo: 'نوع السائل (البضاعة المشحونة)',
+    lblCargoType: 'نوع السائل المنقول',
+    lblDensity: 'الكثافة النوعية / اللزوجة',
+    lblLoadingTemp: 'درجة حرارة التحميل (°C)',
+    legendSpecs: 'المواصفات الفنية للفليكسي تانك',
+    lblValveType: 'نوع صمام التثبيت',
+    lblLayers: 'عدد الطبقات العازلة',
+    lblBulkhead: 'نوع الحاجز الخلفي (Bulkhead)',
+    legendAddons: 'المتطلبات الإضافية والملحقات',
+    txtHeatPadTitle: 'وسادة تسخين (بخار / ماء ساخن)',
+    txtHeatPadDesc: 'لتفريغ السوائل عالية اللزوجة (الشمع، زيت النخيل، القطران).',
+    txtVentTitle: 'صمام تنفيس هواء أوتوماتيكي',
+    txtVentDesc: 'تنفيس ضغط الغازات أوتوماتيكياً للسوائل المتخمرة والمتطايرة.',
+    txtThermalTitle: 'بطانة عزل حراري للحاوية',
+    txtThermalDesc: 'حماية البضائع الحساسة لدرجة الحرارة في الرحلات الباردة أو الصحراوية.',
+    txtPaperTitle: 'ورق كرافت مقوى لحماية الأرضية والجدران',
+    txtPaperDesc: 'ورق كرافت مموج عالي التحمل لحماية الجدار الداخلي للحاوية.',
+    txtFittingTitle: 'خدمة التركيب الفني الميداني بالمستودع',
+    txtFittingDesc: 'فريق فني معتمد لتركيب وتجهيز الفليكسي تانك في مستودع الحاويات.',
+    txtInsuranceTitle: 'تأمين بحري على البضائع السائبة',
+    txtInsuranceDesc: 'وثيقة تأمين بحري شاملة ومخصصة لشحنات السوائل السائبة.',
+    legendNotes: 'تعليمات خاصة وملاحظات الشحن',
+    rfqBadge: 'ملخص مواصفات الشحنة',
+    rfqTitle: 'بيان طلب التسعير',
+    lblSummRoute: 'المسار:',
+    lblSummSailing: 'تاريخ الإبحار:',
+    lblSummCargo: 'نوع السائل:',
+    lblSummVolume: 'الحاويات:',
+    lblSummValve: 'نوع الصمام:',
+    lblSummLayers: 'الطبقات:',
+    lblSummAddons: 'الملحقات:',
+    txtSubmitEnquiry: 'إرسال طلب التسعير الرسمي',
+    txtWaEnquiry: 'إرسال عبر مكتب الواتساب',
+    txtEmailEnquiry: 'طلب عرض سعر بالبريد',
+    modalSuccessTitle: 'تم إرسال طلب التسعير بنجاح',
+    modalSuccessDesc: 'شكراً لاستفسارك بخصوص نقل السوائل السائبة. استلم فريقنا الهندسي اللوجستي معاييرك الفنية وسيقوم بإعداد عرض أسعار رسمي معتمد خلال ساعتي عمل.',
+    footerOfficeTitle: 'المكتب الإقليمي ومكتب الخدمات اللوجستية بدبي',
+    footerCopyright: '© 2026 بي بي إس جلوبال تريدينج (BPS Global Trading). جميع الحقوق محفوظة. • لوجستيات شحن السوائل السائبة بالحاويات'
+  }
+};
+
+let currentAppLang = 'en';
+
+function setLanguage(lang) {
+  if (lang !== 'en' && lang !== 'ar') lang = 'en';
+  currentAppLang = lang;
+  try {
+    localStorage.setItem('bps_language', lang);
+  } catch (e) {}
+
+  const t = BPS_I18N[lang];
+  document.documentElement.lang = lang;
+  document.documentElement.dir = t.dir;
+
+  // Toggle active button states
+  const btnEn = document.getElementById('btnLangEn');
+  const btnAr = document.getElementById('btnLangAr');
+  const btnMobEn = document.getElementById('btnLangMobileEn');
+  const btnMobAr = document.getElementById('btnLangMobileAr');
+
+  if (btnEn) btnEn.classList.toggle('active', lang === 'en');
+  if (btnAr) btnAr.classList.toggle('active', lang === 'ar');
+  if (btnMobEn) btnMobEn.classList.toggle('active', lang === 'en');
+  if (btnMobAr) btnMobAr.classList.toggle('active', lang === 'ar');
+
+  // Update elements by ID
+  const mapIds = [
+    'heroEyebrow', 'heroHeadline', 'heroDesc',
+    'heroCardBadge', 'heroCardTitle', 'heroCardSub',
+    'heroCargoStdLabel', 'heroCargoStdVal', 'heroLogDeskLabel', 'heroLogDeskVal',
+    'enqHeaderEyebrow', 'enqHeaderHeadline', 'enqHeaderSubtitle',
+    'labelModeTraditional', 'labelModeEstimator',
+    'legendContact', 'lblFullName', 'lblCompany', 'lblEmail', 'lblPhone',
+    'legendRoute', 'lblPortFrom', 'lblPortTo', 'lblSailingDate', 'lblEstVolume',
+    'legendCargo', 'lblCargoType', 'lblDensity', 'lblLoadingTemp',
+    'legendSpecs', 'lblValveType', 'lblLayers', 'lblBulkhead',
+    'legendAddons', 'txtHeatPadTitle', 'txtHeatPadDesc', 'txtVentTitle', 'txtVentDesc',
+    'txtThermalTitle', 'txtThermalDesc', 'txtPaperTitle', 'txtPaperDesc',
+    'txtFittingTitle', 'txtFittingDesc', 'txtInsuranceTitle', 'txtInsuranceDesc',
+    'legendNotes', 'rfqBadge', 'rfqTitle',
+    'lblSummRoute', 'lblSummSailing', 'lblSummCargo', 'lblSummVolume', 'lblSummValve', 'lblSummLayers', 'lblSummAddons',
+    'txtSubmitEnquiry', 'txtWaEnquiry', 'txtEmailEnquiry',
+    'modalSuccessTitle', 'modalSuccessDesc',
+    'footerOfficeTitle', 'footerCopyright'
+  ];
+
+  mapIds.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && t[id] !== undefined) {
+      el.textContent = t[id];
+    }
+  });
+
+  // Brand subtext in header
+  const brandSubs = document.querySelectorAll('.brand-sub');
+  brandSubs.forEach(el => {
+    if (el) el.textContent = t.brandSub;
+  });
+
+  // Hero CTA buttons
+  const heroRfqBtn = document.querySelector('.hero-cta-group a.btn-primary-orange');
+  if (heroRfqBtn) heroRfqBtn.textContent = t.btnHeroRfq;
+
+  const heroExploreBtn = document.querySelector('.hero-cta-group a.btn-secondary-outline');
+  if (heroExploreBtn) heroExploreBtn.textContent = t.btnHeroExplore;
+
+  const heroWaSpan = document.querySelector('.hero-cta-group a.btn-glass-icon span');
+  if (heroWaSpan) heroWaSpan.textContent = t.btnHeroWa;
+
+  const headerQuoteBtn = document.querySelector('.header-quote-btn span');
+  if (headerQuoteBtn) headerQuoteBtn.textContent = t.btnRfqDesk;
+
+  // Stats strip
+  const statPills = document.querySelectorAll('.stat-pill-label');
+  if (statPills.length >= 4) {
+    statPills[0].textContent = t.stat1;
+    statPills[1].textContent = t.stat2;
+    statPills[2].textContent = t.stat3;
+    statPills[3].textContent = t.stat4;
+  }
+
+  // Live summary sync
+  if (typeof updateTraditionalSummary === 'function') {
+    updateTraditionalSummary();
+  }
+}
+
+function initLanguageSwitcher() {
+  const btnEn = document.getElementById('btnLangEn');
+  const btnAr = document.getElementById('btnLangAr');
+  const btnMobEn = document.getElementById('btnLangMobileEn');
+  const btnMobAr = document.getElementById('btnLangMobileAr');
+
+  if (btnEn) btnEn.addEventListener('click', () => setLanguage('en'));
+  if (btnAr) btnAr.addEventListener('click', () => setLanguage('ar'));
+  if (btnMobEn) btnMobEn.addEventListener('click', () => setLanguage('en'));
+  if (btnMobAr) btnMobAr.addEventListener('click', () => setLanguage('ar'));
+
+  let savedLang = 'en';
+  try {
+    savedLang = localStorage.getItem('bps_language') || 'en';
+  } catch (e) {}
+  setLanguage(savedLang);
+}
+
+/* ==========================================================================
+   12. TRADITIONAL ENQUIRY FORM CONTROLLER
+   ========================================================================== */
+function initTraditionalEnquiryForm() {
+  const btnModeTrad = document.getElementById('btnModeTraditional');
+  const btnModeEst = document.getElementById('btnModeEstimator');
+  const wrapTrad = document.getElementById('traditionalEnquiryWrap');
+  const wrapEst = document.getElementById('quickEstimatorWrap');
+
+  if (btnModeTrad && btnModeEst && wrapTrad && wrapEst) {
+    btnModeTrad.addEventListener('click', () => {
+      btnModeTrad.classList.add('active');
+      btnModeEst.classList.remove('active');
+      wrapTrad.style.display = 'block';
+      wrapEst.style.display = 'none';
+    });
+
+    btnModeEst.addEventListener('click', () => {
+      btnModeEst.classList.add('active');
+      btnModeTrad.classList.remove('active');
+      wrapTrad.style.display = 'none';
+      wrapEst.style.display = 'block';
+    });
+  }
+
+  // Pre-fill sailing date with +7 days from now
+  const enqDate = document.getElementById('enqDate');
+  if (enqDate && !enqDate.value) {
+    const d = new Date();
+    d.setDate(d.getDate() + 7);
+    enqDate.value = d.toISOString().split('T')[0];
+    enqDate.min = new Date().toISOString().split('T')[0];
+  }
+
+  // Listen to all inputs to update summary and WhatsApp links
+  const form = document.getElementById('traditionalEnquiryForm');
+  if (form) {
+    form.addEventListener('input', updateTraditionalSummary);
+    form.addEventListener('change', updateTraditionalSummary);
+  }
+
+  updateTraditionalSummary();
+}
+
+function updateTraditionalSummary() {
+  const portFrom = document.getElementById('enqPortFrom')?.value || 'Jebel Ali (AEJEA), UAE';
+  const portTo = document.getElementById('enqPortTo')?.value || 'Port of Rotterdam (NLRTM), Netherlands';
+  const sailingDate = document.getElementById('enqDate')?.value || 'Upon Request';
+  const volume = document.getElementById('enqVolume')?.value || '1 Container (20ft FCL)';
+  const cargo = document.getElementById('enqCargo')?.value || 'Base Oils & Lubricants';
+  const density = document.getElementById('enqDensity')?.value || '';
+  const temp = document.getElementById('enqTemp')?.value || '';
+  const valve = document.getElementById('enqValve')?.value || '3" Bottom Camlock Ball';
+  const layers = document.getElementById('enqLayers')?.value || '4-Layer Food Grade PE';
+  const bulkhead = document.getElementById('enqBulkhead')?.value || 'Steel Bulkhead (5-6 Galvanized Bars)';
+  const name = document.getElementById('enqName')?.value || '';
+  const company = document.getElementById('enqCompany')?.value || '';
+  const email = document.getElementById('enqEmail')?.value || '';
+  const phone = document.getElementById('enqPhone')?.value || '';
+  const notes = document.getElementById('enqNotes')?.value || '';
+
+  // Collect checked accessories
+  const accessories = [];
+  if (document.getElementById('chkHeatingPad')?.checked) accessories.push('Heating Pad');
+  if (document.getElementById('chkAirVent')?.checked) accessories.push('Air Ventilation');
+  if (document.getElementById('chkThermalLiner')?.checked) accessories.push('Thermal Liner');
+  if (document.getElementById('chkPaperLining')?.checked) accessories.push('Floor/Wall Paper');
+  if (document.getElementById('chkFitting')?.checked) accessories.push('On-Site Fitting');
+  if (document.getElementById('chkInsurance')?.checked) accessories.push('Cargo Insurance');
+
+  // Simplify port names for summary
+  function cleanPort(p) {
+    return p.split('(')[0].trim() || p;
+  }
+  const cleanFrom = cleanPort(portFrom);
+  const cleanTo = cleanPort(portTo);
+
+  // Update Summary Card
+  const summRoute = document.getElementById('summRoute');
+  const summSailing = document.getElementById('summSailing');
+  const summCargo = document.getElementById('summCargo');
+  const summVolume = document.getElementById('summVolume');
+  const summValve = document.getElementById('summValve');
+  const summLayers = document.getElementById('summLayers');
+  const summAddons = document.getElementById('summAddons');
+
+  if (summRoute) summRoute.textContent = `${cleanFrom} → ${cleanTo}`;
+  if (summSailing) summSailing.textContent = sailingDate || 'Upon Request';
+  if (summCargo) summCargo.textContent = cargo;
+  if (summVolume) summVolume.textContent = volume.split('(')[0].trim();
+  if (summValve) summValve.textContent = valve.split('(')[0].trim();
+  if (summLayers) summLayers.textContent = layers.split('(')[0].trim();
+  if (summAddons) summAddons.textContent = accessories.length > 0 ? accessories.join(', ') : 'Standard Protection';
+
+  // Build WhatsApp pre-filled text
+  const waBtn = document.getElementById('btnEnquiryWhatsApp');
+  if (waBtn) {
+    const waText = 
+`*BPS Global Trading — Bulk Liquid Cargo RFQ*
+━━━━━━━━━━━━━━━━━━━━━━━━━
+📍 *Route:* ${cleanFrom} ➔ ${cleanTo}
+📅 *Est. Sailing Date:* ${sailingDate}
+📦 *Cargo Commodity:* ${cargo} ${density ? `(${density})` : ''} ${temp ? `[${temp}]` : ''}
+🚢 *Volume / Units:* ${volume}
+🔧 *Flexitank Valve:* ${valve}
+🛡️ *Layers:* ${layers}
+🧱 *Bulkhead:* ${bulkhead}
+➕ *Accessories:* ${accessories.length > 0 ? accessories.join(', ') : 'Standard'}
+━━━━━━━━━━━━━━━━━━━━━━━━━
+👤 *Shipper:* ${name || 'Prospective Client'} ${company ? `(${company})` : ''}
+📞 *Contact:* ${phone || 'Pending'} | ${email || 'Pending'}
+📝 *Special Notes:* ${notes || 'Standard maritime handling requested.'}`;
+
+    waBtn.href = `https://wa.me/971506718052?text=${encodeURIComponent(waText)}`;
+  }
+
+  // Build Email RFQ mailto link
+  const emailBtn = document.getElementById('btnEnquiryEmail');
+  if (emailBtn) {
+    const subject = encodeURIComponent(`BPS Global Trading RFQ: ${cargo} (${cleanFrom} to ${cleanTo})`);
+    const body = encodeURIComponent(
+`Dear BPS Global Trading Logistics Desk,
+
+Please provide an official quotation for the following bulk liquid flexitank shipment:
+
+ROUTE & SCHEDULE:
+- Origin Port: ${portFrom}
+- Discharge Port: ${portTo}
+- Estimated Sailing / Readiness Date: ${sailingDate}
+- Estimated Volume / Containers: ${volume}
+
+CARGO SPECIFICATION:
+- Liquid Commodity: ${cargo}
+- Specific Gravity / Density: ${density || 'N/A'}
+- Loading Temperature: ${temp || 'Ambient'}
+
+TECHNICAL FLEXITANK REQUIREMENTS:
+- Type of Valve Fixing: ${valve}
+- Number of Layers: ${layers}
+- Bulkhead: ${bulkhead}
+- Additional Accessories: ${accessories.join(', ') || 'Standard'}
+
+SHIPPER & CONTACT:
+- Full Name: ${name || 'N/A'}
+- Company: ${company || 'N/A'}
+- Phone / WhatsApp: ${phone || 'N/A'}
+- Corporate Email: ${email || 'N/A'}
+
+SPECIAL INSTRUCTIONS / NOTES:
+${notes || 'Standard non-hazardous handling.'}
+
+Looking forward to your swift response.
+
+Best regards,
+${name || 'Shipper'}
+${company || ''}`
+    );
+    emailBtn.href = `mailto:sales@bpsglobaltrading.com?subject=${subject}&body=${body}`;
+  }
+}
+
+function handleEnquirySubmit(event) {
+  if (event) event.preventDefault();
+
+  const rfqNumber = `RFQ-2026-BPS-${Math.floor(1000 + Math.random() * 9000)}`;
+  const refEl = document.getElementById('modalSuccessRef');
+  if (refEl) refEl.textContent = rfqNumber;
+
+  const modal = document.getElementById('enquirySuccessModal');
+  if (modal) {
+    modal.classList.add('open');
+    modal.style.display = 'flex';
+  }
+
+  return false;
+}
+
+function closeEnquiryModal() {
+  const modal = document.getElementById('enquirySuccessModal');
+  if (modal) {
+    modal.classList.remove('open');
+    modal.style.display = 'none';
+  }
+}
+
+// Expose globals for inline HTML handlers
+window.handleEnquirySubmit = handleEnquirySubmit;
+window.closeEnquiryModal = closeEnquiryModal;
+window.setLanguage = setLanguage;
+
 
 

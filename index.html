@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
-  <title>BPS Global Trading LLC | Bulk liquids, moved with precision.</title>
-  <meta name="description" content="BPS Global Trading LLC — Exclusive regional stockist & distribution partner for BPS Flexitanks across DUBAI • MENA • CIS and over 60 countries worldwide. Bulk liquid packaging and logistics solutions.">
+  <title>BPS Global Trading | Bulk liquids, moved with precision.</title>
+  <meta name="description" content="BPS Global Trading — Official regional partner for BPS Flexitanks across the Middle East, Asia, CIS, Africa, and over 60 countries worldwide. Certified bulk liquid packaging and logistics solutions.">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
   <link rel="stylesheet" href="css/style.css">
@@ -22,28 +22,27 @@
         </div>
         <div class="brand-title-wrap">
           <div class="brand-title-row">
-            <span class="brand-title">BPS GLOBAL TRADING</span>
-            <span class="brand-llc-tag">LLC</span>
+            <span class="brand-title" id="navBrandTitle">BPS Global Trading</span>
           </div>
-          <span class="brand-sub">DUBAI <span class="brand-dot">•</span> MENA <span class="brand-dot">•</span> CIS</span>
+          <span class="brand-sub" id="navBrandSub">Bulk Liquid Packaging & Logistics</span>
         </div>
       </a>
 
       <nav class="main-nav" aria-label="Main Navigation">
         <ul class="header-nav">
-          <li><a href="#hero" class="nav-item-link active">Home</a></li>
-          <li><a href="#about" class="nav-item-link">About</a></li>
+          <li><a href="#hero" class="nav-item-link active" data-nav="home">Home</a></li>
+          <li><a href="#about" class="nav-item-link" data-nav="about">About</a></li>
           <li>
-            <a href="#products" class="nav-item-link">
+            <a href="#products" class="nav-item-link" data-nav="products">
               <span>Products</span>
               <svg class="nav-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </a>
           </li>
-          <li><a href="#services" class="nav-item-link">Services</a></li>
-          <li><a href="#sustainability" class="nav-item-link">Sustainability</a></li>
-          <li><a href="#certifications" class="nav-item-link">Certifications</a></li>
-          <li><a href="#faq" class="nav-item-link">FAQ</a></li>
-          <li><a href="#contact" class="nav-item-link">Contact</a></li>
+          <li><a href="#services" class="nav-item-link" data-nav="services">Services</a></li>
+          <li><a href="#sustainability" class="nav-item-link" data-nav="sustainability">Sustainability</a></li>
+          <li><a href="#certifications" class="nav-item-link" data-nav="certifications">Certifications</a></li>
+          <li><a href="#faq" class="nav-item-link" data-nav="faq">FAQ</a></li>
+          <li><a href="#contact" class="nav-item-link" data-nav="contact">Contact</a></li>
         </ul>
       </nav>
 
@@ -52,14 +51,18 @@
           <span class="pulse-dot-green"></span>
           <span id="liveClockDisplay" class="clock-display-text">DXB 00:00:00 GST</span>
         </div>
-        <a href="#calculator" class="btn-header-quote">
+        <a href="#calculator" class="btn-header-quote" id="headerQuoteBtn">
           <span>GET A QUOTE</span>
           <svg class="btn-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </a>
-        <button class="globe-icon-btn" aria-label="Region & Language" title="Dubai Hub Operations (English)">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-          <span class="globe-lang-text">EN</span>
-        </button>
+
+        <!-- Bilingual Language Switcher (EN | العربية) -->
+        <div class="lang-switch-wrap" id="langSwitchHeader" aria-label="Language Selector">
+          <button type="button" class="lang-pill-btn active" data-lang="en" id="btnLangEn" title="English">EN</button>
+          <span class="lang-sep">|</span>
+          <button type="button" class="lang-pill-btn" data-lang="ar" id="btnLangAr" title="العربية">العربية</button>
+        </div>
+
         <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle Navigation Menu">
           <span class="bar bar-1"></span>
           <span class="bar bar-2"></span>
@@ -76,28 +79,38 @@
       <div class="mobile-nav-top">
         <div class="brand-title-wrap">
           <div class="brand-title-row">
-            <span class="brand-title" style="font-size:1.05rem;">BPS GLOBAL TRADING</span>
-            <span class="brand-llc-tag">LLC</span>
+            <span class="brand-title" style="font-size:1.15rem;">BPS Global Trading</span>
           </div>
-          <span class="brand-sub">DUBAI • MENA • CIS</span>
+          <span class="brand-sub">Bulk Liquid Packaging & Logistics</span>
         </div>
         <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close Navigation Menu">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
         </button>
       </div>
+
+      <!-- Mobile Language Switcher Row -->
+      <div class="mobile-lang-row">
+        <span class="mobile-lang-label" id="mobileLangLabel">Language / اللغة:</span>
+        <div class="lang-switch-wrap">
+          <button type="button" class="lang-pill-btn active" data-lang="en" id="btnLangMobileEn">EN</button>
+          <span class="lang-sep">|</span>
+          <button type="button" class="lang-pill-btn" data-lang="ar" id="btnLangMobileAr">العربية</button>
+        </div>
+      </div>
+
       <div class="mobile-clock-row">
         <span class="pulse-dot-green"></span>
         <span id="mobileClockDisplay">DXB GST (UTC+4)</span>
       </div>
       <ul class="mobile-nav-links">
-        <li><a href="#hero" class="mobile-nav-item">Home</a></li>
-        <li><a href="#about" class="mobile-nav-item">About Us</a></li>
-        <li><a href="#products" class="mobile-nav-item">Products & Specifications</a></li>
-        <li><a href="#services" class="mobile-nav-item">Services & Supply Chain</a></li>
-        <li><a href="#sustainability" class="mobile-nav-item">Sustainability & ESG</a></li>
-        <li><a href="#certifications" class="mobile-nav-item">Certifications & Standards</a></li>
-        <li><a href="#faq" class="mobile-nav-item">Knowledge Base / FAQ</a></li>
-        <li><a href="#contact" class="mobile-nav-item">Contact Dubai Desk</a></li>
+        <li><a href="#hero" class="mobile-nav-item" data-nav="home">Home</a></li>
+        <li><a href="#about" class="mobile-nav-item" data-nav="about">About Us</a></li>
+        <li><a href="#products" class="mobile-nav-item" data-nav="products">Products & Specifications</a></li>
+        <li><a href="#services" class="mobile-nav-item" data-nav="services">Services & Supply Chain</a></li>
+        <li><a href="#sustainability" class="mobile-nav-item" data-nav="sustainability">Sustainability & ESG</a></li>
+        <li><a href="#certifications" class="mobile-nav-item" data-nav="certifications">Certifications & Standards</a></li>
+        <li><a href="#faq" class="mobile-nav-item" data-nav="faq">Knowledge Base / FAQ</a></li>
+        <li><a href="#contact" class="mobile-nav-item" data-nav="contact">Contact Dubai Desk</a></li>
       </ul>
       <div class="mobile-nav-actions">
         <a href="#calculator" class="btn-header-quote mobile-drawer-quote-btn" style="width:100%; justify-content:center;">
@@ -124,23 +137,23 @@
 
       <div class="container hero-container">
         <div class="hero-content-col">
-          <div class="hero-eyebrow-text">DUBAI • MENA • CIS</div>
-          <h1 class="hero-headline">
+          <div class="hero-eyebrow-text" id="heroEyebrow">BPS Global Trading — Bulk Liquid Solutions</div>
+          <h1 class="hero-headline" id="heroHeadline">
             Bulk liquids,<br>
             <span class="hero-orange-glow">moved with precision.</span>
           </h1>
-          <p class="hero-desc">
-            Sole regional distributor of BPS Flexitanks.<br>
-            Certified, locally stocked, fitted on-site.
+          <p class="hero-desc" id="heroDesc">
+            Official regional partner for BPS Flexitanks.<br>
+            Certified industrial quality, responsive regional supply, fitted on-site.
           </p>
 
           <div class="hero-btns">
-            <a href="#products" class="btn-hero-primary">
+            <a href="#products" class="btn-hero-primary" id="heroBtnProducts">
               <span>Explore Products</span>
               <svg class="btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
             </a>
-            <a href="#contact" class="btn-hero-secondary">
-              <span>Contact Us</span>
+            <a href="#calculator" class="btn-hero-secondary" id="heroBtnQuote">
+              <span>Request a Quote</span>
             </a>
           </div>
         </div>
@@ -149,12 +162,12 @@
           <div class="hero-delivering-card">
             <div class="widget-card-header">
               <div>
-                <div class="widget-eyebrow">GLOBAL DISTRIBUTION HUB</div>
-                <div class="widget-main-title">DUBAI • MENA • CIS<br>& 60+ COUNTRIES</div>
+                <div class="widget-eyebrow" id="widgetEyebrow">GLOBAL LOGISTICS NETWORK</div>
+                <div class="widget-main-title" id="widgetMainTitle">CONNECTING TRADE LANES<br>& 60+ COUNTRIES</div>
               </div>
               <div class="widget-live-pill">
                 <span class="pulse-dot-cyan"></span>
-                <span>LIVE HUB</span>
+                <span id="widgetLivePill">TRADE CORRIDORS</span>
               </div>
             </div>
             <div class="widget-map-box">
@@ -162,12 +175,12 @@
             </div>
             <div class="widget-telemetry-footer">
               <div class="telemetry-item">
-                <span class="telemetry-label">Jebel Ali Stock:</span>
-                <span class="telemetry-val high-stock">Ready to Dispatch</span>
+                <span class="telemetry-label" id="telemLabel1">Cargo Standard:</span>
+                <span class="telemetry-val high-stock" id="telemVal1">Non-Hazardous Liquids</span>
               </div>
               <div class="telemetry-item">
-                <span class="telemetry-label">Route Status:</span>
-                <span class="telemetry-val active">Operational 24/7</span>
+                <span class="telemetry-label" id="telemLabel2">Logistics Desk:</span>
+                <span class="telemetry-val active" id="telemVal2">Fast RFQ & Support</span>
               </div>
             </div>
           </div>
@@ -188,7 +201,7 @@
             </div>
             <div>
               <span class="stat-val-bold">60+</span>
-              <span class="stat-desc-text">Countries<br>Worldwide</span>
+              <span class="stat-desc-text" id="statDesc1">Countries<br>Worldwide</span>
             </div>
           </div>
 
@@ -199,7 +212,7 @@
             </div>
             <div>
               <span class="stat-val-bold">25+</span>
-              <span class="stat-desc-text">Years of Manufacturing<br>Leadership</span>
+              <span class="stat-desc-text" id="statDesc2">Years of Manufacturing<br>Leadership</span>
             </div>
           </div>
 
@@ -210,7 +223,7 @@
             </div>
             <div>
               <span class="stat-val-bold">ISO</span>
-              <span class="stat-desc-text">9001 · 14001 · 22000<br>Certified</span>
+              <span class="stat-desc-text" id="statDesc3">9001 · 14001 · 22000<br>Certified</span>
             </div>
           </div>
 
@@ -220,8 +233,8 @@
               <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
             </div>
             <div>
-              <span class="stat-val-bold">SOLE</span>
-              <span class="stat-desc-text">UAE Stockist & Partner<br>for BPS Flexitanks</span>
+              <span class="stat-val-bold">OFFICIAL</span>
+              <span class="stat-desc-text" id="statDesc4">Regional Partner<br>for BPS Flexitanks</span>
             </div>
           </div>
 
@@ -312,7 +325,7 @@
           <!-- 3. Wine Flexitanks -->
           <div class="product-ref-card" data-category="food" onclick="openProductModal('wine')">
             <div class="product-thumb-holder">
-              <img src="assets/img/product-foodgrade.jpg" alt="Wine Flexitanks" class="product-thumb-img">
+              <img src="assets/img/product-wine.jpg" alt="BPS Wine Flexitanks" class="product-thumb-img">
               <span class="badge-pill product-badge-float">TASTE NEUTRAL</span>
             </div>
             <div class="product-card-info">
@@ -519,25 +532,25 @@
     </section>
 
     <!-- ==========================================================================
-         ABOUT BPS GLOBAL TRADING (ENGINEERED IN INDIA. STOCKED IN DUBAI.)
+         ABOUT BPS Global Trading (ENGINEERED IN INDIA. DISTRIBUTED FROM DUBAI.)
          ========================================================================== -->
     <section class="section-about-clean" id="about">
       <div class="container">
         <div class="about-clean-grid">
           <div class="about-text-column">
-            <span class="about-eyebrow">ABOUT BPS GLOBAL TRADING</span>
-            <h2 class="about-clean-headline">
-              Engineered in India.<br>
-              Stocked in Dubai.
+            <span class="about-eyebrow" id="aboutEyebrow">About BPS Global Trading</span>
+            <h2 class="about-clean-headline" id="aboutHeadline">
+              Factory-Direct Engineering.<br>
+              Responsive Regional Distribution.
             </h2>
-            <p class="about-clean-body">
-              <strong>BPS Global Trading LLC</strong> supplies and services flexitank solutions that move bulk liquids safely, efficiently across the globe without the cost and complexity of traditional ISO tanks.
+            <p class="about-clean-body" id="aboutBody1">
+              <strong>BPS Global Trading</strong> supplies and services flexitank solutions that move bulk liquids safely and efficiently across the globe without the cost and complexity of traditional ISO tanks.
             </p>
-            <p class="about-clean-body" style="margin-top:-16px;">
-              Based in Dubai, United Arab Emirates, we are the exclusive regional stockist and distribution partner for <strong>BPS Flexitanks</strong>, a leading Indian brand manufactured by <strong>BPS Flexitanks Private Limited in Cochin, Kerala, India</strong>, a company with over two and a half decades of leadership in flexible bulk liquid packaging.
+            <p class="about-clean-body" style="margin-top:-16px;" id="aboutBody2">
+              Based in Dubai, United Arab Emirates, we are the regional distribution partner for <strong>BPS Flexitanks</strong>, a premier brand manufactured by <strong>BPS Flexitanks Private Limited in Cochin, Kerala, India</strong>, a pioneer with over two and a half decades of leadership in flexible bulk liquid packaging.
             </p>
-            <p class="about-clean-body" style="margin-top:-16px;">
-              Our role as the sole regional stockist means customers across the Middle East, North Africa and CIS region gain local stock availability, faster turnaround, and hands-on technical fitting support — without the wait and uncertainty of importing on demand.
+            <p class="about-clean-body" style="margin-top:-16px;" id="aboutBody3">
+              Our regional presence means customers across the Middle East, North Africa, CIS and international maritime lanes gain dependable supply coordination, agile turnaround, and hands-on technical fitting support.
             </p>
 
             <div class="about-features-2x2">
@@ -557,7 +570,7 @@
                 </div>
                 <div class="feat-text">
                   <h5>Regional Excellence</h5>
-                  <p>Local stock in Al Quoz, fast same-day dispatch.</p>
+                  <p>Strategic warehouse coordination in Al Quoz, Dubai for responsive dispatch.</p>
                 </div>
               </div>
 
@@ -582,7 +595,7 @@
               </div>
             </div>
 
-            <a href="#calculator" class="btn-learn-about">LEARN MORE ABOUT BPS</a>
+            <a href="#calculator" class="btn-learn-about">REQUEST QUOTE & SPECIFICATIONS</a>
           </div>
 
           <div class="about-split-banner-card">
@@ -595,8 +608,8 @@
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 </div>
                 <div>
-                  <h6>Sole UAE Stockist</h6>
-                  <p>for BPS Flexitanks across Middle East & CIS</p>
+                  <h6>Official Regional Partner</h6>
+                  <p>for BPS Flexitanks across the Middle East & CIS</p>
                 </div>
               </div>
 
@@ -605,8 +618,8 @@
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 </div>
                 <div>
-                  <h6>Large Stock in Dubai</h6>
-                  <p>Bin Dasmal Bldg, Al Quoz ready for immediate delivery</p>
+                  <h6>Regional Logistics Hub</h6>
+                  <p>Bin Dasmal Bldg, Al Quoz with coordinated dispatch & on-site fitting</p>
                 </div>
               </div>
 
@@ -1135,17 +1148,390 @@
     </section>
 
     <!-- ==========================================================================
-         CARGO CALCULATOR & ESTIMATOR (INTEGRATED RFQ ENGINE — WHITE BACKGROUND)
+         TRADITIONAL ENQUIRY FORM & RFQ SYSTEM (ENHANCED BULK LIQUID LOGISTICS)
          ========================================================================== -->
-    <section class="section-calculator" id="calculator">
+    <section class="traditional-enquiry-section" id="calculator">
       <div class="container">
         <div class="calc-header-block">
-          <span class="calc-eyebrow">FAST QUOTE SPECIFIER</span>
-          <h2 class="calc-headline">Calculate Your Liquid Cargo Requirements</h2>
-          <p class="calc-subtitle">Select your commodity, destination trade route and volume for an immediate container & valve recommendation.</p>
+          <span class="calc-eyebrow" id="enqHeaderEyebrow">TRADITIONAL RFQ & CARGO ENQUIRY</span>
+          <h2 class="calc-headline" id="enqHeaderHeadline">Flexitank Cargo Enquiry & Quotation</h2>
+          <p class="calc-subtitle" id="enqHeaderSubtitle">
+            Submit your port-to-port parameters, cargo properties, and technical flexitank specifications for a prompt formal proposal from our logistics engineering desk.
+          </p>
         </div>
 
-        <div class="calc-main-card">
+        <!-- Enquiry View Switcher -->
+        <div class="enquiry-view-switch-bar">
+          <button type="button" class="enquiry-mode-btn active" id="btnModeTraditional">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            <span id="labelModeTraditional">Traditional Enquiry Form</span>
+          </button>
+          <button type="button" class="enquiry-mode-btn" id="btnModeEstimator">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 12h8"></path><path d="M12 8v8"></path></svg>
+            <span id="labelModeEstimator">Quick Estimator</span>
+          </button>
+        </div>
+
+        <!-- 1. TRADITIONAL ENQUIRY FORM CONTAINER -->
+        <div class="enquiry-container-card" id="traditionalEnquiryWrap">
+          <form id="traditionalEnquiryForm" onsubmit="return handleEnquirySubmit(event);">
+            <div class="enquiry-form-grid">
+              <!-- Left Form Column -->
+              <div class="enquiry-form-main">
+
+                <!-- 01. Contact Details -->
+                <div class="enquiry-fieldset">
+                  <div class="enquiry-fieldset-header">
+                    <span class="enquiry-num-pill">01</span>
+                    <h3 class="enquiry-fieldset-title" id="legendContact">Shipper & Contact Information</h3>
+                  </div>
+                  <div class="enquiry-grid-2">
+                    <div class="enquiry-field-group">
+                      <label for="enqName" class="enquiry-label">
+                        <span id="lblFullName">Full Name / Contact Person</span> <span class="enquiry-required-star">*</span>
+                      </label>
+                      <input type="text" id="enqName" class="enquiry-input" placeholder="e.g. Capt. Tariq Mansoor" required>
+                    </div>
+                    <div class="enquiry-field-group">
+                      <label for="enqCompany" class="enquiry-label">
+                        <span id="lblCompany">Company / Organization</span> <span class="enquiry-required-star">*</span>
+                      </label>
+                      <input type="text" id="enqCompany" class="enquiry-input" placeholder="e.g. Petrochem International" required>
+                    </div>
+                    <div class="enquiry-field-group">
+                      <label for="enqEmail" class="enquiry-label">
+                        <span id="lblEmail">Corporate Email</span> <span class="enquiry-required-star">*</span>
+                      </label>
+                      <input type="email" id="enqEmail" class="enquiry-input" placeholder="procurement@company.com" required>
+                    </div>
+                    <div class="enquiry-field-group">
+                      <label for="enqPhone" class="enquiry-label">
+                        <span id="lblPhone">Phone / WhatsApp Number</span> <span class="enquiry-required-star">*</span>
+                      </label>
+                      <input type="tel" id="enqPhone" class="enquiry-input" placeholder="+971 50 123 4567" required>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 02. Route & Sailing Schedule -->
+                <div class="enquiry-fieldset">
+                  <div class="enquiry-fieldset-header">
+                    <span class="enquiry-num-pill">02</span>
+                    <h3 class="enquiry-fieldset-title" id="legendRoute">Trade Corridor & Sailing Schedule</h3>
+                  </div>
+                  <div class="enquiry-grid-2">
+                    <!-- Origin Port -->
+                    <div class="enquiry-field-group">
+                      <label for="enqPortFrom" class="enquiry-label">
+                        <span id="lblPortFrom">From Country / Port of Loading</span> <span class="enquiry-required-star">*</span>
+                      </label>
+                      <div class="enquiry-select-wrap">
+                        <select id="enqPortFrom" class="enquiry-select" required>
+                          <option value="Jebel Ali (AEJEA), UAE" selected>Jebel Ali (AEJEA), UAE</option>
+                          <option value="Jeddah Islamic Port (SAJED), Saudi Arabia">Jeddah Islamic Port (SAJED), Saudi Arabia</option>
+                          <option value="King Abdulaziz Port, Dammam (SADMM), Saudi Arabia">King Abdulaziz Port, Dammam (SADMM), Saudi Arabia</option>
+                          <option value="Sohar Port (OMSOH), Oman">Sohar Port (OMSOH), Oman</option>
+                          <option value="Cochin Port (INCOK), India">Cochin Port (INCOK), India</option>
+                          <option value="Nhava Sheva / JNPT (INNSA), India">Nhava Sheva / JNPT (INNSA), India</option>
+                          <option value="Qingdao Port (CNQDG), China">Qingdao Port (CNQDG), China</option>
+                          <option value="Shanghai Port (CNSHA), China">Shanghai Port (CNSHA), China</option>
+                          <option value="Port of Singapore (SGSIN), Singapore">Port of Singapore (SGSIN), Singapore</option>
+                          <option value="Port of Rotterdam (NLRTM), Netherlands">Port of Rotterdam (NLRTM), Netherlands</option>
+                          <option value="Baku Port (AZBAK), Azerbaijan">Baku Port (AZBAK), Azerbaijan</option>
+                          <option value="Aktau Port (KZAKT), Kazakhstan">Aktau Port (KZAKT), Kazakhstan</option>
+                          <option value="Other / Custom Origin Port">Other / Custom Origin Port</option>
+                        </select>
+                        <span class="enquiry-select-arrow">▼</span>
+                      </div>
+                    </div>
+
+                    <!-- Destination Port -->
+                    <div class="enquiry-field-group">
+                      <label for="enqPortTo" class="enquiry-label">
+                        <span id="lblPortTo">To Country / Port of Discharge</span> <span class="enquiry-required-star">*</span>
+                      </label>
+                      <div class="enquiry-select-wrap">
+                        <select id="enqPortTo" class="enquiry-select" required>
+                          <option value="Port of Rotterdam (NLRTM), Netherlands" selected>Port of Rotterdam (NLRTM), Netherlands</option>
+                          <option value="Port of Antwerp (BEANR), Belgium">Port of Antwerp (BEANR), Belgium</option>
+                          <option value="Jebel Ali (AEJEA), UAE">Jebel Ali (AEJEA), UAE</option>
+                          <option value="Jeddah Islamic Port (SAJED), Saudi Arabia">Jeddah Islamic Port (SAJED), Saudi Arabia</option>
+                          <option value="King Abdulaziz Port, Dammam (SADMM), Saudi Arabia">King Abdulaziz Port, Dammam (SADMM), Saudi Arabia</option>
+                          <option value="Sohar Port (OMSOH), Oman">Sohar Port (OMSOH), Oman</option>
+                          <option value="Alexandria / Port Said (EGALY), Egypt">Alexandria / Port Said (EGALY), Egypt</option>
+                          <option value="Baku Port (AZBAK), Azerbaijan">Baku Port (AZBAK), Azerbaijan</option>
+                          <option value="Tashkent / CIS Rail, Uzbekistan">Tashkent / CIS Rail, Uzbekistan</option>
+                          <option value="Aktau / Almaty (KZAKT), Kazakhstan">Aktau / Almaty (KZAKT), Kazakhstan</option>
+                          <option value="Port of Singapore (SGSIN), Singapore">Port of Singapore (SGSIN), Singapore</option>
+                          <option value="Nhava Sheva (INNSA) / Cochin (INCOK), India">Nhava Sheva (INNSA) / Cochin (INCOK), India</option>
+                          <option value="Mombasa Port (KEMBA), Kenya">Mombasa Port (KEMBA), Kenya</option>
+                          <option value="Durban Port (ZADUR), South Africa">Durban Port (ZADUR), South Africa</option>
+                          <option value="Other / Custom Destination Port">Other / Custom Destination Port</option>
+                        </select>
+                        <span class="enquiry-select-arrow">▼</span>
+                      </div>
+                    </div>
+
+                    <!-- Date of Sailing -->
+                    <div class="enquiry-field-group">
+                      <label for="enqDate" class="enquiry-label">
+                        <span id="lblSailingDate">Estimated Date of Sailing / Readiness</span> <span class="enquiry-required-star">*</span>
+                      </label>
+                      <input type="date" id="enqDate" class="enquiry-input" required>
+                    </div>
+
+                    <!-- Cargo Volume / Containers -->
+                    <div class="enquiry-field-group">
+                      <label for="enqVolume" class="enquiry-label">
+                        <span id="lblEstVolume">Estimated Volume / Containers</span> <span class="enquiry-required-star">*</span>
+                      </label>
+                      <div class="enquiry-select-wrap">
+                        <select id="enqVolume" class="enquiry-select" required>
+                          <option value="1 Container (20ft FCL — ~24,000 L)" selected>1 Container (20ft FCL — ~24,000 L)</option>
+                          <option value="2 to 5 Containers (48k – 120k L)">2 to 5 Containers (48k – 120k L)</option>
+                          <option value="6 to 10 Containers (144k – 240k L)">6 to 10 Containers (144k – 240k L)</option>
+                          <option value="11 to 20 Containers (264k – 480k L)">11 to 20 Containers (264k – 480k L)</option>
+                          <option value="20+ Containers (Annual Contract / Ongoing)">20+ Containers (Annual Contract / Ongoing)</option>
+                        </select>
+                        <span class="enquiry-select-arrow">▼</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 03. Liquid Cargo Specifications -->
+                <div class="enquiry-fieldset">
+                  <div class="enquiry-fieldset-header">
+                    <span class="enquiry-num-pill">03</span>
+                    <h3 class="enquiry-fieldset-title" id="legendCargo">Type of Cargo (Liquid Commodity)</h3>
+                  </div>
+                  <div class="enquiry-grid-3">
+                    <div class="enquiry-field-group">
+                      <label for="enqCargo" class="enquiry-label">
+                        <span id="lblCargoType">Liquid Commodity</span> <span class="enquiry-required-star">*</span>
+                      </label>
+                      <div class="enquiry-select-wrap">
+                        <select id="enqCargo" class="enquiry-select" required>
+                          <option value="Base Oils & Lubricants" selected>Base Oils & Lubricants</option>
+                          <option value="Edible Oils (Palm, Sunflower, Olive)">Edible Oils (Palm, Sunflower, Olive)</option>
+                          <option value="Bitumen & Hot Asphalt (130°C)">Bitumen & Hot Asphalt (130°C)</option>
+                          <option value="Industrial Chemicals (Non-Hazardous)">Industrial Chemicals (Non-Hazardous)</option>
+                          <option value="Bulk Wine, Must & Spirits (EVOH)">Bulk Wine, Must & Spirits (EVOH)</option>
+                          <option value="Dairy, Juices & Liquid Food">Dairy, Juices & Liquid Food</option>
+                          <option value="Fatty Acids, Glycerine & Bio-Fuels">Fatty Acids, Glycerine & Bio-Fuels</option>
+                          <option value="Liquid Fertilizer & Agriculture">Liquid Fertilizer & Agriculture</option>
+                          <option value="Other Non-Hazardous Liquid">Other Non-Hazardous Liquid</option>
+                        </select>
+                        <span class="enquiry-select-arrow">▼</span>
+                      </div>
+                    </div>
+
+                    <div class="enquiry-field-group">
+                      <label for="enqDensity" class="enquiry-label">
+                        <span id="lblDensity">Specific Gravity / Density</span>
+                      </label>
+                      <input type="text" id="enqDensity" class="enquiry-input" placeholder="e.g. 0.89 g/cm³ or 32 cSt">
+                    </div>
+
+                    <div class="enquiry-field-group">
+                      <label for="enqTemp" class="enquiry-label">
+                        <span id="lblLoadingTemp">Loading Temp (°C)</span>
+                      </label>
+                      <input type="text" id="enqTemp" class="enquiry-input" placeholder="e.g. Ambient 25°C / 60°C">
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 04. Technical Flexitank Specifications -->
+                <div class="enquiry-fieldset">
+                  <div class="enquiry-fieldset-header">
+                    <span class="enquiry-num-pill">04</span>
+                    <h3 class="enquiry-fieldset-title" id="legendSpecs">Technical Flexitank Engineering</h3>
+                  </div>
+                  <div class="enquiry-grid-3">
+                    <!-- Valve Fixing -->
+                    <div class="enquiry-field-group">
+                      <label for="enqValve" class="enquiry-label">
+                        <span id="lblValveType">Type of Valve Fixing</span> <span class="enquiry-required-star">*</span>
+                      </label>
+                      <div class="enquiry-select-wrap">
+                        <select id="enqValve" class="enquiry-select" required>
+                          <option value="3\" Bottom Camlock Ball Valve (Standard)" selected>3" Bottom Camlock Ball Valve (Standard)</option>
+                          <option value="3\" Bottom Camlock Butterfly Valve">3" Bottom Camlock Butterfly Valve</option>
+                          <option value="Dual Valve: 3\" Top Load + 3\" Bottom Discharge">Dual Valve: 3" Top Load + 3" Bottom Discharge</option>
+                          <option value="2\" Bottom Discharge Camlock Valve">2" Bottom Discharge Camlock Valve</option>
+                          <option value="High-Flow Sanitary Stainless Steel Valve">Sanitary Stainless Steel Valve</option>
+                          <option value="Custom Valve Specification">Custom Valve Specification</option>
+                        </select>
+                        <span class="enquiry-select-arrow">▼</span>
+                      </div>
+                    </div>
+
+                    <!-- Number of Layers -->
+                    <div class="enquiry-field-group">
+                      <label for="enqLayers" class="enquiry-label">
+                        <span id="lblLayers">Number of Layers</span> <span class="enquiry-required-star">*</span>
+                      </label>
+                      <div class="enquiry-select-wrap">
+                        <select id="enqLayers" class="enquiry-select" required>
+                          <option value="4-Layer Food Grade PE + 1 PP Outer (Standard 24K)" selected>4-Layer Food Grade PE + 1 PP Outer (Standard)</option>
+                          <option value="3-Layer Heavy-Duty PE + 1 Seamless PP Outer">3-Layer Heavy-Duty PE + 1 Seamless PP Outer</option>
+                          <option value="5-Layer Multi-Layer with EVOH Oxygen Barrier">5-Layer Multi-Layer with EVOH Oxygen Barrier</option>
+                          <option value="High-Temp Heat-Resistant Multi-Layer (Bitumen 130°C)">High-Temp Multi-Layer (Bitumen 130°C)</option>
+                          <option value="Specialized Custom Layer Configuration">Specialized Custom Layer Composition</option>
+                        </select>
+                        <span class="enquiry-select-arrow">▼</span>
+                      </div>
+                    </div>
+
+                    <!-- Bulkhead -->
+                    <div class="enquiry-field-group">
+                      <label for="enqBulkhead" class="enquiry-label">
+                        <span id="lblBulkhead">Bulkhead Securing</span>
+                      </label>
+                      <div class="enquiry-select-wrap">
+                        <select id="enqBulkhead" class="enquiry-select">
+                          <option value="Heavy-Duty Steel Bulkhead (5-6 Galvanized Bars)" selected>Steel Bulkhead (5-6 Galvanized Bars)</option>
+                          <option value="High-Strength Corrugated Paper Bulkhead">High-Strength Corrugated Paper Bulkhead</option>
+                          <option value="One-Piece Quick-Fit Steel Frame">One-Piece Quick-Fit Steel Frame</option>
+                        </select>
+                        <span class="enquiry-select-arrow">▼</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 05. Additional Requirements & Accessories -->
+                <div class="enquiry-fieldset">
+                  <div class="enquiry-fieldset-header">
+                    <span class="enquiry-num-pill">05</span>
+                    <h3 class="enquiry-fieldset-title" id="legendAddons">Additional Requirements & Accessories</h3>
+                  </div>
+                  <div class="enquiry-checkbox-grid">
+                    <label class="enquiry-check-card">
+                      <input type="checkbox" id="chkHeatingPad" value="Heating Pad (Steam / Hot Water)">
+                      <div class="enquiry-check-text">
+                        <span class="enquiry-check-title" id="txtHeatPadTitle">Heating Pad (Steam / Hot Water)</span>
+                        <span class="enquiry-check-desc" id="txtHeatPadDesc">For high-viscosity discharge (wax, palm oil, heavy syrups).</span>
+                      </div>
+                    </label>
+
+                    <label class="enquiry-check-card">
+                      <input type="checkbox" id="chkAirVent" value="Automatic Air Ventilation Valve">
+                      <div class="enquiry-check-text">
+                        <span class="enquiry-check-title" id="txtVentTitle">Automatic Air Ventilation Valve</span>
+                        <span class="enquiry-check-desc" id="txtVentDesc">Automatic pressure release for fermenting / outgassing liquids.</span>
+                      </div>
+                    </label>
+
+                    <label class="enquiry-check-card">
+                      <input type="checkbox" id="chkThermalLiner" value="Thermal Insulation Blanket Liner">
+                      <div class="enquiry-check-text">
+                        <span class="enquiry-check-title" id="txtThermalTitle">Thermal Insulation Blanket Liner</span>
+                        <span class="enquiry-check-desc" id="txtThermalDesc">Protects temperature-critical cargo across cold / desert routes.</span>
+                      </div>
+                    </label>
+
+                    <label class="enquiry-check-card">
+                      <input type="checkbox" id="chkPaperLining" value="Corrugated Floor & Wall Kraft Paper" checked>
+                      <div class="enquiry-check-text">
+                        <span class="enquiry-check-title" id="txtPaperTitle">Floor & Wall Protection Paper</span>
+                        <span class="enquiry-check-desc" id="txtPaperDesc">Heavy corrugated kraft paper protecting container interior.</span>
+                      </div>
+                    </label>
+
+                    <label class="enquiry-check-card">
+                      <input type="checkbox" id="chkFitting" value="On-Site Technical Fitting & Installation">
+                      <div class="enquiry-check-text">
+                        <span class="enquiry-check-title" id="txtFittingTitle">On-Site Technical Fitting Service</span>
+                        <span class="enquiry-check-desc" id="txtFittingDesc">Certified BPS technical teams dispatched to your container depot.</span>
+                      </div>
+                    </label>
+
+                    <label class="enquiry-check-card">
+                      <input type="checkbox" id="chkInsurance" value="Marine Cargo Insurance Coverage">
+                      <div class="enquiry-check-text">
+                        <span class="enquiry-check-title" id="txtInsuranceTitle">Marine Cargo Insurance</span>
+                        <span class="enquiry-check-desc" id="txtInsuranceDesc">Tailored ocean bulk liquid cargo insurance policy.</span>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- 06. Additional Shipment Notes -->
+                <div class="enquiry-fieldset">
+                  <div class="enquiry-fieldset-header">
+                    <span class="enquiry-num-pill">06</span>
+                    <h3 class="enquiry-fieldset-title" id="legendNotes">Special Instructions & Handling Notes</h3>
+                  </div>
+                  <div class="enquiry-field-group">
+                    <textarea id="enqNotes" class="enquiry-textarea" rows="3" placeholder="Enter special chemical handling notes, pump discharge specifications, container depot location, or target voyage timeline..."></textarea>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Right Summary & Action Column -->
+              <div class="enquiry-summary-column">
+                <div class="enquiry-summary-card">
+                  <div class="enquiry-summary-badge" id="rfqBadge">CARGO SPECIFICATION SUMMARY</div>
+                  <h4 class="enquiry-summary-title" id="rfqTitle">RFQ Manifest</h4>
+
+                  <div class="enquiry-spec-list">
+                    <div class="enquiry-spec-row">
+                      <span class="enquiry-spec-k" id="lblSummRoute">Route:</span>
+                      <span class="enquiry-spec-v" id="summRoute">Jebel Ali → Rotterdam</span>
+                    </div>
+                    <div class="enquiry-spec-row">
+                      <span class="enquiry-spec-k" id="lblSummSailing">Sailing Date:</span>
+                      <span class="enquiry-spec-v" id="summSailing">Upon Request</span>
+                    </div>
+                    <div class="enquiry-spec-row">
+                      <span class="enquiry-spec-k" id="lblSummCargo">Cargo Type:</span>
+                      <span class="enquiry-spec-v" id="summCargo">Base Oils & Lubricants</span>
+                    </div>
+                    <div class="enquiry-spec-row">
+                      <span class="enquiry-spec-k" id="lblSummVolume">Containers:</span>
+                      <span class="enquiry-spec-v" id="summVolume">1 x 20ft Container</span>
+                    </div>
+                    <div class="enquiry-spec-row">
+                      <span class="enquiry-spec-k" id="lblSummValve">Valve Fixing:</span>
+                      <span class="enquiry-spec-v" id="summValve">3" Bottom Camlock Ball</span>
+                    </div>
+                    <div class="enquiry-spec-row">
+                      <span class="enquiry-spec-k" id="lblSummLayers">Layers:</span>
+                      <span class="enquiry-spec-v" id="summLayers">4-Layer Food Grade PE</span>
+                    </div>
+                    <div class="enquiry-spec-row">
+                      <span class="enquiry-spec-k" id="lblSummAddons">Accessories:</span>
+                      <span class="enquiry-spec-v" id="summAddons">Floor Paper</span>
+                    </div>
+                  </div>
+
+                  <div class="enquiry-actions">
+                    <button type="submit" class="btn-enquiry-submit" id="btnSubmitEnquiry">
+                      <span id="txtSubmitEnquiry">Submit Official Enquiry</span>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </button>
+
+                    <a href="#" class="btn-enquiry-wa" id="btnEnquiryWhatsApp" target="_blank">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                      <span id="txtWaEnquiry">Send via WhatsApp Desk</span>
+                    </a>
+
+                    <a href="#" class="btn-enquiry-email" id="btnEnquiryEmail">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                      <span id="txtEmailEnquiry">Request Email RFQ</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- 2. QUICK ESTIMATOR CONTAINER (TAB 2) -->
+        <div class="calc-main-card" id="quickEstimatorWrap" style="display:none; margin-top:20px;">
           <div class="calc-form-column">
             <!-- Step 1: Commodity Selection -->
             <div class="calc-field-group">
@@ -1268,6 +1654,21 @@
       </div>
     </section>
 
+    <!-- RFQ Submission Success Modal -->
+    <div class="enquiry-modal-backdrop" id="enquirySuccessModal" role="dialog" aria-modal="true">
+      <div class="enquiry-modal-dialog">
+        <div class="enquiry-success-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <h3 class="enquiry-modal-title" id="modalSuccessTitle">Enquiry Submitted Successfully</h3>
+        <div class="enquiry-modal-ref" id="modalSuccessRef">RFQ-2026-BPS-4819</div>
+        <p class="enquiry-modal-desc" id="modalSuccessDesc">
+          Thank you for your bulk liquid cargo enquiry. Our logistics engineering team has received your technical parameters and will prepare a certified quotation within 2 business hours.
+        </p>
+        <button type="button" class="enquiry-modal-close-btn" onclick="closeEnquiryModal()">OK, Understood</button>
+      </div>
+    </div>
+
     <!-- ==========================================================================
          FAQ SECTION: ALL 10 PRESERVED QUESTIONS & ANSWERS (KNOWLEDGE BASE)
          ========================================================================== -->
@@ -1278,8 +1679,8 @@
           <div class="faq-sidebar-sticky">
             <span class="faq-section-tag">KNOWLEDGE BASE</span>
             <h2 class="faq-headline">Frequently Asked Questions</h2>
-            <p class="faq-subtext">
-              Clear guidance on bulk liquid flexitank operations, container suitability, freight economics, global audit certifications, and regional stock availability across Dubai, MENA, and CIS.
+            <p class="faq-subtext" id="faqSubtext">
+              Clear guidance on bulk liquid flexitank operations, container suitability, freight economics, global audit certifications, and regional distribution across key maritime trade corridors.
             </p>
 
             <!-- Interactive Category Filter Tabs -->
@@ -1509,7 +1910,7 @@
               </summary>
               <div class="faq-answer-content">
                 <p class="faq-answer-text">
-                  As the exclusive UAE, MENA & CIS stocking partner for BPS Flexitanks (manufactured by our factory in Kochi, India), we maintain ready stock in <strong>Dubai</strong> for same-day dispatch, provide on-site technical fitting across Gulf ports, train client loading crews, and offer 100% manufacturer warranty backing on every shipment.
+                  As the official regional distribution partner for BPS Flexitanks (manufactured by our factory in Kochi, India), we coordinate regional supply from Dubai, provide on-site technical fitting across Gulf ports, train client loading crews, and offer full manufacturer warranty backing on every shipment.
                 </p>
               </div>
             </details>
@@ -1554,11 +1955,11 @@
             </div>
           </div>
 
-          <!-- Right Column: Dubai Headquarters Glass Card -->
+          <!-- Right Column: Dubai Regional Office Glass Card -->
           <div class="footer-contact-card">
             <div class="footer-card-badge">
               <span class="pulse-dot-emerald"></span>
-              <span>DUBAI HEADQUARTERS & STOCK HUB</span>
+              <span id="footerCardBadge">DUBAI REGIONAL OFFICE & LOGISTICS DESK</span>
             </div>
 
             <div class="contact-info-list">
@@ -1568,7 +1969,7 @@
                 </div>
                 <div>
                   <div class="contact-entity-title">BPS Global Trading LLC</div>
-                  <div class="contact-entity-text">
+                  <div class="contact-entity-text" id="contactEntityAddress">
                     Bin Dasmal Building, Al Quoz Industrial First<br>
                     P.O. Box 282559, Dubai – United Arab Emirates
                   </div>
@@ -1580,7 +1981,7 @@
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                 </div>
                 <div>
-                  <div class="contact-entity-title">Direct Operations & 24/7 WhatsApp</div>
+                  <div class="contact-entity-title" id="contactEntityPhoneTitle">Direct Operations & 24/7 WhatsApp</div>
                   <div class="contact-entity-text">
                     <a href="tel:+971506718052" class="contact-link">+971 50 671 8052</a>
                     <span class="contact-sep">•</span>
@@ -1594,7 +1995,7 @@
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                 </div>
                 <div>
-                  <div class="contact-entity-title">Commercial & RFQ Correspondence</div>
+                  <div class="contact-entity-title" id="contactEntityEmailTitle">Commercial & RFQ Correspondence</div>
                   <div class="contact-entity-text">
                     <a href="mailto:sales@bpsglobaltrading.com" class="contact-link">sales@bpsglobaltrading.com</a><br>
                     <a href="https://bpsglobaltrading.com" target="_blank" class="contact-link-orange">www.bpsglobaltrading.com</a>
@@ -1606,18 +2007,18 @@
             <div class="footer-card-footer">
               <span class="footer-stock-status">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>Same-Day Stock Loading from Jebel Ali & Dubai</span>
+                <span id="footerStockStatus">Coordinated Regional Supply & Technical Fitting from Jebel Ali & Dubai</span>
               </span>
             </div>
           </div>
         </div>
 
         <div class="footer-copyright-bar">
-          <div class="copyright-text">
-            © 2026 <strong>BPS Global Trading L.L.C.</strong> All rights reserved.
+          <div class="copyright-text" id="footerCopyright">
+            © 2026 <strong>BPS Global Trading</strong>. All rights reserved.
           </div>
-          <div class="footer-accreditation">
-            Sole Stockist & Distribution Partner for BPS Flexitanks (Cochin, India) • ISO 9001 · 14001 · 22000 Certified
+          <div class="footer-accreditation" id="footerAccreditation">
+            Official Regional Partner for BPS Flexitanks (Cochin, India) • ISO 9001 · 14001 · 22000 Certified
           </div>
         </div>
       </div>
