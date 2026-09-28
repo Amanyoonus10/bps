@@ -4047,10 +4047,28 @@ h1, h2, h3, h4, h5, h6 {
   /* Global Spacing & Container */
   .container,
   .container-narrow {
-    padding: 0 18px;
+    padding: 0 16px;
     overflow-x: hidden;
   }
   
+  /* Mobile Background Fix: Use scroll instead of fixed to prevent iOS Safari stutter and excessive zoom */
+  .section-faq,
+  .traditional-enquiry-section,
+  .section-calculator {
+    background-attachment: scroll !important;
+    background-position: center center !important;
+    background-size: cover !important;
+  }
+
+  /* Prevent iOS automatic zoom on form input focus (requires >=16px) */
+  .enquiry-input,
+  .enquiry-select,
+  .enquiry-textarea,
+  .calc-dropdown-select,
+  .faq-search-input {
+    font-size: 16px !important;
+  }
+
   .section-products,
   .section-global-reach,
   .section-about-clean,
@@ -4059,12 +4077,12 @@ h1, h2, h3, h4, h5, h6 {
   .section-calculator,
   .traditional-enquiry-section,
   .section-faq {
-    padding: 60px 0 70px;
+    padding: 50px 0 60px;
     overflow-x: hidden;
   }
 
   .site-footer-ref {
-    padding: 60px 0 35px;
+    padding: 55px 0 35px;
   }
 
   /* Carousel Navigation buttons - hidden on touch devices */
@@ -4110,6 +4128,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.813rem;
     border-radius: 100px;
     box-sizing: border-box;
+    min-height: 42px;
   }
 
   /* FAQ Support Card in Mobile View */
@@ -4152,8 +4171,8 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 12px;
   }
   .faq-summary {
-    padding: 18px 18px;
-    gap: 14px;
+    padding: 16px 16px;
+    gap: 12px;
     width: 100%;
     box-sizing: border-box;
   }
@@ -4162,7 +4181,7 @@ h1, h2, h3, h4, h5, h6 {
     flex: 1;
   }
   .faq-question-title {
-    font-size: 0.98rem;
+    font-size: 0.95rem;
     line-height: 1.35;
     word-break: break-word;
   }
@@ -4171,25 +4190,118 @@ h1, h2, h3, h4, h5, h6 {
     height: 32px;
     flex-shrink: 0;
   }
+  .faq-answer-content {
+    padding: 0 16px 18px 16px;
+  }
+  .faq-answer-text {
+    font-size: 0.88rem;
+    line-height: 1.65;
+  }
 
   /* Traditional Enquiry Form Card & Summary Mobile Optimizations */
+  .enquiry-view-switch-bar {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 4px !important;
+    margin-bottom: 22px !important;
+    box-sizing: border-box !important;
+  }
+  .enquiry-mode-btn {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 10px 8px !important;
+    font-size: 0.8rem !important;
+    white-space: nowrap !important;
+    min-height: 44px !important;
+    box-sizing: border-box !important;
+  }
   .enquiry-container-card {
-    padding: 24px 16px;
-    border-radius: 16px;
-    width: 100%;
-    box-sizing: border-box;
+    padding: 18px 14px !important;
+    border-radius: 14px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .enquiry-form-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+    width: 100% !important;
+  }
+  .enquiry-form-main {
+    gap: 16px !important;
+    width: 100% !important;
   }
   .enquiry-fieldset {
-    padding: 16px 14px;
-    border-radius: 10px;
+    padding: 16px 14px !important;
+    border-radius: 10px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
-  .enquiry-summary-card {
-    padding: 20px 16px;
+  .enquiry-fieldset-header {
+    margin-bottom: 14px !important;
+    padding-bottom: 8px !important;
+  }
+  .enquiry-fieldset-title {
+    font-size: 0.95rem !important;
+  }
+  .enquiry-num-pill {
+    width: 26px !important;
+    height: 26px !important;
+    font-size: 0.72rem !important;
+  }
+  .enquiry-grid-2,
+  .enquiry-grid-cargo,
+  .enquiry-grid-specs {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  .enquiry-field-cargo-main {
+    grid-column: span 1 !important;
+  }
+  .enquiry-checkbox-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .enquiry-check-card {
+    padding: 12px 14px !important;
+    min-height: 48px !important;
   }
   .enquiry-input,
   .enquiry-select {
-    height: 46px;
-    font-size: 0.88rem;
+    height: 48px !important;
+    font-size: 16px !important;
+  }
+  .enquiry-summary-column {
+    position: static !important;
+    top: auto !important;
+    width: 100% !important;
+    margin-top: 10px !important;
+  }
+  .enquiry-summary-card {
+    padding: 20px 14px !important;
+    border-radius: 12px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .enquiry-summary-title {
+    font-size: 1.25rem !important;
+  }
+  .enquiry-spec-row {
+    padding: 8px 10px !important;
+    font-size: 0.8rem !important;
+  }
+  .btn-enquiry-submit {
+    height: 48px !important;
+    font-size: 0.92rem !important;
+  }
+  .btn-enquiry-wa,
+  .btn-enquiry-email {
+    height: 46px !important;
+    font-size: 0.85rem !important;
   }
 
   /* Product Filter Pills - Smooth Swipe */
@@ -4214,6 +4326,21 @@ h1, h2, h3, h4, h5, h6 {
     white-space: nowrap;
     padding: 7px 16px;
     font-size: 0.8rem;
+    min-height: 40px;
+  }
+
+  .products-side-scroll {
+    gap: 16px !important;
+    padding: 6px 2px 20px 2px !important;
+    scrollbar-width: none !important;
+  }
+  .products-side-scroll::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  /* Reach Left Content */
+  .reach-left-content {
+    max-width: 100% !important;
   }
 
   /* Modals */
@@ -4235,6 +4362,18 @@ h1, h2, h3, h4, h5, h6 {
   }
   .modal-product-title {
     font-size: 1.5rem;
+  }
+
+  /* Mobile Nav Toggle Minimum 44px Touch Target */
+  .mobile-nav-toggle {
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+  }
+  .mobile-nav-close {
+    width: 44px !important;
+    height: 44px !important;
   }
 
   /* Mobile Floating Quick Action Dock */
