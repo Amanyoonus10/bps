@@ -172,31 +172,33 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1520px;
+  width: 100%;
+  max-width: 1560px;
   margin: 0 auto;
-  padding: 0 clamp(16px, 2.5vw, 36px);
-  gap: clamp(12px, 2vw, 28px);
+  padding: 0 clamp(14px, 2vw, 30px);
+  gap: clamp(8px, 1.2vw, 18px);
   height: 100%;
+  box-sizing: border-box;
 }
 
 /* Brand Link & Logo Frame - Inspired by Maersk High-Contrast Prominent Corporate Branding */
 .brand-link {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   text-decoration: none;
   flex-shrink: 0;
 }
 
 .brand-logo-frame {
-  width: 52px;
-  height: 52px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
   background: #FFFFFF;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2.5px;
+  padding: 2px;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45), 0 0 0 2px rgba(255, 255, 255, 0.95), 0 0 20px rgba(56, 189, 248, 0.35);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   flex-shrink: 0;
@@ -218,7 +220,7 @@ h1, h2, h3, h4, h5, h6 {
 .brand-title-wrap {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 1px;
 }
 
 .brand-title-row {
@@ -230,7 +232,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .brand-title {
   font-family: var(--font-display);
-  font-size: 1.28rem;
+  font-size: 1.2rem;
   font-weight: 800;
   color: #FFFFFF;
   letter-spacing: -0.015em;
@@ -244,9 +246,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .brand-sub {
   font-family: var(--font-main);
-  font-size: 0.65rem;
+  font-size: 0.63rem;
   color: #93C5FD;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   font-weight: 600;
   text-transform: uppercase;
   line-height: 1.2;
@@ -262,14 +264,15 @@ h1, h2, h3, h4, h5, h6 {
 .main-nav {
   display: flex;
   align-items: center;
-  flex: 1;
+  flex: 1 1 auto;
   justify-content: center;
+  min-width: 0;
 }
 
 .header-nav {
   display: flex;
   align-items: center;
-  gap: clamp(2px, 0.5vw, 10px);
+  gap: clamp(1px, 0.45vw, 6px);
   list-style: none;
   margin: 0;
   padding: 0;
@@ -279,13 +282,13 @@ h1, h2, h3, h4, h5, h6 {
   color: #94A3B8;
   text-decoration: none;
   font-family: var(--font-display);
-  font-size: clamp(0.81rem, 0.85vw, 0.86rem);
+  font-size: clamp(0.77rem, 0.78vw, 0.82rem);
   font-weight: 600;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  padding: 6px clamp(6px, 0.75vw, 11px);
+  gap: 3px;
+  padding: 5px clamp(5px, 0.55vw, 8px);
   border-radius: 8px;
   position: relative;
   white-space: nowrap;
@@ -306,19 +309,19 @@ h1, h2, h3, h4, h5, h6 {
   content: '';
   position: absolute;
   bottom: 0;
-  left: 10px;
-  right: 10px;
+  left: 8px;
+  right: 8px;
   height: 2px;
   background: #38BDF8;
   border-radius: 2px;
   box-shadow: 0 0 8px #38BDF8;
 }
 
-/* Header Right Actions - Unified 38px Capsule Group */
+/* Header Right Actions - Unified 36px Capsule Group */
 .header-right {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
   flex-shrink: 0;
 }
 
@@ -326,15 +329,15 @@ h1, h2, h3, h4, h5, h6 {
 .header-call-btn {
   white-space: nowrap;
   font-family: var(--font-mono);
-  font-size: 0.76rem;
+  font-size: 0.73rem;
   font-weight: 700;
   color: #38BDF8;
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  padding: 0 13px;
-  height: 38px;
-  background: rgba(10, 18, 38, 0.82);
+  gap: 6px;
+  padding: 0 11px;
+  height: 36px;
+  background: rgba(10, 18, 38, 0.85);
   border: 1px solid rgba(56, 189, 248, 0.35);
   border-radius: 100px;
   text-decoration: none;
@@ -344,10 +347,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .header-call-btn:hover {
-  background: rgba(56, 189, 248, 0.18);
+  background: rgba(56, 189, 248, 0.2);
   border-color: #38BDF8;
   color: #FFFFFF;
-  transform: translateY(-1.5px);
+  transform: translateY(-1px);
   box-shadow: 0 4px 16px rgba(56, 189, 248, 0.4);
 }
 
@@ -358,20 +361,20 @@ h1, h2, h3, h4, h5, h6 {
 
 .header-call-btn:hover .header-call-icon {
   color: #FFFFFF;
-  transform: rotate(15deg) scale(1.12);
+  transform: rotate(15deg) scale(1.1);
 }
 
 /* Live Dubai Clock Tag */
 .header-clock-tag {
   white-space: nowrap;
   font-family: var(--font-mono);
-  font-size: 0.74rem;
+  font-size: 0.71rem;
   color: #CBD5E1;
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  padding: 0 12px;
-  height: 38px;
+  gap: 6px;
+  padding: 0 10px;
+  height: 36px;
   background: rgba(10, 18, 38, 0.75);
   border: 1px solid rgba(56, 189, 248, 0.22);
   border-radius: 100px;
@@ -412,16 +415,16 @@ h1, h2, h3, h4, h5, h6 {
   100% { transform: scale(2.4); opacity: 0; }
 }
 
-/* Bilingual Language Switcher (EN | العربية) - Unified 38px Pill */
+/* Bilingual Language Switcher (EN | العربية) - Unified 36px Pill */
 .lang-switch-wrap {
   display: inline-flex;
   align-items: center;
   background: rgba(10, 18, 38, 0.75);
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 100px;
-  padding: 3px 5px 3px 10px;
-  gap: 4px;
-  height: 38px;
+  padding: 3px 5px 3px 8px;
+  gap: 3px;
+  height: 36px;
   box-sizing: border-box;
   flex-shrink: 0;
   backdrop-filter: blur(12px);
@@ -450,9 +453,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .lang-divider {
-  color: rgba(255, 255, 255, 0.22);
+  color: rgba(255, 255, 255, 0.2);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 400;
   user-select: none;
   line-height: 1;
@@ -460,19 +463,19 @@ h1, h2, h3, h4, h5, h6 {
 
 .lang-pill-btn {
   background: transparent;
-  border: none;
+  border: 1px solid transparent;
   color: #94A3B8;
   font-family: var(--font-mono);
-  font-size: 0.73rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  padding: 0 10px;
+  padding: 0 8px;
   height: 28px;
   border-radius: 100px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.2s ease;
   line-height: 1;
   white-space: nowrap;
   outline: none;
@@ -483,8 +486,9 @@ h1, h2, h3, h4, h5, h6 {
 .lang-pill-btn#btnLangAr,
 .lang-pill-btn#btnLangMobileAr {
   font-family: 'Cairo', var(--font-sans);
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 700;
+  padding: 0 8px;
 }
 
 .lang-pill-btn:hover {
@@ -494,7 +498,8 @@ h1, h2, h3, h4, h5, h6 {
 .lang-pill-btn.active {
   background: linear-gradient(135deg, #1D4ED8 0%, #2563EB 100%);
   color: #FFFFFF;
-  box-shadow: 0 0 0 2px #FFFFFF, 0 2px 10px rgba(29, 78, 216, 0.65);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 2px 8px rgba(29, 78, 216, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 /* CTA "Get a Quote" Button - Pill Shape */
@@ -743,20 +748,37 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Header Responsive Breakpoints */
-@media (max-width: 1340px) {
+@media (max-width: 1420px) {
   .header-clock-tag {
-    padding: 0 10px;
-    font-size: 0.7rem;
+    padding: 0 8px;
+    font-size: 0.68rem;
+  }
+  .header-call-btn {
+    padding: 0 9px;
+    font-size: 0.71rem;
+  }
+  .nav-item-link {
+    padding: 5px 6px;
+    font-size: 0.78rem;
   }
 }
 
-@media (max-width: 1220px) {
+@media (max-width: 1320px) {
+  /* On medium laptops (<=1320px), hide clock to ensure Call Button + Lang Switcher + Navigation fit with ample padding */
   .header-clock-tag {
     display: none;
   }
+  .brand-title {
+    font-size: 1.15rem;
+  }
+  .brand-logo-frame {
+    width: 42px;
+    height: 42px;
+  }
 }
 
-@media (max-width: 1080px) {
+@media (max-width: 1160px) {
+  /* Switch to mobile drawer hamburger menu before nav links can collide */
   .main-nav {
     display: none;
   }
@@ -782,13 +804,13 @@ h1, h2, h3, h4, h5, h6 {
   }
   .lang-switch-wrap {
     height: 34px;
-    padding: 2px 4px 2px 8px;
-    gap: 3px;
+    padding: 2px 4px 2px 6px;
+    gap: 2px;
   }
   .lang-pill-btn {
-    height: 28px;
-    padding: 0 7px;
-    font-size: 0.68rem;
+    height: 26px;
+    padding: 0 6px;
+    font-size: 0.67rem;
   }
   .header-call-btn .header-call-text {
     display: none;
