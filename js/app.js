@@ -1704,6 +1704,8 @@ const BPS_I18N = {
     btnRfqDesk: 'RFQ Desk',
     headerCallText: '+971 50 671 8052',
     mobileDrawerCallText: 'Direct Call (+971 50 671 8052)',
+    floatWaTooltip: 'Chat on WhatsApp',
+    floatCallTooltip: 'Call +971 50 671 8052',
 
     // Hero & Hero Widget
     heroEyebrow: 'BPS GLOBAL TRADING — DIRECT MANUFACTURER & INSTALLATION',
@@ -2044,6 +2046,8 @@ const BPS_I18N = {
     btnRfqDesk: 'مكتب التسعير',
     headerCallText: '+971 50 671 8052',
     mobileDrawerCallText: 'اتصال مباشر (+971 50 671 8052)',
+    floatWaTooltip: 'تواصل عبر واتساب',
+    floatCallTooltip: 'اتصال: 00971506718052',
 
     // Hero & Hero Widget
     heroEyebrow: 'بي بي إس جلوبال تريدينج — تصنيع مباشر وخدمات تركيب معتمدة',
@@ -2476,7 +2480,8 @@ function setLanguage(lang) {
     'footerBtnQuote', 'footerBtnCallText', 'footerBtnContact', 'footerBtnWa',
     'footerCardBadge', 'contactEntityAddress', 'contactEntityPhoneTitle', 'contactEntityEmailTitle',
     'footerStockStatus', 'footerCopyright', 'footerAccreditation',
-    // Mobile Dock & Modals
+    // Floating Speed Dial & Modals
+    'floatWaTooltip', 'floatCallTooltip',
     'callFloatSpan', 'waFloatSpan', 'rfqFloatSpan',
     'modalSpecsTitle', 'modalBtnConfigure', 'modalBtnChat', 'certBadge'
   ];

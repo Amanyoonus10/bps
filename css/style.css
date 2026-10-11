@@ -753,10 +753,6 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0 8px;
     font-size: 0.68rem;
   }
-  .header-call-btn {
-    padding: 0 9px;
-    font-size: 0.71rem;
-  }
   .nav-item-link {
     padding: 5px 6px;
     font-size: 0.78rem;
@@ -764,10 +760,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 1320px) {
-  /* On medium laptops (<=1320px), hide clock to ensure Call Button + Lang Switcher + Navigation fit with ample padding */
-  .header-clock-tag {
-    display: none;
-  }
   .brand-title {
     font-size: 1.15rem;
   }
@@ -811,15 +803,6 @@ h1, h2, h3, h4, h5, h6 {
     height: 26px;
     padding: 0 6px;
     font-size: 0.67rem;
-  }
-  .header-call-btn .header-call-text {
-    display: none;
-  }
-  .header-call-btn {
-    padding: 0;
-    width: 34px;
-    height: 34px;
-    justify-content: center;
   }
   .header-right {
     gap: 6px;
@@ -3573,9 +3556,138 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Mobile Quick Floating Dock (Hidden on Desktop) */
-.mobile-floating-bar {
-  display: none;
+/* ==========================================================================
+   FLOATING SPEED DIAL CONTACT WIDGET (WHATSAPP & DIRECT CALL)
+   Matches user specification: Green circular WhatsApp button on top,
+   Red circular Call button on bottom, with smooth elevation and tooltips.
+   ========================================================================== */
+.floating-contact-widget {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 1080;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+/* RTL layout for Arabic */
+[dir="rtl"] .floating-contact-widget {
+  right: auto;
+  left: 28px;
+}
+
+/* Base circular button */
+.float-circle-btn {
+  position: relative;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.28s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.float-circle-btn:hover {
+  transform: scale(1.08) translateY(-2px);
+}
+
+.float-circle-btn:active {
+  transform: scale(0.96) translateY(0);
+}
+
+/* WhatsApp (Top Button) - Vibrant Green */
+.float-circle-btn.float-wa-btn {
+  background-color: #25D366;
+  background-image: radial-gradient(circle at 35% 30%, #34E875 0%, #25D366 60%, #1EBE5D 100%);
+  box-shadow: 0 10px 24px -2px rgba(37, 211, 102, 0.45), 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.float-circle-btn.float-wa-btn:hover {
+  box-shadow: 0 14px 30px -2px rgba(37, 211, 102, 0.6), 0 6px 14px rgba(0, 0, 0, 0.25);
+}
+
+/* Call (Bottom Button) - Vibrant Red with Call Ring Pulse */
+.float-circle-btn.float-call-btn {
+  background-color: #DC2626;
+  background-image: radial-gradient(circle at 35% 30%, #EF4444 0%, #DC2626 65%, #B91C1C 100%);
+  box-shadow: 0 10px 24px -2px rgba(220, 38, 38, 0.48), 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.float-circle-btn.float-call-btn:hover {
+  box-shadow: 0 14px 30px -2px rgba(220, 38, 38, 0.62), 0 6px 14px rgba(0, 0, 0, 0.25);
+}
+
+/* Gentle pulse ring around the red call button */
+.float-circle-btn.float-call-btn::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 2px solid rgba(239, 68, 68, 0.65);
+  animation: floatCallPulse 2.8s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+  pointer-events: none;
+}
+
+@keyframes floatCallPulse {
+  0% {
+    transform: scale(0.96);
+    opacity: 0.9;
+  }
+  65% {
+    transform: scale(1.32);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.32);
+    opacity: 0;
+  }
+}
+
+/* Floating Tooltips */
+.float-tooltip {
+  position: absolute;
+  right: calc(100% + 14px);
+  top: 50%;
+  transform: translateY(-50%) translateX(6px);
+  background: rgba(8, 16, 32, 0.92);
+  color: #FFFFFF;
+  font-family: var(--font-display, sans-serif);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 6px 14px;
+  border-radius: 100px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: opacity 0.22s ease, transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[dir="rtl"] .float-tooltip {
+  right: auto;
+  left: calc(100% + 14px);
+  transform: translateY(-50%) translateX(-6px);
+}
+
+.float-circle-btn:hover .float-tooltip {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+[dir="rtl"] .float-circle-btn:hover .float-tooltip {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
 }
 
 /* ==========================================================================
@@ -4621,84 +4733,27 @@ h1, h2, h3, h4, h5, h6 {
     height: 44px !important;
   }
 
-  /* Mobile Floating Quick Action Dock */
-  .mobile-floating-bar {
-    display: flex;
-    position: fixed;
-    bottom: 14px;
-    left: 14px;
-    right: 14px;
-    z-index: 1050;
-    gap: 8px;
-    background: rgba(6, 12, 26, 0.94);
-    backdrop-filter: blur(16px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    border-radius: 100px;
-    padding: 6px 7px;
-    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.75), 0 0 20px rgba(37, 99, 235, 0.25);
-    transform: translateY(130%);
-    opacity: 0;
-    visibility: hidden;
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, visibility 0.3s ease;
-    padding-bottom: max(6px, env(safe-area-inset-bottom));
+  /* Mobile Floating Speed Dial Contacts */
+  .floating-contact-widget {
+    bottom: 22px;
+    right: 20px;
+    gap: 12px;
+    z-index: 1090;
   }
-
-  .mobile-floating-bar.visible {
-    transform: translateY(0);
-    opacity: 1;
-    visibility: visible;
+  [dir="rtl"] .floating-contact-widget {
+    right: auto;
+    left: 20px;
   }
-
-  .mobile-float-btn {
-    flex: 1;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    height: 42px;
-    border-radius: 100px;
-    font-family: var(--font-display);
-    font-size: 0.78rem;
-    font-weight: 700;
-    text-decoration: none;
-    letter-spacing: 0.01em;
-    transition: all 0.2s ease;
-    white-space: nowrap;
-    padding: 0 6px;
+  .float-circle-btn {
+    width: 54px;
+    height: 54px;
   }
-
-  .mobile-float-btn.call-float {
-    background: rgba(56, 189, 248, 0.18);
-    color: #38BDF8;
-    border: 1px solid rgba(56, 189, 248, 0.4);
+  .float-circle-btn .float-circle-icon {
+    width: 30px;
+    height: 30px;
   }
-
-  .mobile-float-btn.call-float:active {
-    background: #0284C7;
-    color: #FFFFFF;
-  }
-
-  .mobile-float-btn.wa-float {
-    background: rgba(16, 185, 129, 0.18);
-    color: #34D399;
-    border: 1px solid rgba(16, 185, 129, 0.4);
-  }
-
-  .mobile-float-btn.wa-float:active {
-    background: #10B981;
-    color: #FFFFFF;
-  }
-
-  .mobile-float-btn.rfq-float {
-    background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
-    color: #FFFFFF;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    box-shadow: 0 2px 10px rgba(29, 78, 216, 0.45);
-  }
-
-  .mobile-float-btn.rfq-float:active {
-    transform: scale(0.98);
+  .float-tooltip {
+    display: none !important;
   }
 }
 
