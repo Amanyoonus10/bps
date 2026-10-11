@@ -1702,6 +1702,8 @@ const BPS_I18N = {
     navFaq: 'FAQ',
     navContact: 'Contact',
     btnRfqDesk: 'RFQ Desk',
+    headerCallText: '+971 50 671 8052',
+    mobileDrawerCallText: 'Direct Call (+971 50 671 8052)',
 
     // Hero & Hero Widget
     heroEyebrow: 'BPS GLOBAL TRADING — DIRECT MANUFACTURER & INSTALLATION',
@@ -1926,6 +1928,7 @@ const BPS_I18N = {
     lblSummAddons: 'Accessories:',
     txtSubmitEnquiry: 'Submit Official Enquiry',
     txtWaEnquiry: 'Send via WhatsApp Desk',
+    txtCallEnquiry: 'Call Direct: +971 50 671 8052',
     txtEmailEnquiry: 'Request Email RFQ',
     modalSuccessTitle: 'Enquiry Submitted Successfully',
     modalSuccessDesc: 'Thank you for your bulk liquid cargo enquiry. Our logistics engineering team has received your technical parameters and will prepare a certified quotation within 2 business hours.',
@@ -1941,6 +1944,7 @@ const BPS_I18N = {
     lblCalcSpec2: 'Discharge Valve:',
     lblCalcSpec3: 'Heating System:',
     lblCalcBtnWa: 'Instant WhatsApp Quote',
+    lblCalcBtnCall: 'Direct Call Support: +971 50 671 8052',
     lblCalcBtnEmail: 'Request Official Email RFQ',
 
     // FAQ (Sidebar & 10 Questions)
@@ -2002,6 +2006,7 @@ const BPS_I18N = {
     footerCtaHeadlineGrad: 'Bulk Liquid Transport.',
     footerCtaDesc: 'Whether you’re shipping industrial base oils, specialty chemicals, certified food-grade edible oils, high-temp bitumen, or bulk wine, BPS delivers precision-engineered flexitanks, on-site technical fitting, and guaranteed manufacturer warranty.',
     footerBtnQuote: 'GET A QUOTE',
+    footerBtnCallText: 'Call Desk',
     footerBtnContact: 'CONTACT BPS',
     footerBtnWa: 'WhatsApp Desk',
     footerCardBadge: 'DUBAI REGIONAL OFFICE & LOGISTICS DESK',
@@ -2013,6 +2018,7 @@ const BPS_I18N = {
     footerAccreditation: 'Manufacturer of Flexitank Bags & Accessories • Turnkey On-Site Installation Services • ISO 9001 · 14001 · 22000 Certified',
 
     // Mobile Floating Dock & Modals
+    callFloatSpan: 'Call Desk',
     waFloatSpan: 'WhatsApp Desk',
     rfqFloatSpan: 'Instant Quote',
     modalSpecsTitle: 'Technical Engineering Matrix',
@@ -2036,6 +2042,8 @@ const BPS_I18N = {
     navFaq: 'الأسئلة الشائعة',
     navContact: 'اتصل بنا',
     btnRfqDesk: 'مكتب التسعير',
+    headerCallText: '+971 50 671 8052',
+    mobileDrawerCallText: 'اتصال مباشر (+971 50 671 8052)',
 
     // Hero & Hero Widget
     heroEyebrow: 'بي بي إس جلوبال تريدينج — تصنيع مباشر وخدمات تركيب معتمدة',
@@ -2260,6 +2268,7 @@ const BPS_I18N = {
     lblSummAddons: 'الملحقات:',
     txtSubmitEnquiry: 'إرسال طلب التسعير الرسمي',
     txtWaEnquiry: 'إرسال عبر مكتب الواتساب',
+    txtCallEnquiry: 'اتصال مباشر: +971 50 671 8052',
     txtEmailEnquiry: 'طلب عرض سعر بالبريد',
     modalSuccessTitle: 'تم إرسال طلب التسعير بنجاح',
     modalSuccessDesc: 'شكراً لاستفسارك بخصوص نقل السوائل السائبة. استلم فريقنا الهندسي اللوجستي معاييرك الفنية وسيقوم بإعداد عرض أسعار رسمي معتمد خلال ساعتي عمل.',
@@ -2275,6 +2284,7 @@ const BPS_I18N = {
     lblCalcSpec2: 'صمام التفريغ:',
     lblCalcSpec3: 'نظام التسخين:',
     lblCalcBtnWa: 'طلب تسعير فوري عبر واتساب',
+    lblCalcBtnCall: 'دعم هاتفي مباشر: +971 50 671 8052',
     lblCalcBtnEmail: 'طلب تسعير رسمي بالبريد',
 
     // FAQ (Sidebar & 10 Questions)
@@ -2336,6 +2346,7 @@ const BPS_I18N = {
     footerCtaHeadlineGrad: 'نقل وتغليف السوائل السائبة.',
     footerCtaDesc: 'سواء كنت تشحن الزيوت الأساسية الصناعية، أو الكيماويات المتخصصة، أو الزيوت الغذائية المعتمدة، أو البيتومين عالي الحرارة، أو المشروبات السائبة، توفر BPS فليكسي تانك فائق الهندسة، وخدمات تركيب ميدانية، وضماناً مصنعياً معتمداً.',
     footerBtnQuote: 'طلب عرض أسعار',
+    footerBtnCallText: 'مكتب الاتصال',
     footerBtnContact: 'تواصل مع BPS',
     footerBtnWa: 'مكتب واتساب',
     footerCardBadge: 'المكتب الإقليمي ومكتب الخدمات اللوجستية بدبي',
@@ -2347,6 +2358,7 @@ const BPS_I18N = {
     footerAccreditation: 'تصنيع أكياس الفليكسي تانك والملحقات • خدمات تركيب وتجهيز الحاويات في الموقع • حاصل على شهادات ISO 9001 · 14001 · 22000',
 
     // Mobile Floating Dock & Modals
+    callFloatSpan: 'اتصال هاتفي',
     waFloatSpan: 'مكتب واتساب',
     rfqFloatSpan: 'طلب تسعير فوري',
     modalSpecsTitle: 'مصفوفة الهندسة والمواصفات الفنية',
@@ -2383,7 +2395,7 @@ function setLanguage(lang) {
   // Update elements by ID (text / HTML)
   const mapIds = [
     // Header & Brand
-    'navBrandTitle', 'navBrandSub', 'liveClockDisplay',
+    'navBrandTitle', 'navBrandSub', 'liveClockDisplay', 'headerCallText', 'mobileDrawerCallText',
     // Hero & Hero Widget
     'heroEyebrow', 'heroHeadline', 'heroDesc',
     'widgetEyebrow', 'widgetMainTitle', 'widgetLivePill',
@@ -2440,15 +2452,15 @@ function setLanguage(lang) {
     'txtFittingTitle', 'txtFittingDesc', 'txtInsuranceTitle', 'txtInsuranceDesc',
     'legendNotes', 'rfqBadge', 'rfqTitle',
     'lblSummRoute', 'lblSummSailing', 'lblSummCargo', 'lblSummVolume', 'lblSummValve', 'lblSummLayers', 'lblSummBulkhead', 'lblSummAddons',
-    'txtSubmitEnquiry', 'txtWaEnquiry', 'txtEmailEnquiry',
+    'txtSubmitEnquiry', 'txtWaEnquiry', 'txtCallEnquiry', 'txtEmailEnquiry',
     'modalSuccessTitle', 'modalSuccessDesc', 'btnModalSuccessClose',
     // Quick Estimator
     'lblCalcStep1', 'lblCalcStep2', 'lblCalcStep3', 'lblCalcPresets', 'lblCalcResTag',
-    'lblCalcSpec1', 'lblCalcSpec2', 'lblCalcSpec3', 'lblCalcBtnWa', 'lblCalcBtnEmail',
+    'lblCalcSpec1', 'lblCalcSpec2', 'lblCalcSpec3', 'lblCalcBtnWa', 'lblCalcBtnCall', 'lblCalcBtnEmail',
     // FAQ (Sidebar & 10 Questions)
     'faqEyebrow', 'faqTitle',
     'faqTabAll', 'faqTabTech', 'faqTabFood', 'faqTabSafety', 'faqTabSpecs',
-    'faqSupportTitle', 'faqSupportDesc', 'faqBtnWhatsApp', 'faqBtnContact',
+    'faqSupportTitle', 'faqSupportDesc', 'faqBtnWhatsApp', 'faqBtnContact', 'faqSupportBtnContact',
     'faqCat1', 'faqQ1', 'faqA1',
     'faqCat2', 'faqQ2', 'faqA2',
     'faqCat3', 'faqQ3', 'faqA3',
@@ -2461,11 +2473,11 @@ function setLanguage(lang) {
     'faqCat10', 'faqQ10', 'faqA10',
     // Footer & Final CTA
     'footerEyebrow', 'footerCtaHeadline', 'footerCtaHeadlineGrad', 'footerCtaDesc',
-    'footerBtnQuote', 'footerBtnContact', 'footerBtnWa',
+    'footerBtnQuote', 'footerBtnCallText', 'footerBtnContact', 'footerBtnWa',
     'footerCardBadge', 'contactEntityAddress', 'contactEntityPhoneTitle', 'contactEntityEmailTitle',
     'footerStockStatus', 'footerCopyright', 'footerAccreditation',
     // Mobile Dock & Modals
-    'waFloatSpan', 'rfqFloatSpan',
+    'callFloatSpan', 'waFloatSpan', 'rfqFloatSpan',
     'modalSpecsTitle', 'modalBtnConfigure', 'modalBtnChat', 'certBadge'
   ];
 
